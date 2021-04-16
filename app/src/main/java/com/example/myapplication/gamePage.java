@@ -16,5 +16,6 @@ public class gamePage extends AppCompatActivity {
     public void onBackPressed() {
         Intent i = new Intent(gamePage.this, MainActivity.class);
         startActivity(i);
+        finish();
     }
 }
