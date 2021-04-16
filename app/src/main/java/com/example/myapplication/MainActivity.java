@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private ViewGroup mainLayout;
     private RelativeLayout rl;
     private ImageView rocket, main_title;
-    private CountDownTimer timer;
+    private CountDownTimer timer,rockettimer,rockettimer2;
     private Boolean blue = true;
     private ImageButton main_play;
     private ImageView logo1, logo2, logo3,logo4,logo5,logo6,logo7,logo8,logo9,logo10;
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         setlocation(logo8, 35, 250);
         setlocation(logo9, 132, 1577);
         setlocation(logo10, 790, 1629);
-
+        logoSize();
 
 //==============timer====================\\
         timer = new CountDownTimer(1500, 20) {
@@ -107,7 +108,44 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 }
             }
         }.start();
+
+        rockettimer = new CountDownTimer(20000, 20) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+            }
+            @Override
+            public void onFinish() {
+                try{
+                    rocket.setImageResource(R.drawable.ufo);
+                    rocket.setRotation(35);
+                    rockettimer2.start();
+                }catch(Exception e){
+                    Log.e("Error", "Error: " + e.toString());
+                }
+            }
+        }.start();
+
+        rockettimer2 = new CountDownTimer(10000, 20) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+            }
+            @Override
+            public void onFinish() {
+                try{
+                    rocket.setImageResource(R.drawable.rocket);
+                    rocket.setRotation(-50);
+                    rockettimer.start();
+                }catch(Exception e){
+                    Log.e("Error", "Error: " + e.toString());
+                }
+            }
+        }.start();
     }
+
+
+
+
+
 
 
 
@@ -203,5 +241,23 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         a.setRepeatCount(Animation.INFINITE);
         a.setRepeatMode(Animation.RESTART);
         rocket.startAnimation(a);
+    }
+
+    public void logoSize() {
+        Animation a = new ScaleAnimation(1.0f, 0.97f,
+                1.0f, 0.97f,
+                Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f);
+        a.setDuration(6000);
+        a.setRepeatCount(Animation.INFINITE);
+        a.setRepeatMode(Animation.REVERSE);
+        logo2.startAnimation(a);
+        logo3.startAnimation(a);
+        logo4.startAnimation(a);
+        logo5.startAnimation(a);
+        logo6.startAnimation(a);
+        logo7.startAnimation(a);
+        logo8.startAnimation(a);
+
     }
 }
