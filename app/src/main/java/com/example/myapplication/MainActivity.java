@@ -168,10 +168,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     public void rocketMove() {
-        Animation a = new TranslateAnimation(1000, Animation.ABSOLUTE - 1450,
+        Animation a = new TranslateAnimation(1000, Animation.ABSOLUTE - 2000,
                 950, Animation.ABSOLUTE - 200);
 
-        a.setDuration(6000);
+        a.setDuration(10000);
 
         a.setRepeatCount(Animation.INFINITE);
 
