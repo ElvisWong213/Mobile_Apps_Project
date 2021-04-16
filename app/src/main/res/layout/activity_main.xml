@@ -16,6 +16,74 @@
         android:textColor="@color/white" />
 
     <ImageView
+        android:id="@+id/logo1"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/logo1" />
+
+    <ImageView
+        android:id="@+id/logo2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/logo2" />
+
+    <ImageView
+        android:id="@+id/logo3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/logo3" />
+
+    <ImageView
+        android:id="@+id/logo4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/logo4" />
+
+    <ImageView
+        android:id="@+id/logo5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/logo5" />
+
+    <ImageView
+        android:id="@+id/logo6"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/logo6" />
+
+    <ImageView
+        android:id="@+id/logo7"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/logo7" />
+
+    <ImageView
+        android:id="@+id/logo8"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/logo8" />
+
+    <ImageView
+        android:id="@+id/logo9"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/logo9" />
+
+    <ImageView
+        android:id="@+id/logo10"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/logo10" />
+
+    <ImageView
         android:id="@+id/rocket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
