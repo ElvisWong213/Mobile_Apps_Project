@@ -2,13 +2,13 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -21,10 +21,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener {
     AlertDialog.Builder builder;
+    Dialog dialog;
+    MediaPlayer mediaPlayer;
+    public static Intent svc;
     private TextView textView;
     private int x, y; // The touch coordinates
     private ViewGroup mainLayout;
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private ImageView rocket, main_title;
     private CountDownTimer timer,rockettimer,rockettimer2;
     private Boolean blue = true;
-    private ImageButton main_play;
+    private ImageButton main_play,btn_home_setting;
     private ImageView logo1, logo2, logo3,logo4,logo5,logo6,logo7,logo8,logo9,logo10;
 
     @Override
@@ -47,6 +49,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.effect);
+                    if (DialogSetting.effectsoundcontrol(getApplicationContext())){
+                        mediaPlayer.start();
+                    }
                     main_play.setImageResource(R.drawable.play2);
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     main_play.setImageResource(R.drawable.play);
@@ -54,6 +60,22 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 return false;
             }
         });
+        dialog = new Dialog(this);
+
+        btn_home_setting = findViewById(R.id.btn_home_setting);
+        setlocation(btn_home_setting,925,10);
+        btn_home_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.effect);
+                if (DialogSetting.effectsoundcontrol(getApplicationContext())){
+                    mediaPlayer.start();
+                }
+                DialogSetting.DialogManager(MainActivity.this);
+            }
+        });
+
+
 
         rocket = findViewById(R.id.rocket);
         rocket.setRotation(-50);
@@ -187,6 +209,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
+                System.exit(0);
             }
         });
         builder.setNegativeButton("否", new DialogInterface.OnClickListener() {
@@ -208,6 +231,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             case R.id.main_play:
                 it.setClass(MainActivity.this,gamePage.class);
                 startActivity(it);
+                DialogSetting.counter++;
                 finish();
             break;
         }
@@ -259,5 +283,21 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         logo7.startAnimation(a);
         logo8.startAnimation(a);
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        super.onPause();
+        DialogSetting.checkpause();
+        DialogSetting.counter--;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        svc =new Intent(this, BackgroundSoundService.class);
+        startService(svc);
+        DialogSetting.counter = 0;
     }
 }

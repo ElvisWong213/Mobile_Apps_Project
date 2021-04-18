@@ -15,6 +15,14 @@
         android:text="TextView"
         android:textColor="@color/white" />
 
+    <ImageButton
+        android:id="@+id/btn_home_setting"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/btn_setting" />
+
     <ImageView
         android:id="@+id/logo1"
         android:layout_width="55dp"
