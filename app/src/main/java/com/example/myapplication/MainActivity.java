@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -54,9 +55,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                     if (DialogSetting.effectsoundcontrol(getApplicationContext())){
                         mediaPlayer.start();
                     }
-                    main_play.setImageResource(R.drawable.play2);
+                    main_play.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    main_play.setImageResource(R.drawable.play);
+                    main_play.clearColorFilter();
                 }
                 return false;
             }
@@ -64,14 +65,20 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         dialog = new Dialog(this);
 
         btn_home_setting = findViewById(R.id.btn_home_setting);
-        setlocation(btn_home_setting,925,10);
-        btn_home_setting.setOnClickListener(new View.OnClickListener() {
+        setlocation(btn_home_setting,945,0);
+        btn_home_setting.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                if (DialogSetting.effectsoundcontrol(getApplicationContext())){
-                    mediaPlayer.start();
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    if (DialogSetting.effectsoundcontrol(getApplicationContext())){
+                        mediaPlayer.start();
+                    }
+                    btn_home_setting.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    btn_home_setting.clearColorFilter();
+                    DialogSetting.DialogManager(MainActivity.this);
                 }
-                DialogSetting.DialogManager(MainActivity.this);
+                return false;
             }
         });
 
@@ -285,7 +292,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     }
 
-
+////////////////////////////////////////////////////////////
     @Override
     protected void onPause() {
         super.onPause();

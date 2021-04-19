@@ -123,14 +123,14 @@
 
                                 <FrameLayout
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="20dp"
-                                    android:layout_marginLeft="20dp">
+                                    android:layout_height="wrap_content">
 
                                     <ImageView
                                         android:id="@+id/bgmswitch"
                                         android:layout_width="140dp"
                                         android:layout_height="140dp"
+                                        android:layout_marginStart="5dp"
+                                        android:layout_marginLeft="5dp"
                                         app:srcCompat="@drawable/square" />
 
                                     <ImageView
@@ -180,7 +180,8 @@
                                         android:id="@+id/closebutton"
                                         android:layout_width="150dp"
                                         android:layout_height="50dp"
-                                        android:background="@drawable/square" />
+                                        android:scaleType="fitXY"
+                                        app:srcCompat="@drawable/square" />
 
                                     <TextView
                                         android:id="@+id/closetext"

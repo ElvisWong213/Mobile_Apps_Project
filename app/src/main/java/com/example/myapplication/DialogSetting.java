@@ -6,11 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class DialogSetting{
     public static Boolean effectsound;
@@ -33,9 +36,11 @@ public class DialogSetting{
         ImageView bgmswitch = dialog.findViewById(R.id.bgmswitch);
         ImageView effectswitchimage = dialog.findViewById(R.id.effectswitchimage);
         ImageView bgmswitchimage = dialog.findViewById(R.id.bgmswitchimage);
+        ImageView homeswitchimage = dialog.findViewById(R.id.homeswitchimage);
         ImageView homeswitch = dialog.findViewById(R.id.homeswitch);
         ImageView closebutton = dialog.findViewById(R.id.closebutton);
         LinearLayout CardLayout = dialog.findViewById(R.id.CardLayout);
+        dialog.show();
         CardLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,12 +54,21 @@ public class DialogSetting{
         if(pref.getBoolean("bgmsound",true) == false)
             bgmswitchimage.setImageResource(R.drawable.musicoff);
 
-        closebutton.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+        effectswitch.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                if(effectsound)
-                    mediaPlayer.start();
-                dialog.dismiss();
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    effectswitch.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                    effectswitchimage.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    effectswitch.clearColorFilter();
+                    effectswitchimage.clearColorFilter();
+                }
+                return false;
             }
         });
 
@@ -77,6 +91,20 @@ public class DialogSetting{
             }
         });
 
+
+        homeswitch.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    homeswitch.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                    homeswitchimage.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    homeswitch.clearColorFilter();
+                    homeswitchimage.clearColorFilter();
+                }
+                return false;
+            }
+        });
         homeswitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,10 +118,22 @@ public class DialogSetting{
                 }
                     dialog.dismiss();
             }
-
         });
-        dialog.show();
 
+
+        bgmswitch.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    bgmswitch.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                    bgmswitchimage.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    bgmswitch.clearColorFilter();
+                    bgmswitchimage.clearColorFilter();
+                }
+                return false;
+            }
+        });
         bgmswitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +155,27 @@ public class DialogSetting{
                     editor.commit();
                     bgmswitchimage.setImageResource(R.drawable.music);
                 }
+            }
+        });
+
+
+        closebutton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    closebutton.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    closebutton.clearColorFilter();
+                }
+                return false;
+            }
+        });
+        closebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(effectsound)
+                    mediaPlayer.start();
+                dialog.dismiss();
             }
         });
     }
