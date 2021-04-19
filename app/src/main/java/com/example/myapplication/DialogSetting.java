@@ -9,18 +9,18 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
-public class DialogSetting {
+public class DialogSetting{
     public static Boolean effectsound;
     public static Boolean bgmsound;
     public static MediaPlayer mediaPlayer;
     public static SharedPreferences pref;
     public static int counter = 0;
+    public static Dialog dialog;
 
     public static void DialogManager(Context page) {
-        Dialog dialog;
         dialog = new Dialog(page);
 
         pref = page.getSharedPreferences("MyPref", Context.MODE_PRIVATE);
@@ -31,13 +31,32 @@ public class DialogSetting {
 
         ImageView effectswitch = dialog.findViewById(R.id.effectswitch);
         ImageView bgmswitch = dialog.findViewById(R.id.bgmswitch);
-        Button homepage = dialog.findViewById(R.id.homepage);
+        ImageView effectswitchimage = dialog.findViewById(R.id.effectswitchimage);
+        ImageView bgmswitchimage = dialog.findViewById(R.id.bgmswitchimage);
+        ImageView homeswitch = dialog.findViewById(R.id.homeswitch);
+        ImageView closebutton = dialog.findViewById(R.id.closebutton);
+        LinearLayout CardLayout = dialog.findViewById(R.id.CardLayout);
+        CardLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
         mediaPlayer = MediaPlayer.create(page, R.raw.effect);
         if(pref.getBoolean("effectsound",true) == false)
-            effectswitch.setImageResource(R.drawable.muteon);
+            effectswitchimage.setImageResource(R.drawable.muteon);
         if(pref.getBoolean("bgmsound",true) == false)
-            bgmswitch.setImageResource(R.drawable.muteon);
+            bgmswitchimage.setImageResource(R.drawable.musicoff);
 
+        closebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(effectsound)
+                    mediaPlayer.start();
+                dialog.dismiss();
+            }
+        });
 
         effectswitch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,29 +65,32 @@ public class DialogSetting {
                     effectsound = false;
                     editor.putBoolean("effectsound", false);
                     editor.commit();
-                    effectswitch.setImageResource(R.drawable.muteon);
+                    effectswitchimage.setImageResource(R.drawable.muteon);
 
                 }else if(effectsound == false) {
                     effectsound = true;
                     editor.putBoolean("effectsound", true);
                     editor.commit();
                     mediaPlayer.start();
-                    effectswitch.setImageResource(R.drawable.muteoff);
+                    effectswitchimage.setImageResource(R.drawable.muteoff);
                 }
             }
         });
 
-        homepage.setOnClickListener(new View.OnClickListener() {
+        homeswitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(pref.getBoolean("effectsound",true) == true)
                     mediaPlayer.start();
-                Intent it = new Intent();
-                it.setClass(page, MainActivity.class);
-                page.startActivity(it);
-                dialog.dismiss();
-                ((Activity)page).finish();
+                    Intent it = new Intent();
+                if(page.getClass()!=MainActivity.class) {
+                    it.setClass(page, MainActivity.class);
+                    page.startActivity(it);
+                    ((Activity) page).finish();
+                }
+                    dialog.dismiss();
             }
+
         });
         dialog.show();
 
@@ -77,25 +99,27 @@ public class DialogSetting {
             public void onClick(View v) {
                 if (bgmsound == true) {
                     bgmsound = false;
+                    if(effectsound)
+                        mediaPlayer.start();
                     BackgroundSoundService.stopbgm();
                     editor.putBoolean("bgmsound", false);
                     editor.commit();
-                    if(effectsound)
-                        mediaPlayer.start();
-                    bgmswitch.setImageResource(R.drawable.muteon);
+                    bgmswitchimage.setImageResource(R.drawable.musicoff);
 
                 }else if(bgmsound == false) {
                     bgmsound = true;
+                    if(effectsound)
+                        mediaPlayer.start();
                     BackgroundSoundService.playbgm();
                     editor.putBoolean("bgmsound", true);
                     editor.commit();
-                    if(effectsound)
-                        mediaPlayer.start();
-                    bgmswitch.setImageResource(R.drawable.music);
+                    bgmswitchimage.setImageResource(R.drawable.music);
                 }
             }
         });
     }
+
+
 
     public static Boolean effectsoundcontrol(Context page){
         pref = page.getSharedPreferences("MyPref", Context.MODE_PRIVATE);

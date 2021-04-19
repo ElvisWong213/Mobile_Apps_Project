@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.textView);
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.effect);
         main_title = findViewById(R.id.main_title);
         main_play = findViewById(R.id.main_play);
         main_play.setOnClickListener(this);
@@ -49,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN) {
-                    mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.effect);
                     if (DialogSetting.effectsoundcontrol(getApplicationContext())){
                         mediaPlayer.start();
                     }
@@ -67,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         btn_home_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.effect);
                 if (DialogSetting.effectsoundcontrol(getApplicationContext())){
                     mediaPlayer.start();
                 }
@@ -285,9 +285,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     }
 
+
     @Override
     protected void onPause() {
-        super.onPause();
         super.onPause();
         DialogSetting.checkpause();
         DialogSetting.counter--;

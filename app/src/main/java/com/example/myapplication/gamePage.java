@@ -53,7 +53,7 @@ public class gamePage extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        super.onResume();
         DialogSetting.counter=0;
+        DialogSetting.bgmsoundcontrol(getApplication());
     }
 }
