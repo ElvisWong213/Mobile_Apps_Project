@@ -8,29 +8,30 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
-public class gamePage extends AppCompatActivity {
+import maes.tech.intentanim.CustomIntent;
+
+public class gamePage extends AppCompatActivity implements View.OnClickListener {
     ImageButton btn_game_setting;
     MediaPlayer mediaPlayer;
+    Button btn_win;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_page);
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.effect);
-
-
-
-
-
+        btn_win = findViewById(R.id.btn_win);
+        btn_win.setOnClickListener(this);
 
         btn_game_setting = findViewById(R.id.btn_game_setting);
         btn_game_setting.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN) {
-                    if (DialogSetting.effectsoundcontrol(getApplicationContext())){
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    if (DialogSetting.effectsoundcontrol(getApplicationContext())) {
                         mediaPlayer.start();
                     }
                     btn_game_setting.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
@@ -43,6 +44,14 @@ public class gamePage extends AppCompatActivity {
         });
     }
 
+        public void onClick(View v){
+            switch (v.getId()) {
+                case R.id.btn_win:
+                    DialogSetting.win_DialogManager(gamePage.this);
+                    break;
+            }
+        }
+
 
 
 
@@ -53,6 +62,7 @@ public class gamePage extends AppCompatActivity {
     public void onBackPressed() {
         Intent i = new Intent(gamePage.this, MainActivity.class);
         startActivity(i);
+        CustomIntent.customType(gamePage.this, "bottom-to-up");
         DialogSetting.counter++;
         finish();
     }

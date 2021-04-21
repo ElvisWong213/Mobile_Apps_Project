@@ -24,6 +24,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import maes.tech.intentanim.CustomIntent;
+
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener {
     AlertDialog.Builder builder;
     Dialog dialog;
@@ -238,6 +240,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             case R.id.main_play:
                 it.setClass(MainActivity.this,gamePage.class);
                 startActivity(it);
+                CustomIntent.customType(MainActivity.this, "up-to-bottom");
                 DialogSetting.counter++;
                 finish();
             break;

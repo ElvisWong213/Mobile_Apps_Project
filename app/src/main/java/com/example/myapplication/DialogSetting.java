@@ -9,19 +9,25 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import maes.tech.intentanim.CustomIntent;
+
 public class DialogSetting{
     public static Boolean effectsound;
     public static Boolean bgmsound;
-    public static MediaPlayer mediaPlayer;
+    public static MediaPlayer mediaPlayer,mediaPlayer2;
     public static SharedPreferences pref;
     public static int counter = 0;
-    public static Dialog dialog;
+    public static Dialog dialog, win_dialog;
 
     public static void DialogManager(Context page) {
         dialog = new Dialog(page);
@@ -41,10 +47,13 @@ public class DialogSetting{
         ImageView closebutton = dialog.findViewById(R.id.closebutton);
         LinearLayout CardLayout = dialog.findViewById(R.id.CardLayout);
         dialog.show();
-        CardLayout.setOnClickListener(new View.OnClickListener() {
+        CardLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                dialog.dismiss();
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    dialog.dismiss();
+                }
+                return false;
             }
         });
 
@@ -54,8 +63,8 @@ public class DialogSetting{
         if(pref.getBoolean("bgmsound",true) == false)
             bgmswitchimage.setImageResource(R.drawable.musicoff);
 
-
-
+        if(page.getClass()==MainActivity.class)
+            homeswitchimage.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
 
 
         effectswitch.setOnTouchListener(new View.OnTouchListener() {
@@ -108,12 +117,13 @@ public class DialogSetting{
         homeswitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent it = new Intent();
                 if(pref.getBoolean("effectsound",true) == true)
                     mediaPlayer.start();
-                    Intent it = new Intent();
                 if(page.getClass()!=MainActivity.class) {
                     it.setClass(page, MainActivity.class);
                     page.startActivity(it);
+                    CustomIntent.customType(page, "bottom-to-up");
                     ((Activity) page).finish();
                 }
                     dialog.dismiss();
@@ -179,6 +189,84 @@ public class DialogSetting{
             }
         });
     }
+
+
+
+    public static void win_DialogManager (Context page){
+        mediaPlayer = MediaPlayer.create(page, R.raw.effect);
+        mediaPlayer2 = MediaPlayer.create(page, R.raw.sound_win);
+        if(effectsound)
+        mediaPlayer2.start();
+        win_dialog = new Dialog(page);
+        win_dialog.setContentView(R.layout.win_layout_dialog);
+        win_dialog.getWindow().setDimAmount(0.8f);
+        win_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        win_dialog.setCanceledOnTouchOutside(false);
+        win_dialog.setCancelable(false);
+        win_dialog.show();
+        Animation appearAnimation = new ScaleAnimation(0f, 1f,
+                0f, 1f,
+                Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f);
+        appearAnimation.setDuration(300);
+        Animation buttonAnimation = new AlphaAnimation(0.0f, 1.0f);
+        buttonAnimation.setDuration(600);
+
+        ImageView img_win = win_dialog.findViewById(R.id.img_win);
+        ImageView btn_next = win_dialog.findViewById(R.id.btn_next);
+        TextView tv_win = win_dialog.findViewById(R.id.tv_win);
+        img_win.startAnimation(appearAnimation);
+        btn_next.startAnimation(buttonAnimation);
+        tv_win.startAnimation(buttonAnimation);
+
+        Animation disppearAnimation = new ScaleAnimation(1f, 0f,
+                1f, 0f,
+                Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f);
+        disppearAnimation.setDuration(300);
+        Animation buttonAnimation2 = new AlphaAnimation(1.0f, 0.0f);
+        buttonAnimation2.setDuration(300);
+        buttonAnimation2.setAnimationListener(new Animation.AnimationListener(){
+            @Override
+            public void onAnimationStart(Animation arg0) {
+            }
+            @Override
+            public void onAnimationRepeat(Animation arg0) {
+            }
+            @Override
+            public void onAnimationEnd(Animation arg0) {
+                win_dialog.dismiss();
+            }
+        });
+
+//////////////////////////////////////////////////////
+
+
+        btn_next.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    btn_next.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    btn_next.clearColorFilter();
+                }
+                return false;
+            }
+        });
+        btn_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(effectsound)
+                    mediaPlayer.start();
+                img_win.startAnimation(disppearAnimation);
+                btn_next.startAnimation(buttonAnimation2);
+                tv_win.startAnimation(buttonAnimation2);
+            }
+        });
+
+
+    }
+
 
 
 

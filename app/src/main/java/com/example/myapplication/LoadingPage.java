@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ProgressBar;
 
+import maes.tech.intentanim.CustomIntent;
+
 public class LoadingPage extends AppCompatActivity {
     private ProgressBar progressBar;
     private int progressStatus = 0;
@@ -52,6 +54,7 @@ public class LoadingPage extends AppCompatActivity {
                 if(progressStatus == progressBar.getMax()){
                     intent.setClass(LoadingPage.this,MainActivity.class);
                     startActivity(intent);
+                    CustomIntent.customType(LoadingPage.this, "fadein-to-fadeout");
                     finish();
                 }
 
