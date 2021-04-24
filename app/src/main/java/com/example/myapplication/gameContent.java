@@ -129,7 +129,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                     String checkpoint1Ans="左右為難";
 
                     if(checkpoint1Ans.equals(chinese)){
-                        userinput.setText("good");
+
                         chinese="";
                         DialogSetting.win_DialogManager(gameContent.this);
                         checkpoint++;
