@@ -131,6 +131,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                     if(checkpoint1Ans.equals(chinese)){
 
                         chinese="";
+                        userinput.setText(chinese);
                         DialogSetting.win_DialogManager(gameContent.this);
                         checkpoint++;
 
@@ -143,6 +144,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
             case R.id.clear:
                 chinese="";
                 userinput.setText("");
+                chinese="";
                 break;
 
         }
