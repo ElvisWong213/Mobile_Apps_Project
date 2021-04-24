@@ -200,9 +200,13 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:textSize="18dp"
-                    app:backgroundTint="#4682B4"
-                    app:iconPadding="0dp" /><![CDATA[
+                <<<<<<< HEAD
+                =======
+                android:text="A"
+                >>>>>>> d36f7181509569a3293d2294efd8182fdaa72b82
+                android:textSize="18dp"
+                app:backgroundTint="#4682B4"
+                app:iconPadding="0dp" /><![CDATA[
 
                 =======
                     android:insetTop="0dp"
@@ -239,10 +243,14 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="左"
-                    android:textSize="18dp"
-                    app:backgroundTint="#4682B4"
-                    app:iconPadding="0dp" />
+                <<<<<<< HEAD
+                android:text="左"
+                =======
+                android:text="A"
+                >>>>>>> d36f7181509569a3293d2294efd8182fdaa72b82
+                android:textSize="18dp"
+                app:backgroundTint="#4682B4"
+                app:iconPadding="0dp" />
 
                 <Button
                     android:id="@+id/textBtn3"
@@ -287,10 +295,14 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="上"
-                    android:textSize="18dp"
-                    app:backgroundTint="#4682B4"
-                    app:iconPadding="0dp" />
+                <<<<<<< HEAD
+                android:text="上"
+                =======
+                android:text="現"
+                >>>>>>> d36f7181509569a3293d2294efd8182fdaa72b82
+                android:textSize="18dp"
+                app:backgroundTint="#4682B4"
+                app:iconPadding="0dp" />
 
                 <Button
                     android:id="@+id/textBtn5"
