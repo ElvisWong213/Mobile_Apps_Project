@@ -17,6 +17,7 @@ public class gamePage extends AppCompatActivity implements View.OnClickListener 
     ImageButton btn_game_setting;
     MediaPlayer mediaPlayer;
     Button btn_win;
+    Button btn_gamestart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,8 @@ public class gamePage extends AppCompatActivity implements View.OnClickListener 
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.effect);
         btn_win = findViewById(R.id.btn_win);
         btn_win.setOnClickListener(this);
-
+        btn_gamestart = findViewById(R.id.gamestart);
+        btn_gamestart.setOnClickListener(this);
         btn_game_setting = findViewById(R.id.btn_game_setting);
         btn_game_setting.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -49,6 +51,9 @@ public class gamePage extends AppCompatActivity implements View.OnClickListener 
                 case R.id.btn_win:
                     DialogSetting.win_DialogManager(gamePage.this);
                     break;
+                case R.id.gamestart:
+                    Intent i = new Intent(gamePage.this,gameContent.class);
+
             }
         }
 
