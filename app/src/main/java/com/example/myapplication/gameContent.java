@@ -12,7 +12,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     int checkpoint = 1;
     String chinese = "";
     TextView userinput;
-    Button submit;
+    Button submit, clear;
     Button textBtn1,textBtn2,textBtn3,textBtn4,textBtn5,textBtn6,textBtn7,textBtn8,textBtn9,textBtn10,textBtn11,textBtn12,textBtn13,textBtn14;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,8 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         submit=findViewById(R.id.submit);
         submit.setOnClickListener(this);
 
+        clear=findViewById(R.id.clear);
+        clear.setOnClickListener(this);
 
 
 
@@ -131,6 +133,8 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                    else
                        userinput.setText("good");
                }
+           case R.id.clear:
+               userinput.setText("");
 
 
        }
