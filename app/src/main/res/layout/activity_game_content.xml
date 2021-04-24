@@ -108,11 +108,19 @@
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="0dp"
                     android:layout_weight="1"
-
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingLeft="0dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="0dp"
+                    android:paddingRight="0dp"
+                    android:paddingBottom="0dp"
                     android:text="你"
-                    android:textSize="14sp"
-                    app:backgroundTint="#4682B4" />
-=======
+                    android:textSize="18dp"
+                    app:backgroundTint="#4682B4"
+                    app:iconPadding="0dp" /><![CDATA[
+
+                =======
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
                     android:paddingLeft="0dp"
@@ -125,6 +133,8 @@
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" />
 >>>>>>> 7aff88d559b156d7fbb47eb8a14110b288312396
+
+                ]]>
 
                 <Button
                     android:id="@+id/textBtn2"
