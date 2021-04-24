@@ -44,7 +44,10 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         textBtn12.setOnClickListener(this);
         textBtn13.setOnClickListener(this);
         textBtn14.setOnClickListener(this);
-
+        textBtn1.setVisibility(View.INVISIBLE);
+        textBtn7.setVisibility(View.INVISIBLE);
+        textBtn8.setVisibility(View.INVISIBLE);
+        textBtn14.setVisibility(View.INVISIBLE);
 
 
 
