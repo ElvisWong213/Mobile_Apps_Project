@@ -85,43 +85,43 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                userinput.setText(chinese);
                break;
            case R.id.textBtn5:
-               chinese+= textBtn4.getText();
+               chinese+= textBtn5.getText();
                userinput.setText(chinese);
                break;
            case R.id.textBtn6:
-               chinese+= textBtn4.getText();
+               chinese+= textBtn6.getText();
                userinput.setText(chinese);
                break;
            case R.id.textBtn7:
-               chinese+= textBtn4.getText();
+               chinese+= textBtn7.getText();
                userinput.setText(chinese);
                break;
            case R.id.textBtn8:
-               chinese+= textBtn4.getText();
+               chinese+= textBtn8.getText();
                userinput.setText(chinese);
                break;
            case R.id.textBtn9:
-               chinese+= textBtn4.getText();
+               chinese+= textBtn9.getText();
                userinput.setText(chinese);
                break;
            case R.id.textBtn10:
-               chinese+= textBtn4.getText();
+               chinese+= textBtn10.getText();
                userinput.setText(chinese);
                break;
            case R.id.textBtn11:
-               chinese+= textBtn4.getText();
+               chinese+= textBtn11.getText();
                userinput.setText(chinese);
                break;
            case R.id.textBtn12:
-               chinese+= textBtn4.getText();
+               chinese+= textBtn12.getText();
                userinput.setText(chinese);
                break;
            case R.id.textBtn13:
-               chinese+= textBtn4.getText();
+               chinese+= textBtn13.getText();
                userinput.setText(chinese);
                break;
            case R.id.textBtn14:
-               chinese+= textBtn4.getText();
+               chinese+= textBtn14.getText();
                userinput.setText(chinese);
                break;
            case R.id.submit:
