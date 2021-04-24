@@ -130,8 +130,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:scrollbarSize="0dp"
                 android:text="clear"
-                app:backgroundTint="#009688" />
+                android:textAlignment="center"
+                app:backgroundTint="#009688"
+                app:elevation="0dp"
+                app:iconPadding="0dp" />
 
         </LinearLayout>
 
