@@ -200,29 +200,9 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                <<<<<<< HEAD
-                =======
-                android:text="A"
-                >>>>>>> d36f7181509569a3293d2294efd8182fdaa72b82
-                android:textSize="18dp"
-                app:backgroundTint="#4682B4"
-                app:iconPadding="0dp" /><![CDATA[
-
-                =======
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:paddingLeft="0dp"
-                    android:paddingTop="0dp"
-                    android:paddingEnd="0dp"
-                    android:paddingRight="0dp"
-                    android:paddingBottom="0dp"
-                    android:text="你"
                     android:textSize="18dp"
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" />
->>>>>>> 7aff88d559b156d7fbb47eb8a14110b288312396
-
-                ]]>
 
                 <Button
                     android:id="@+id/textBtn2"
@@ -243,14 +223,10 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                <<<<<<< HEAD
-                android:text="左"
-                =======
-                android:text="A"
-                >>>>>>> d36f7181509569a3293d2294efd8182fdaa72b82
-                android:textSize="18dp"
-                app:backgroundTint="#4682B4"
-                app:iconPadding="0dp" />
+                    android:text="左"
+                    android:textSize="18dp"
+                    app:backgroundTint="#4682B4"
+                    app:iconPadding="0dp" />
 
                 <Button
                     android:id="@+id/textBtn3"
@@ -295,11 +271,8 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                <<<<<<< HEAD
                 android:text="上"
-                =======
                 android:text="現"
-                >>>>>>> d36f7181509569a3293d2294efd8182fdaa72b82
                 android:textSize="18dp"
                 app:backgroundTint="#4682B4"
                 app:iconPadding="0dp" />
