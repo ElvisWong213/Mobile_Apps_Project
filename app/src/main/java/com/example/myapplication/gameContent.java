@@ -2,11 +2,17 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import maes.tech.intentanim.CustomIntent;
 
 public class gameContent extends AppCompatActivity implements View.OnClickListener{
     int checkpoint = 1;
@@ -14,10 +20,29 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     TextView userinput;
     Button submit, clear,next;
     Button textBtn1,textBtn2,textBtn3,textBtn4,textBtn5,textBtn6,textBtn7,textBtn8,textBtn9,textBtn10,textBtn11,textBtn12,textBtn13,textBtn14;
+    ImageButton btn_gamecontent_setting;
+    MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_content);
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.effect);
+        btn_gamecontent_setting = findViewById(R.id.btn_gamecontent_setting);
+        btn_gamecontent_setting.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    if (DialogSetting.effectsoundcontrol(getApplicationContext())) {
+                        mediaPlayer.start();
+                    }
+                    btn_gamecontent_setting.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    btn_gamecontent_setting.clearColorFilter();
+                    DialogSetting.DialogManager(gameContent.this);
+                }
+                return false;
+            }
+        });
 
         userinput = findViewById(R.id.userInput);
         textBtn1 = findViewById(R.id.textBtn1);
@@ -150,4 +175,28 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         }
     }
 
+    ////////////////////////////////////////////////////////////
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(gameContent.this, MainActivity.class);
+        startActivity(i);
+        CustomIntent.customType(gameContent.this, "bottom-to-up");
+        DialogSetting.counter++;
+        finish();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        DialogSetting.checkpause();
+        DialogSetting.counter--;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        DialogSetting.counter=0;
+        DialogSetting.bgmsoundcontrol(getApplication());
+    }
 }
+
