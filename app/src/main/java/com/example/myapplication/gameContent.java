@@ -126,16 +126,20 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                break;
            case R.id.submit:
                if(checkpoint==1){
-                   String checkpoint1Ans="你你你你";
-                   if(checkpoint1Ans!=chinese){
-                       userinput.setText("");
-                       chinese="";}
-                   else
+                   String checkpoint1Ans="你你你";
+
+                   if(checkpoint1Ans.equals(chinese)){
                        userinput.setText("good");
+                       chinese="";}
+                   else{
+                       chinese="";
+                       userinput.setText(chinese);}
+
                }
+               break;
            case R.id.clear:
                userinput.setText("");
-
+               break;
 
        }
      }

@@ -230,7 +230,7 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="你"
+                    android:text="A"
                     android:textSize="18dp"
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" /><![CDATA[
@@ -270,7 +270,7 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="你"
+                    android:text="A"
                     android:textSize="18dp"
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" />
@@ -318,7 +318,7 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="你"
+                    android:text="現"
                     android:textSize="18dp"
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" />
