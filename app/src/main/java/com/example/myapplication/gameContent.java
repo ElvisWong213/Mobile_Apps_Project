@@ -8,6 +8,8 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -168,6 +170,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
 
                     }
                     else{
+                        shakeanimation(emoji,-10,10);
                         chinese="";
                         userinput.setText(chinese);}
                 }
@@ -298,6 +301,15 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 textBtn13.setText("花");
                 break;
         }
+    }
+
+    public void shakeanimation(TextView view ,int x1,int x2){
+        Animation a = new TranslateAnimation(x1,x2,0,0);
+        a.setDuration(10);
+        a.setRepeatMode(Animation.REVERSE);
+        a.setRepeatCount(5);
+        view.startAnimation(a);
+
     }
 }
 
