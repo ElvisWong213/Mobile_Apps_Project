@@ -6,17 +6,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class gameContent extends AppCompatActivity implements View.OnClickListener{
     int checkpoint = 1;
     String chinese;
+    TextView userinput;
     Button textBtn1,textBtn2,textBtn3,textBtn4,textBtn5,textBtn6,textBtn7,textBtn8,textBtn9,textBtn10,textBtn11,textBtn12,textBtn13,textBtn14;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_content);
 
-
+        userinput = findViewById(R.id.userInput);
         textBtn1 = findViewById(R.id.textBtn1);
         textBtn2 = findViewById(R.id.textBtn2);
         textBtn3 = findViewById(R.id.textBtn3);
@@ -64,26 +66,61 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
        switch (v.getId()) {
            case R.id.textBtn1:
                chinese+= textBtn1.getText();
+               userinput.setText(chinese);
+               break;
            case R.id.textBtn2:
                chinese+= textBtn2.getText();
+               userinput.setText(chinese);
+               break;
            case R.id.textBtn3:
                chinese+= textBtn3.getText();
+               userinput.setText(chinese);
+               break;
            case R.id.textBtn4:
                chinese+= textBtn4.getText();
+               userinput.setText(chinese);
+               break;
            case R.id.textBtn5:
                chinese+= textBtn4.getText();
+               userinput.setText(chinese);
+               break;
            case R.id.textBtn6:
                chinese+= textBtn4.getText();
+               userinput.setText(chinese);
+               break;
            case R.id.textBtn7:
                chinese+= textBtn4.getText();
+               userinput.setText(chinese);
+               break;
            case R.id.textBtn8:
                chinese+= textBtn4.getText();
+               userinput.setText(chinese);
+               break;
            case R.id.textBtn9:
                chinese+= textBtn4.getText();
+               userinput.setText(chinese);
+               break;
            case R.id.textBtn10:
                chinese+= textBtn4.getText();
+               userinput.setText(chinese);
+               break;
            case R.id.textBtn11:
                chinese+= textBtn4.getText();
+               userinput.setText(chinese);
+               break;
+           case R.id.textBtn12:
+               chinese+= textBtn4.getText();
+               userinput.setText(chinese);
+               break;
+           case R.id.textBtn13:
+               chinese+= textBtn4.getText();
+               userinput.setText(chinese);
+               break;
+           case R.id.textBtn14:
+               chinese+= textBtn4.getText();
+               userinput.setText(chinese);
+               break;
+           
 
 
        }
