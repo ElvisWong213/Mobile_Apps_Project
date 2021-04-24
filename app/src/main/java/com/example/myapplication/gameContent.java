@@ -70,6 +70,20 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                chinese+= textBtn3.getText();
            case R.id.textBtn4:
                chinese+= textBtn4.getText();
+           case R.id.textBtn5:
+               chinese+= textBtn4.getText();
+           case R.id.textBtn6:
+               chinese+= textBtn4.getText();
+           case R.id.textBtn7:
+               chinese+= textBtn4.getText();
+           case R.id.textBtn8:
+               chinese+= textBtn4.getText();
+           case R.id.textBtn9:
+               chinese+= textBtn4.getText();
+           case R.id.textBtn10:
+               chinese+= textBtn4.getText();
+           case R.id.textBtn11:
+               chinese+= textBtn4.getText();
 
 
        }
