@@ -56,41 +56,11 @@
                     android:textSize="28sp" />
 
                 <TextView
-                    android:id="@+id/emoji1"
+                    android:id="@+id/emoji"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="😀"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="36sp" />
-
-                <TextView
-                    android:id="@+id/emoji2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="😀"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="36sp" />
-
-                <TextView
-                    android:id="@+id/emoji3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="😀"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="36sp" />
-
-                <TextView
-                    android:id="@+id/emoji4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="😀"
+                    android:text="◀️▶️😣"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="36sp" />
@@ -230,7 +200,6 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="你"
                     android:textSize="18dp"
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" /><![CDATA[
@@ -270,7 +239,7 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="你"
+                    android:text="左"
                     android:textSize="18dp"
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" />
@@ -294,7 +263,7 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="你"
+                    android:text="的"
                     android:textSize="18dp"
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" />
@@ -318,7 +287,7 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="你"
+                    android:text="上"
                     android:textSize="18dp"
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" />
@@ -342,7 +311,7 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="你"
+                    android:text="我"
                     android:textSize="18dp"
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" />
@@ -366,7 +335,7 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="你"
+                    android:text="為"
                     android:textSize="18dp"
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" />
@@ -390,7 +359,6 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="你"
                     android:textSize="18dp"
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" />
@@ -422,7 +390,6 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="你"
                     android:textSize="18dp"
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" />
@@ -446,7 +413,7 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="你"
+                    android:text="他"
                     android:textSize="18dp"
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" />
@@ -470,7 +437,7 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="你"
+                    android:text="難"
                     android:textSize="18dp"
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" />
@@ -494,7 +461,7 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="你"
+                    android:text="易"
                     android:textSize="18dp"
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" />
@@ -518,7 +485,7 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="你"
+                    android:text="右"
                     android:textSize="18dp"
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" />
@@ -542,7 +509,7 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="你"
+                    android:text="下"
                     android:textSize="18dp"
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" />
@@ -566,7 +533,6 @@
                     android:paddingEnd="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="你"
                     android:textSize="18dp"
                     app:backgroundTint="#4682B4"
                     app:iconPadding="0dp" />
