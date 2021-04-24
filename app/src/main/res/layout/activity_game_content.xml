@@ -272,7 +272,6 @@
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
                 android:text="上"
-                android:text="現"
                 android:textSize="18dp"
                 app:backgroundTint="#4682B4"
                 app:iconPadding="0dp" />
