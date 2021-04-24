@@ -126,7 +126,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.submit:
                 if(checkpoint==1){
-                    String checkpoint1Ans="你你你";
+                    String checkpoint1Ans="左右為難";
 
                     if(checkpoint1Ans.equals(chinese)){
                         userinput.setText("good");
