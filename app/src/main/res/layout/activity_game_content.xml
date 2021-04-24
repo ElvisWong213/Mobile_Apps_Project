@@ -36,7 +36,7 @@
             android:id="@+id/level"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="關卡0"
+            android:text="關卡1"
             android:textAlignment="viewEnd"
             android:textColor="#FFFFFF"
             android:textSize="28sp" />
