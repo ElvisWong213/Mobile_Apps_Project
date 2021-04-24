@@ -17,7 +17,7 @@ import maes.tech.intentanim.CustomIntent;
 public class gameContent extends AppCompatActivity implements View.OnClickListener{
     int checkpoint = 1;
     String chinese = "";
-    TextView userinput, emoji;
+    TextView userinput, emoji, level;
     Button submit, clear,next;
     Button textBtn1,textBtn2,textBtn3,textBtn4,textBtn5,textBtn6,textBtn7,textBtn8,textBtn9,textBtn10,textBtn11,textBtn12,textBtn13,textBtn14;
     ImageButton btn_gamecontent_setting;
@@ -46,6 +46,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
 
         userinput = findViewById(R.id.userInput);
         emoji = findViewById(R.id.emoji);
+        level = findViewById(R.id.level);
         textBtn1 = findViewById(R.id.textBtn1);
         textBtn2 = findViewById(R.id.textBtn2);
         textBtn3 = findViewById(R.id.textBtn3);
@@ -255,6 +256,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     public void levelText(int checkpoint){
         switch (checkpoint){
             case 2:
+                level.setText("關卡2");
                 emoji.setText("\uD83D\uDC4A\uD83C\uDF40\uD83D\uDE28\uD83D\uDC0D");
                 textBtn2.setText("有");
                 textBtn3.setText("打");
@@ -268,6 +270,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 textBtn13.setText("怕");
                 break;
             case 3:
+                level.setText("關卡3");
                 emoji.setText("\uD83D\uDC99\uD83D\uDC44\uD83D\uDE45\u200D\uD83D\uDC46");
                 textBtn2.setText("不");
                 textBtn3.setText("打");
@@ -281,6 +284,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 textBtn13.setText("嘴");
                 break;
             case 4:
+                level.setText("關卡4");
                 emoji.setText("\uD83C\uDFC3\u200D\uD83D\uDC34\uD83D\uDC40\uD83C\uDF38");
                 textBtn2.setText("步");
                 textBtn3.setText("眼");
