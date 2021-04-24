@@ -141,6 +141,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 }
                 break;
             case R.id.clear:
+                chinese="";
                 userinput.setText("");
                 break;
 
