@@ -53,7 +53,7 @@ public class gamePage extends AppCompatActivity implements View.OnClickListener 
                     break;
                 case R.id.gamestart:
                     Intent i = new Intent(gamePage.this,gameContent.class);
-
+                    startActivity(i);
             }
         }
 
