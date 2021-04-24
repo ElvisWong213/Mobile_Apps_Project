@@ -117,8 +117,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         setlocation(logo6, 896, 921);
         setlocation(logo7, 928, 1470);
         setlocation(logo8, 35, 250);
-        setlocation(logo9, 132, 1577);
-        setlocation(logo10, 790, 1629);
+        setlocation(logo9, 180, 1680);
+        setlocation(logo10, 790, 1750);
         logoSize();
 
 //==============timer====================\\
