@@ -187,6 +187,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
 
                     }
                     else{
+                        shakeanimation(emoji,-10,10);
                         chinese="";
                         userinput.setText(chinese);}
                 }
@@ -203,6 +204,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
 
                     }
                     else{
+                        shakeanimation(emoji,-10,10);
                         chinese="";
                         userinput.setText(chinese);}
                 }
@@ -219,6 +221,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
 
                     }
                     else{
+                        shakeanimation(emoji,-10,10);
                         chinese="";
                         userinput.setText(chinese);}
                 }
