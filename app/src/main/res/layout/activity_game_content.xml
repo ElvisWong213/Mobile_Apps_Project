@@ -93,8 +93,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:backgroundTint="#4682B4"
-                    android:text="你"/>
+                    android:text="你"
+                    android:textSize="14sp"
+                    app:backgroundTint="#4682B4" />
 
                 <Button
                     android:id="@+id/button5"
