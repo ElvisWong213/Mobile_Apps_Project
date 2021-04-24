@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private Boolean blue = true;
     private ImageButton main_play,btn_home_setting;
     private ImageView logo1, logo2, logo3,logo4,logo5,logo6,logo7,logo8,logo9,logo10;
-    private int a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
