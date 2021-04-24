@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class gameContent extends AppCompatActivity implements View.OnClickListener{
     int checkpoint = 1;
-    String chinese;
+    String chinese = "";
     TextView userinput;
     Button submit;
     Button textBtn1,textBtn2,textBtn3,textBtn4,textBtn5,textBtn6,textBtn7,textBtn8,textBtn9,textBtn10,textBtn11,textBtn12,textBtn13,textBtn14;
