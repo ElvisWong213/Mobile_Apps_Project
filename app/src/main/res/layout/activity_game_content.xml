@@ -39,9 +39,10 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="250dp"
+                android:layout_width="350dp"
                 android:layout_height="250dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:background="#77D8D7D2"
                 android:orientation="horizontal">
 
@@ -106,7 +107,7 @@
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="0dp"
                     android:layout_weight="1"
-<<<<<<< HEAD
+
                     android:text="你"
                     android:textSize="14sp"
                     app:backgroundTint="#4682B4" />
