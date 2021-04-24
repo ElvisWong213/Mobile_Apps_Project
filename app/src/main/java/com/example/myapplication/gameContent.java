@@ -12,6 +12,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     int checkpoint = 1;
     String chinese;
     TextView userinput;
+    Button submit;
     Button textBtn1,textBtn2,textBtn3,textBtn4,textBtn5,textBtn6,textBtn7,textBtn8,textBtn9,textBtn10,textBtn11,textBtn12,textBtn13,textBtn14;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +52,8 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         textBtn7.setVisibility(View.INVISIBLE);
         textBtn8.setVisibility(View.INVISIBLE);
         textBtn14.setVisibility(View.INVISIBLE);
-
+        submit=findViewById(R.id.submit);
+        submit.setOnClickListener(this);
 
 
 
@@ -120,11 +122,18 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                chinese+= textBtn4.getText();
                userinput.setText(chinese);
                break;
-           
+           case R.id.submit:
+               if(checkpoint==1){
+                   String checkpoint1Ans="你你你你";
+                   if(checkpoint1Ans!=chinese){
+                       userinput.setText("");
+                       chinese="";}
+                   else
+                       userinput.setText("good");
+               }
 
 
        }
      }
 
     }
-}
