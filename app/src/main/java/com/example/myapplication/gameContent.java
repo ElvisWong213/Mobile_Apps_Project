@@ -17,7 +17,7 @@ import maes.tech.intentanim.CustomIntent;
 public class gameContent extends AppCompatActivity implements View.OnClickListener{
     int checkpoint = 1;
     String chinese = "";
-    TextView userinput;
+    TextView userinput, emoji;
     Button submit, clear,next;
     Button textBtn1,textBtn2,textBtn3,textBtn4,textBtn5,textBtn6,textBtn7,textBtn8,textBtn9,textBtn10,textBtn11,textBtn12,textBtn13,textBtn14;
     ImageButton btn_gamecontent_setting;
@@ -45,6 +45,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         });
 
         userinput = findViewById(R.id.userInput);
+        emoji = findViewById(R.id.emoji);
         textBtn1 = findViewById(R.id.textBtn1);
         textBtn2 = findViewById(R.id.textBtn2);
         textBtn3 = findViewById(R.id.textBtn3);
@@ -162,6 +163,55 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                         userinput.setText(chinese);
                         DialogSetting.win_DialogManager(gameContent.this);
                         checkpoint++;
+                        levelText(checkpoint);
+
+                    }
+                    else{
+                        chinese="";
+                        userinput.setText(chinese);}
+                }
+                if(checkpoint==2){
+                    String checkpoint2Ans="打草驚蛇";
+
+                    if(checkpoint2Ans.equals(chinese)){
+
+                        chinese="";
+                        userinput.setText(chinese);
+                        DialogSetting.win_DialogManager(gameContent.this);
+                        checkpoint++;
+                        levelText(checkpoint);
+
+                    }
+                    else{
+                        chinese="";
+                        userinput.setText(chinese);}
+                }
+                if(checkpoint==3){
+                    String checkpoint2Ans="心口不一";
+
+                    if(checkpoint2Ans.equals(chinese)){
+
+                        chinese="";
+                        userinput.setText(chinese);
+                        DialogSetting.win_DialogManager(gameContent.this);
+                        checkpoint++;
+                        levelText(checkpoint);
+
+                    }
+                    else{
+                        chinese="";
+                        userinput.setText(chinese);}
+                }
+                if(checkpoint==4){
+                    String checkpoint2Ans="走馬看花";
+
+                    if(checkpoint2Ans.equals(chinese)){
+
+                        chinese="";
+                        userinput.setText(chinese);
+                        DialogSetting.win_DialogManager(gameContent.this);
+                        checkpoint++;
+                        levelText(checkpoint);
 
                     }
                     else{
@@ -200,6 +250,50 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         super.onResume();
         DialogSetting.counter=0;
         DialogSetting.bgmsoundcontrol(getApplication());
+    }
+
+    public void levelText(int checkpoint){
+        switch (checkpoint){
+            case 2:
+                emoji.setText("\uD83D\uDC4A\uD83C\uDF40\uD83D\uDE28\uD83D\uDC0D");
+                textBtn2.setText("有");
+                textBtn3.setText("打");
+                textBtn4.setText("葉");
+                textBtn5.setText("花");
+                textBtn6.setText("驚");
+                textBtn9.setText("拳");
+                textBtn10.setText("蛇");
+                textBtn11.setText("手");
+                textBtn12.setText("草");
+                textBtn13.setText("怕");
+                break;
+            case 3:
+                emoji.setText("\uD83D\uDC99\uD83D\uDC44\uD83D\uDE45\u200D\uD83D\uDC46");
+                textBtn2.setText("不");
+                textBtn3.setText("打");
+                textBtn4.setText("人");
+                textBtn5.setText("藍");
+                textBtn6.setText("一");
+                textBtn9.setText("心");
+                textBtn10.setText("上");
+                textBtn11.setText("指");
+                textBtn12.setText("口");
+                textBtn13.setText("嘴");
+                break;
+            case 4:
+                emoji.setText("\uD83C\uDFC3\u200D\uD83D\uDC34\uD83D\uDC40\uD83C\uDF38");
+                textBtn2.setText("步");
+                textBtn3.setText("眼");
+                textBtn4.setText("走");
+                textBtn5.setText("物");
+                textBtn6.setText("看");
+                textBtn9.setText("跑");
+                textBtn10.setText("粉");
+                textBtn11.setText("馬");
+                textBtn12.setText("動");
+                textBtn13.setText("花");
+                break;
+        }
     }
 }
 
