@@ -1,19 +1,49 @@
-package com.example.myapplication;
+ package com.example.myapplication;
+        import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.ImageButton;
+        import android.os.Bundle;
+        import android.view.View;
+        import android.widget.Button;
+        import android.widget.ImageButton;
 
 public class gameContent extends AppCompatActivity {
+    public class gameContent extends AppCompatActivity implements View.OnClickListener{
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_content);
-        int checkpoint = 1;
-        Button char1,char2,char3,char4,char5,char6,char7,char8,char9,char10,char11,char12,char13,char14,char15,char16;
-        String[] emoji = {"\uD83D\uDE06", "\uD83D\uDE42", "\uD83D\uDE43", "\uD83D\uDE22", "\uD83D\uDC4B\uD83C\uDFFB"};
-    }
-}
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            public class gameContent extends AppCompatActivity {
+                textBtn12 = findViewById(R.id.textBtn12);
+                textBtn13 = findViewById(R.id.textBtn13);
+                textBtn14 = findViewById(R.id.textBtn14);
+        textBtn1.setOnClickListener(this);
+        textBtn2.setOnClickListener(this);
+        textBtn3.setOnClickListener(this);
+        textBtn4.setOnClickListener(this);
+        textBtn5.setOnClickListener(this);
+        textBtn6.setOnClickListener(this);
+        textBtn7.setOnClickListener(this);
+        textBtn8.setOnClickListener(this);
+        textBtn9.setOnClickListener(this);
+        textBtn10.setOnClickListener(this);
+        textBtn11.setOnClickListener(this);
+        textBtn12.setOnClickListener(this);
+        textBtn13.setOnClickListener(this);
+        textBtn14.setOnClickListener(this);
+
+
+
+
+
+
+
+
+
+
+            }
+        }
+
+            public void onClick(View v){
+
+
+            }
+        }
