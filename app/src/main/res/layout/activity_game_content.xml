@@ -32,6 +32,12 @@
             android:textColor="#FFFFFF"
             android:textSize="28sp" />
 
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="😀" />
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="246dp"
@@ -49,10 +55,11 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/button16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:foreground="@drawable/characterButton"
                     android:text="0" />
 
                 <Button
