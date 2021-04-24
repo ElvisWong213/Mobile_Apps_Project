@@ -92,6 +92,9 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     }
 
     public void onClick(View v){
+        if (DialogSetting.effectsoundcontrol(getApplicationContext())){
+            mediaPlayer.start();
+        }
         switch (v.getId()) {
             case R.id.textBtn1:
                 chinese+= textBtn1.getText();
