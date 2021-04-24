@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
 
 public class gameContent extends AppCompatActivity implements View.OnClickListener{
     int checkpoint = 1;
     String chinese;
     Button textBtn1,textBtn2,textBtn3,textBtn4,textBtn5,textBtn6,textBtn7,textBtn8,textBtn9,textBtn10,textBtn11,textBtn12,textBtn13,textBtn14;
+    Button clear;
+    TextView userInput;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +54,10 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         textBtn8.setVisibility(View.INVISIBLE);
         textBtn14.setVisibility(View.INVISIBLE);
 
+        userInput.findViewById(R.id.userInput);
 
+        clear = findViewById(R.id.clear);
+        clear.setOnClickListener(this);
 
 
 
@@ -85,6 +92,8 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
            case R.id.textBtn11:
                chinese+= textBtn4.getText();
 
+
+           case R.id.clear:
 
        }
      }
