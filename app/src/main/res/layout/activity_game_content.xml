@@ -33,17 +33,11 @@
             android:textSize="28sp" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             android:layout_weight="1"
+            android:background="#77D8D7D2"
             android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="     " />
 
             <TextView
                 android:id="@+id/textView10"
@@ -81,19 +75,7 @@
                 android:textAlignment="center"
                 android:textSize="28sp" />
 
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="     " />
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="246dp"
-            android:layout_height="261dp"
-            app:srcCompat="@drawable/square" />
 
         <LinearLayout
             android:layout_width="match_parent"
