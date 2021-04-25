@@ -223,7 +223,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 }
                 if(checkpoint==2){
                     String checkpointAns="打草驚蛇";
-
+                    DialogSetting.hint.setText("打");
                     if(checkpointAns.equals(chinese)){
 
                         chinese="";
@@ -294,6 +294,10 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.btn_hint:
                 DialogSetting.hint_DialogManager(gameContent.this);
+                if(checkpoint==1)
+                    DialogSetting.hint.setText("左");
+                if(checkpoint==2)
+                    DialogSetting.hint.setText("打");
                 break;
         }
     }

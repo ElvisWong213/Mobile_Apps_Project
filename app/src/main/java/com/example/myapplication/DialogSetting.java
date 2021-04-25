@@ -316,7 +316,7 @@ public class DialogSetting{
         ImageView hintdialog = hint_dialog.findViewById(R.id.btn_dialog);
         TextView textView5 = hint_dialog.findViewById(R.id.textView5);
         TextView textView8 = hint_dialog.findViewById(R.id.textView8);
-        TextView hint = hint_dialog.findViewById(R.id.hint);
+         hint = hint_dialog.findViewById(R.id.hint);
         TextView tvclose = hint_dialog.findViewById(R.id.tv_close);
         Animation disppearAnimation = new ScaleAnimation(1f, 0f,
                 1f, 0f,
