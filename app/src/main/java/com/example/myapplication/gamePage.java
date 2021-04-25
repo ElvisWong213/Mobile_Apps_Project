@@ -10,12 +10,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import maes.tech.intentanim.CustomIntent;
 
 public class gamePage extends AppCompatActivity implements View.OnClickListener {
     ImageButton btn_game_setting;
     MediaPlayer mediaPlayer;
+    TextView highestLevel;
     Button btn_win;
     Button btn_gamestart;
 
@@ -23,10 +25,12 @@ public class gamePage extends AppCompatActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_page);
+        highestLevel = findViewById(R.id.highestLevel);
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.effect);
         btn_gamestart = findViewById(R.id.gamestart);
         btn_gamestart.setOnClickListener(this);
         btn_game_setting = findViewById(R.id.btn_game_setting);
+        highestLevel.setText(String.valueOf(LoadingPage.checkpoint));
         btn_game_setting.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

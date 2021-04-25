@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import maes.tech.intentanim.CustomIntent;
 
 public class LoadingPage extends AppCompatActivity {
+    public static int checkpoint = 1;
     private ProgressBar progressBar;
     private int progressStatus = 0;
     boolean firsttime = true;

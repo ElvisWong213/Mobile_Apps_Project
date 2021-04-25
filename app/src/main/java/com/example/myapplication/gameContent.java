@@ -19,8 +19,8 @@ import android.widget.TextView;
 import maes.tech.intentanim.CustomIntent;
 
 public class gameContent extends AppCompatActivity implements View.OnClickListener{
-    public static int checkpoint = 1;
     String chinese = "";
+    String checkpointAns;
     Handler handler = new Handler();
     TextView userinput, emoji, level;
     Button submit, clear, next;
@@ -104,7 +104,64 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         clear.setOnClickListener(this);
 
 
-
+        switch (LoadingPage.checkpoint) {
+            case 1:
+                level.setText("關卡1");
+                emoji.setText("◀️▶️\uD83D\uDE23");
+                textBtn2.setText("左");
+                textBtn3.setText("的");
+                textBtn4.setText("上");
+                textBtn5.setText("我");
+                textBtn6.setText("為");
+                textBtn9.setText("他");
+                textBtn10.setText("難");
+                textBtn11.setText("易");
+                textBtn12.setText("右");
+                textBtn13.setText("下");
+                break;
+            case 2:
+                level.setText("關卡2");
+                emoji.setText("\uD83D\uDC4A\uD83C\uDF40\uD83D\uDE28\uD83D\uDC0D");
+                textBtn2.setText("有");
+                textBtn3.setText("打");
+                textBtn4.setText("葉");
+                textBtn5.setText("花");
+                textBtn6.setText("驚");
+                textBtn9.setText("拳");
+                textBtn10.setText("蛇");
+                textBtn11.setText("手");
+                textBtn12.setText("草");
+                textBtn13.setText("怕");
+                break;
+            case 3:
+                level.setText("關卡3");
+                emoji.setText("\uD83D\uDC99\uD83D\uDC44\uD83D\uDE45\u200D\uD83D\uDC46");
+                textBtn2.setText("不");
+                textBtn3.setText("打");
+                textBtn4.setText("人");
+                textBtn5.setText("藍");
+                textBtn6.setText("一");
+                textBtn9.setText("心");
+                textBtn10.setText("上");
+                textBtn11.setText("指");
+                textBtn12.setText("口");
+                textBtn13.setText("嘴");
+                break;
+            case 4:
+                level.setText("關卡4");
+                emoji.setText("\uD83C\uDFC3\u200D\uD83D\uDC34\uD83D\uDC40\uD83C\uDF38");
+                textBtn2.setText("步");
+                textBtn3.setText("眼");
+                textBtn4.setText("走");
+                textBtn5.setText("物");
+                textBtn6.setText("看");
+                textBtn9.setText("跑");
+                textBtn10.setText("粉");
+                textBtn11.setText("馬");
+                textBtn12.setText("動");
+                textBtn13.setText("花");
+                break;
+        }
 
 
 
@@ -201,78 +258,30 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 textBtn12.setEnabled(true);
                 textBtn13.setEnabled(true);
                 textBtn14.setEnabled(true);
-                if(checkpoint==1){
-                    String checkpointAns="左右為難";
+                switch(LoadingPage.checkpoint) {
 
-                    if(checkpointAns.equals(chinese)){
-
-                        chinese="";
-                        userinput.setText(chinese);
-                        DialogSetting.win_DialogManager(gameContent.this);
-                        checkpoint++;
-                        levelText(checkpoint);
-
-                    }
-                    else{
-                        shakeanimationandwrongeffect(emoji,-10,10);
-                        chinese="";
-                        userinput.setText(chinese);
-
-
-                        }
+                    case 1: checkpointAns = "左右為難"; break;
+                    case 2: checkpointAns= "打草驚蛇"; break;
+                    case 3: checkpointAns="心口不一"; break;
+                    case 4: checkpointAns="走馬看花"; break;
+                    default:
+                        checkpointAns = null; break;
                 }
-                if(checkpoint==2){
-                    String checkpointAns="打草驚蛇";
-                    DialogSetting.hint.setText("打");
-                    if(checkpointAns.equals(chinese)){
+                if(checkpointAns.equals(chinese)){
 
-                        chinese="";
-                        userinput.setText(chinese);
-                        DialogSetting.win_DialogManager(gameContent.this);
-                        checkpoint++;
-                        levelText(checkpoint);
+                chinese="";
+                userinput.setText(chinese);
+                DialogSetting.win_DialogManager(gameContent.this);
+                LoadingPage.checkpoint++;
+                levelText(LoadingPage.checkpoint);
 
-                    }
-                    else{
-                        shakeanimationandwrongeffect(emoji,-10,10);
-                        chinese="";
-                        userinput.setText(chinese);}
                 }
-                if(checkpoint==3){
-                    String checkpointAns="心口不一";
-
-                    if(checkpointAns.equals(chinese)){
-
-                        chinese="";
-                        userinput.setText(chinese);
-                        DialogSetting.win_DialogManager(gameContent.this);
-                        checkpoint++;
-                        levelText(checkpoint);
-
-                    }
-                    else{
-                        shakeanimationandwrongeffect(emoji,-10,10);
-                        chinese="";
-                        userinput.setText(chinese);}
+                else{
+                shakeanimationandwrongeffect(emoji,-10,10);
+                chinese="";
+                userinput.setText(chinese);
                 }
-                if(checkpoint==4){
-                    String checkpointAns="走馬看花";
 
-                    if(checkpointAns.equals(chinese)){
-
-                        chinese="";
-                        userinput.setText(chinese);
-                        DialogSetting.win_DialogManager(gameContent.this);
-                        checkpoint++;
-                        levelText(checkpoint);
-
-                    }
-                    else{
-                        shakeanimationandwrongeffect(emoji,-10,10);
-                        chinese="";
-                        userinput.setText(chinese);}
-                }
-                break;
             case R.id.clear:
                 textBtn1.setEnabled(true);
                 textBtn2.setEnabled(true);
@@ -294,9 +303,9 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.btn_hint:
                 DialogSetting.hint_DialogManager(gameContent.this);
-                if(checkpoint==1)
+                if(LoadingPage.checkpoint==1)
                     DialogSetting.hint.setText("左");
-                if(checkpoint==2)
+                if(LoadingPage.checkpoint==2)
                     DialogSetting.hint.setText("打");
                 break;
         }
@@ -327,7 +336,21 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     }
 
     public void levelText(int checkpoint){
-        switch (checkpoint){
+        switch (LoadingPage.checkpoint){
+            case 1:
+                level.setText("關卡1");
+                emoji.setText("◀️▶️\uD83D\uDE23");
+                textBtn2.setText("左");
+                textBtn3.setText("的");
+                textBtn4.setText("上");
+                textBtn5.setText("我");
+                textBtn6.setText("為");
+                textBtn9.setText("他");
+                textBtn10.setText("難");
+                textBtn11.setText("易");
+                textBtn12.setText("右");
+                textBtn13.setText("下");
+                break;
             case 2:
                 level.setText("關卡2");
                 emoji.setText("\uD83D\uDC4A\uD83C\uDF40\uD83D\uDE28\uD83D\uDC0D");
