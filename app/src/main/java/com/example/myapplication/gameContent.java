@@ -30,19 +30,20 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     int hintCounter = 2;
     String chinese = "";
     Handler handler = new Handler();
-    TextView emoji, level, hintChance;
+    TextView emoji, level, hintChance, type;
     ImageButton btn_gamecontent_setting;
     MediaPlayer mediaPlayer,mediaPlayer3;
     ImageView rocket2;
     Button btn_hint;
 
-    ArrayList questionArrayList = new ArrayList(), answerArrayList = new ArrayList(), buttonTextArrayList = new ArrayList();
+    ArrayList questionArrayList = new ArrayList(), answerArrayList = new ArrayList(), typeArrayList = new ArrayList(), buttonTextArrayList = new ArrayList();
 
     Button[] buttonArray = new Button[10];
     int[] buttonID = {R.id.textBtn1, R.id.textBtn2, R.id.textBtn3, R.id.textBtn4, R.id.textBtn5, R.id.textBtn6, R.id.textBtn7, R.id.textBtn8, R.id.textBtn9, R.id.textBtn10};
     Button[] ansButtonArray = new Button[4];
     int[] ansButtonID = {R.id.userInput1, R.id.userInput2, R.id.userInput3, R.id.userInput4};
     int ansIndex = 0;
+    int ansSize;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,11 +80,13 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         hintChance = findViewById(R.id.hintChance);
         emoji = findViewById(R.id.emoji);
         level = findViewById(R.id.level);
+        type = findViewById(R.id.type);
 
         //define ans button
         for (int i = 0; i < ansButtonArray.length; i++) {
             ansButtonArray[i] = findViewById(ansButtonID[i]);
             ansButtonArray[i].setOnClickListener(this);
+            ansButtonArray[i].setEnabled(false);
         }
         //define button
         for (int i = 0; i < buttonArray.length; i++) {
@@ -100,10 +103,12 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 JSONObject jsonObject = array.getJSONObject(i);
                 String question = jsonObject.getString("question");
                 String answer = jsonObject.getString("answer");
+                String type = jsonObject.getString("type");
                 JSONArray buttonText = jsonObject.getJSONArray("buttonText");
 
                 questionArrayList.add(question);
                 answerArrayList.add(answer);
+                typeArrayList.add(type);
                 buttonTextArrayList.add(buttonText);
             }
         } catch (JSONException e) {
@@ -140,17 +145,19 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         for (int i = 0; i < buttonArray.length && ansIndex < 4; i++) {
             if (v.getId() == buttonID[i]) {
                 ansButtonArray[ansIndex].setText(buttonArray[i].getText());
+                ansButtonArray[ansIndex].setEnabled(true);
                 buttonArray[i].setEnabled(false);
                 for (int j = ansIndex; j < ansButtonArray.length; j++) {
                     if (ansButtonArray[j].getText() == "") {
                         ansIndex = j;
                         break;
                     }
-                    if (j == 3) {
-                        ansIndex = 4;
+                    if (j == ansSize - 1) {
+                        ansIndex = ansSize;
                     }
                 }
-                if (ansIndex == 4) {
+                //check ans
+                if (ansIndex == ansSize) {
                     for (int j = 0; j < ansButtonArray.length; j++) {
                         chinese += ansButtonArray[j].getText();
                     }
@@ -179,6 +186,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 for (int j = 0; j < buttonArray.length; j++) {
                     if (ansButtonArray[i].getText() == buttonArray[j].getText()){
                         buttonArray[j].setEnabled(true);
+                        ansButtonArray[i].setEnabled(false);
                     }
                 }
                 ansButtonArray[i].setText("");
@@ -218,8 +226,18 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         ArrayList buffer2 = new ArrayList();
         for (int i = 0; i < questionArrayList.size(); i++) {
             if (LoadingPage.checkpoint == (i + 1)) {
+                ansSize = ((String) answerArrayList.get(i)).length();
+                switch (ansSize){
+                    case 2:
+                        ansButtonArray[2].setVisibility(View.INVISIBLE);
+                    case 3:
+                        ansButtonArray[3].setVisibility(View.INVISIBLE);
+                    default:
+                        break;
+                }
                 level.setText("關卡" + (i + 1));
                 emoji.setText((String) questionArrayList.get(i));
+                type.setText((String) typeArrayList.get(i));
                 JSONArray buffer = (JSONArray) buttonTextArrayList.get(i);
                 for (int j = 0; j < buffer.length(); j++) {
                     try {
