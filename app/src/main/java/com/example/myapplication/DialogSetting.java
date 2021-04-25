@@ -311,49 +311,8 @@ public class DialogSetting{
         hint_dialog.setCanceledOnTouchOutside(false);
         hint_dialog.setCancelable(false);
         hint_dialog.show();
-        Animation appearAnimation = new ScaleAnimation(0f, 1f,
-                0f, 1f,
-                Animation.RELATIVE_TO_SELF, 0.5f,
-                Animation.RELATIVE_TO_SELF, 0.5f);
-        appearAnimation.setDuration(300);
-        Animation buttonAnimation = new AlphaAnimation(0.0f, 1.0f);
-        buttonAnimation.setDuration(600);
-        ImageView hints_dialog = hint_dialog.findViewById(R.id.btn_dialog);
-        TextView textView5 =hint_dialog.findViewById(R.id.textView5);
-         hint = hint_dialog.findViewById(R.id.hint);
-        Button btn_close = hint_dialog.findViewById(R.id.btn_close);
-        TextView tv_close = hint_dialog.findViewById(R.id.tv_close);
-        hints_dialog.startAnimation(appearAnimation);
-        textView5.startAnimation(appearAnimation);
-        hint.startAnimation(appearAnimation);
-        btn_close.startAnimation(buttonAnimation);
-        tv_close.startAnimation(buttonAnimation);
-        Animation buttonAnimation2 = new AlphaAnimation(1.0f, 0.0f);
-        buttonAnimation2.setDuration(300);
-        buttonAnimation2.setAnimationListener(new Animation.AnimationListener(){
-            @Override
-            public void onAnimationStart(Animation arg0) {
-            }
-            @Override
-            public void onAnimationRepeat(Animation arg0) {
-            }
-            @Override
-            public void onAnimationEnd(Animation arg0) {
-                win_dialog.dismiss();
-            }
-        });
+        };
 
-        btn_close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(effectsound)
-                    mediaPlayer.start();
-                dialog.dismiss();
-            }
-        });
-
-
-    }
 
     public static Boolean effectsoundcontrol(Context page){
         pref = page.getSharedPreferences("MyPref", Context.MODE_PRIVATE);

@@ -23,19 +23,19 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     String chinese = "";
     Handler handler = new Handler();
     TextView userinput, emoji, level;
-    Button submit, clear,next;
+    Button submit, clear, next;
     Button textBtn1,textBtn2,textBtn3,textBtn4,textBtn5,textBtn6,textBtn7,textBtn8,textBtn9,textBtn10,textBtn11,textBtn12,textBtn13,textBtn14;
     ImageButton btn_gamecontent_setting;
     MediaPlayer mediaPlayer,mediaPlayer3;
     ImageView rocket2;
-    Button hint;
+    Button btn_hint;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_content);
         rocket2 = findViewById(R.id.rocket2);
-        hint = findViewById(R.id.btn_hint);
-        hint.setOnClickListener(this);
+        btn_hint = findViewById(R.id.btn_hint);
+        btn_hint.setOnClickListener(this);
         rocket2.setRotation(310);
         Animation a = new TranslateAnimation(1000, Animation.ABSOLUTE - 2000,
                 950, Animation.ABSOLUTE - 300);
