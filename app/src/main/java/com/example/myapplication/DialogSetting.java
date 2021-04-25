@@ -28,10 +28,11 @@ public class DialogSetting{
     public static Boolean effectsound;
     public static Boolean bgmsound;
     public static MediaPlayer mediaPlayer,mediaPlayer2;
-    public static SharedPreferences pref;
+    public static SharedPreferences pref, hints_pref;
     public static int counter = 0;
     public static Dialog dialog, win_dialog,hint_dialog;
     public static TextView hint;
+    public static int hintCounter = 2;
 
 
     public static void DialogManager(Context page) {
@@ -364,6 +365,28 @@ public class DialogSetting{
         }
     }
 
+    public static int getHints(Context page){
+        hints_pref = page.getSharedPreferences("Myhints", Context.MODE_PRIVATE);
+        return hints_pref.getInt("Myhints",2);
+    }
+
+    public static void addHints(Context page){
+        int temp = hints_pref.getInt("Myhints",2);
+        hints_pref = page.getSharedPreferences("Myhints", Context.MODE_PRIVATE);
+        SharedPreferences.Editor hints_editor = hints_pref.edit();
+
+        hints_editor.putInt("Myhints", temp + 1);
+        hints_editor.commit();
+    }
+
+    public static void useHints(Context page){
+        int temp = hints_pref.getInt("Myhints",2);
+        hints_pref = page.getSharedPreferences("Myhints", Context.MODE_PRIVATE);
+        SharedPreferences.Editor hints_editor = hints_pref.edit();
+
+        hints_editor.putInt("Myhints", temp - 1);
+        hints_editor.commit();
+    }
 
 }
 

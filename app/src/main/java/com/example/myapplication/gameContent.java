@@ -2,7 +2,9 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -27,7 +29,6 @@ import java.util.ArrayList;
 import maes.tech.intentanim.CustomIntent;
 
 public class gameContent extends AppCompatActivity implements View.OnClickListener{
-    int hintCounter = 2;
     String chinese = "";
     Handler handler = new Handler();
     TextView emoji, level, hintChance, type;
@@ -35,6 +36,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     MediaPlayer mediaPlayer,mediaPlayer3;
     ImageView rocket2;
     Button btn_hint;
+    public static SharedPreferences pref_hints;
 
     ArrayList questionArrayList = new ArrayList(), answerArrayList = new ArrayList(), typeArrayList = new ArrayList(), buttonTextArrayList = new ArrayList();
 
@@ -78,6 +80,8 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         });
 
         hintChance = findViewById(R.id.hintChance);
+        hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
+
         emoji = findViewById(R.id.emoji);
         level = findViewById(R.id.level);
         type = findViewById(R.id.type);
@@ -163,6 +167,8 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                     }
                     if (chinese.equals(answerArrayList.get(LoadingPage.checkpoint - 1))) {
                         DialogSetting.win_DialogManager(gameContent.this);
+                        DialogSetting.addHints(getApplicationContext());
+                        hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
                         LoadingPage.checkpoint++;
                         levelText();
                         chinese="";
@@ -285,5 +291,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         }).start();
 
     }
+
+
 }
 
