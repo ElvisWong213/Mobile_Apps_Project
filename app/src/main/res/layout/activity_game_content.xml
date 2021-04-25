@@ -63,11 +63,11 @@
                     app:iconPadding="0dp" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/hintChance"
                     android:layout_width="45dp"
                     android:layout_height="50dp"
                     android:gravity="bottom"
-                    android:text="3"
+                    android:text="2"
                     android:textAlignment="textEnd"
                     android:textColor="#FFEB3B"
                     android:textSize="16sp" />
