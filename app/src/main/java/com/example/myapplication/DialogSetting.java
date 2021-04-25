@@ -280,10 +280,7 @@ public class DialogSetting{
         mediaPlayer = MediaPlayer.create(page, R.raw.effect);
         hint_dialog = new Dialog(page);
         hint_dialog.setContentView(R.layout.activity_game_hint);
-        hint_dialog.getWindow().setDimAmount(0.8f);
         hint_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        hint_dialog.setCanceledOnTouchOutside(false);
-        hint_dialog.setCancelable(false);
         hint_dialog.show();
         ImageView btn_close = hint_dialog.findViewById(R.id.btn_close);
         TextView tvclose = hint_dialog.findViewById(R.id.tv_close);
