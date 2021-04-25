@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import maes.tech.intentanim.CustomIntent;
@@ -26,10 +27,19 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     Button textBtn1,textBtn2,textBtn3,textBtn4,textBtn5,textBtn6,textBtn7,textBtn8,textBtn9,textBtn10,textBtn11,textBtn12,textBtn13,textBtn14;
     ImageButton btn_gamecontent_setting;
     MediaPlayer mediaPlayer,mediaPlayer3;
+    ImageView rocket2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_content);
+        rocket2 = findViewById(R.id.rocket2);
+        rocket2.setRotation(310);
+        Animation a = new TranslateAnimation(1000, Animation.ABSOLUTE - 2000,
+                950, Animation.ABSOLUTE - 300);
+        a.setDuration(10000);
+        a.setRepeatCount(Animation.INFINITE);
+        a.setRepeatMode(Animation.RESTART);
+        rocket2.startAnimation(a);
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.effect);
         mediaPlayer3 = MediaPlayer.create(getApplicationContext(), R.raw.wrong);
         btn_gamecontent_setting = findViewById(R.id.btn_gamecontent_setting);
