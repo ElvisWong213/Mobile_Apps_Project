@@ -221,11 +221,9 @@ public class DialogSetting{
         ImageView img_win = win_dialog.findViewById(R.id.img_win);
         ImageView btn_next = win_dialog.findViewById(R.id.btn_next);
         TextView tv_win = win_dialog.findViewById(R.id.tv_win);
-        ImageView btn_home = win_dialog.findViewById(R.id.btn_home);
         img_win.startAnimation(appearAnimation);
         btn_next.startAnimation(buttonAnimation);
         tv_win.startAnimation(buttonAnimation);
-        btn_home.startAnimation(buttonAnimation);
         Animation disppearAnimation = new ScaleAnimation(1f, 0f,
                 1f, 0f,
                 Animation.RELATIVE_TO_SELF, 0.5f,
@@ -271,32 +269,6 @@ public class DialogSetting{
             }
         });
 
-        btn_home.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN) {
-                    btn_home.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
-                } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    btn_home.clearColorFilter();
-                }
-                return false;
-            }
-        });
-        btn_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent();
-                if(pref.getBoolean("effectsound",true) == true)
-                    mediaPlayer.start();
-                if(page.getClass()!=MainActivity.class) {
-                    it.setClass(page, MainActivity.class);
-                    page.startActivity(it);
-                    CustomIntent.customType(page, "bottom-to-up");
-                    ((Activity) page).finish();
-                }
-                dialog.dismiss();
-            }
-        });
 
 
 

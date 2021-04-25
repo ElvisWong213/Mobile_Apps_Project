@@ -68,7 +68,6 @@ public class gamePage extends AppCompatActivity implements View.OnClickListener 
 
                     Intent i = new Intent(gamePage.this,gameContent.class);
                     startActivity(i);
-
         }
 
 
