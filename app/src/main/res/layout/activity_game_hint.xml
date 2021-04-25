@@ -14,9 +14,9 @@
         android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="match_parent"
-            app:cardBackgroundColor="@android:color/transparent"
+            app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
             app:cardElevation="0dp">
 
@@ -33,29 +33,44 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:gravity="center"
                         android:orientation="vertical">
 
-                        <LinearLayout
+                        <TextView
+                            android:id="@+id/textView6"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="需要提示嗎?"
+                            android:textSize="36sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="使用1燃料"
+                            android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="50dp"
                             android:gravity="center_horizontal"
                             android:orientation="vertical">
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="50dp"
-                                android:gravity="center"
-                                android:orientation="vertical">
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
 
                                 <FrameLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
                                     android:layout_gravity="center">
 
                                     <ImageView
                                         android:id="@+id/btn_use"
-                                        android:layout_width="150dp"
+                                        android:layout_width="125dp"
                                         android:layout_height="50dp"
                                         android:scaleType="fitXY"
                                         app:srcCompat="@drawable/square" />
@@ -74,11 +89,12 @@
                                 <FrameLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="center">
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="20dp">
 
                                     <ImageView
                                         android:id="@+id/btn_close"
-                                        android:layout_width="150dp"
+                                        android:layout_width="125dp"
                                         android:layout_height="50dp"
                                         android:scaleType="fitXY"
                                         app:srcCompat="@drawable/square" />
@@ -93,6 +109,7 @@
                                         android:textSize="18sp"
                                         android:textStyle="bold" />
                                 </FrameLayout>
+
                             </LinearLayout>
 
                         </LinearLayout>
