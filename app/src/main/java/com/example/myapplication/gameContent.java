@@ -28,11 +28,14 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     ImageButton btn_gamecontent_setting;
     MediaPlayer mediaPlayer,mediaPlayer3;
     ImageView rocket2;
+    Button hint;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_content);
         rocket2 = findViewById(R.id.rocket2);
+        hint = findViewById(R.id.btn_hint);
+        hint.setOnClickListener(this);
         rocket2.setRotation(310);
         Animation a = new TranslateAnimation(1000, Animation.ABSOLUTE - 2000,
                 950, Animation.ABSOLUTE - 300);
@@ -289,7 +292,9 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 userinput.setText("");
                 chinese="";
                 break;
-
+            case R.id.btn_hint:
+                DialogSetting.hint_DialogManager(gameContent.this);
+                break;
         }
     }
 

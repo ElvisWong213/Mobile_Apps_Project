@@ -31,6 +31,7 @@ public class DialogSetting{
     public static SharedPreferences pref;
     public static int counter = 0;
     public static Dialog dialog, win_dialog,hint_dialog;
+    public static TextView hint;
 
 
     public static void DialogManager(Context page) {
@@ -304,7 +305,7 @@ public class DialogSetting{
 
     public static void hint_DialogManager (Context page) {
         hint_dialog = new Dialog(page);
-        hint_dialog.setContentView(R.layout.win_layout_dialog);
+        hint_dialog.setContentView(R.layout.activity_game_hint);
         hint_dialog.getWindow().setDimAmount(0.8f);
         hint_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         hint_dialog.setCanceledOnTouchOutside(false);
@@ -318,10 +319,10 @@ public class DialogSetting{
         Animation buttonAnimation = new AlphaAnimation(0.0f, 1.0f);
         buttonAnimation.setDuration(600);
         ImageView hints_dialog = hint_dialog.findViewById(R.id.btn_dialog);
-        TextView textView5 =hints_dialog.findViewById(R.id.textView5);
-        TextView hint = hints_dialog.findViewById(R.id.hint);
-        Button btn_close = hints_dialog.findViewById(R.id.btn_close);
-        TextView tv_close = hints_dialog.findViewById(R.id.tv_close);
+        TextView textView5 =hint_dialog.findViewById(R.id.textView5);
+         hint = hint_dialog.findViewById(R.id.hint);
+        Button btn_close = hint_dialog.findViewById(R.id.btn_close);
+        TextView tv_close = hint_dialog.findViewById(R.id.tv_close);
         hints_dialog.startAnimation(appearAnimation);
         textView5.startAnimation(appearAnimation);
         hint.startAnimation(appearAnimation);
@@ -341,17 +342,7 @@ public class DialogSetting{
                 win_dialog.dismiss();
             }
         });
-        btn_close.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN) {
-                    btn_close.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
-                } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    btn_close.clearColorFilter();
-                }
-                return false;
-            }
-        });
+
         btn_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
