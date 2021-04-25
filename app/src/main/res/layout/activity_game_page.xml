@@ -26,6 +26,14 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/btn_setting" />
+
+            <ImageView
+                android:id="@+id/effectswitchimage2"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/title" />
         </LinearLayout>
     </LinearLayout>
 
@@ -39,19 +47,35 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="選擇難度"
-            android:textColor="#FFFFFF"
+            android:id="@+id/space4"
+            android:layout_width="225dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:textAlignment="center"
             android:textSize="28sp" />
 
-        <Button
-            android:id="@+id/btn_win"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Test win diaglog"
-            android:textSize="20sp"
-            app:backgroundTint="#FF9800" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="目前最高等級: "
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/highestLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textAlignment="viewEnd"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/gamestart"
@@ -61,4 +85,5 @@
             android:textSize="20sp"
             app:backgroundTint="#FF9800" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
