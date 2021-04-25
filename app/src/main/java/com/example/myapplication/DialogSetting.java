@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ public class DialogSetting{
     public static SharedPreferences pref;
     public static int counter = 0;
     public static Dialog dialog, win_dialog;
+
 
     public static void DialogManager(Context page) {
         dialog = new Dialog(page);
@@ -45,6 +47,7 @@ public class DialogSetting{
         ImageView homeswitchimage = dialog.findViewById(R.id.homeswitchimage);
         ImageView homeswitch = dialog.findViewById(R.id.homeswitch);
         ImageView closebutton = dialog.findViewById(R.id.closebutton);
+
         LinearLayout CardLayout = dialog.findViewById(R.id.CardLayout);
         dialog.show();
         CardLayout.setOnTouchListener(new View.OnTouchListener() {
@@ -215,6 +218,7 @@ public class DialogSetting{
         ImageView img_win = win_dialog.findViewById(R.id.img_win);
         ImageView btn_next = win_dialog.findViewById(R.id.btn_next);
         TextView tv_win = win_dialog.findViewById(R.id.tv_win);
+        ImageView btn_home = win_dialog.findViewById(R.id.btn_home);
         img_win.startAnimation(appearAnimation);
         btn_next.startAnimation(buttonAnimation);
         tv_win.startAnimation(buttonAnimation);
@@ -263,6 +267,35 @@ public class DialogSetting{
                 tv_win.startAnimation(buttonAnimation2);
             }
         });
+
+        btn_home.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    btn_home.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    btn_home.clearColorFilter();
+                }
+                return false;
+            }
+        });
+        btn_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent();
+                if(pref.getBoolean("effectsound",true) == true)
+                    mediaPlayer.start();
+                if(page.getClass()!=MainActivity.class) {
+                    it.setClass(page, MainActivity.class);
+                    page.startActivity(it);
+                    CustomIntent.customType(page, "bottom-to-up");
+                    ((Activity) page).finish();
+                }
+                dialog.dismiss();
+            }
+        });
+
+
 
 
     }
