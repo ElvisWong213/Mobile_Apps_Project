@@ -51,7 +51,7 @@
                 android:scrollbarSize="0dp"
                 android:text="💡"
                 android:textAlignment="center"
-                android:textSize="30dp"
+                android:textSize="36sp"
                 android:textStyle="bold"
                 app:backgroundTint="#00FF9800"
                 app:elevation="0dp"
