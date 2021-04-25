@@ -41,23 +41,9 @@
                             android:gravity="center_horizontal"
                             android:orientation="vertical">
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <FrameLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content">
-
-                                    <pl.droidsonroids.gif.GifImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="300dp"
-                                        android:src="@drawable/gif_win" />
-
-                                </FrameLayout>
-
-                            </LinearLayout>
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp" />
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -84,8 +70,8 @@
                                             <ImageView
                                                 android:id="@+id/btn_dialog"
                                                 android:layout_width="300dp"
-                                                android:layout_height="200dp"
-                                                android:background="#e6e6e6"
+                                                android:layout_height="150dp"
+                                                android:background="#D9E6E6E6"
                                                 android:scaleType="fitXY" />
 
                                             <LinearLayout
@@ -97,13 +83,14 @@
                                                     android:id="@+id/textView5"
                                                     android:layout_width="300dp"
                                                     android:layout_height="wrap_content"
-                                                    android:text="提示"
+                                                    android:paddingTop="10px"
+                                                    android:text="💡提示"
                                                     android:textColor="#3F51B5"
                                                     android:textSize="28sp" />
 
                                                 <Space
                                                     android:layout_width="match_parent"
-                                                    android:layout_height="50dp" />
+                                                    android:layout_height="25dp" />
 
                                                 <LinearLayout
                                                     android:layout_width="match_parent"
@@ -115,20 +102,27 @@
                                                         android:layout_width="200dp"
                                                         android:layout_height="wrap_content"
                                                         android:layout_weight="1"
-                                                        android:text="第一個字是："
+                                                        android:text="第一個字是: "
                                                         android:textAlignment="viewEnd"
-                                                        android:textColor="#FF9800"
+                                                        android:textColor="#009688"
                                                         android:textSize="28sp" />
 
                                                     <TextView
                                                         android:id="@+id/hint"
                                                         android:layout_width="100dp"
                                                         android:layout_height="wrap_content"
-                                                        android:text="提示"
+                                                        android:text="提"
                                                         android:textAlignment="viewStart"
-                                                        android:textColor="#FF9800"
-                                                        android:textSize="28sp" />
+                                                        android:textColor="#4CAF50"
+                                                        android:textSize="28sp"
+                                                        android:textStyle="bold" />
+
                                                 </LinearLayout>
+
+                                                <Space
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="75dp"
+                                                    android:layout_weight="1" />
 
                                             </LinearLayout>
 
@@ -152,7 +146,7 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_gravity="center"
                                                 android:text="關閉"
-                                                android:textColor="#3BFFD1"
+                                                android:textColor="#FFFFFF"
                                                 android:textSize="18sp"
                                                 android:textStyle="bold" />
                                         </FrameLayout>
