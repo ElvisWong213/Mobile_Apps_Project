@@ -106,60 +106,88 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
             case R.id.textBtn1:
                 chinese+= textBtn1.getText();
                 userinput.setText(chinese);
+                textBtn1.setEnabled(false);
                 break;
             case R.id.textBtn2:
                 chinese+= textBtn2.getText();
                 userinput.setText(chinese);
+                textBtn2.setEnabled(false);
                 break;
             case R.id.textBtn3:
                 chinese+= textBtn3.getText();
                 userinput.setText(chinese);
+                textBtn3.setEnabled(false);
                 break;
             case R.id.textBtn4:
                 chinese+= textBtn4.getText();
                 userinput.setText(chinese);
+                textBtn4.setEnabled(false);
                 break;
             case R.id.textBtn5:
                 chinese+= textBtn5.getText();
                 userinput.setText(chinese);
+                textBtn5.setEnabled(false);
                 break;
             case R.id.textBtn6:
                 chinese+= textBtn6.getText();
                 userinput.setText(chinese);
+                textBtn6.setEnabled(false);
                 break;
             case R.id.textBtn7:
                 chinese+= textBtn7.getText();
                 userinput.setText(chinese);
+                textBtn7.setEnabled(false);
                 break;
             case R.id.textBtn8:
                 chinese+= textBtn8.getText();
                 userinput.setText(chinese);
+                textBtn8.setEnabled(false);
                 break;
             case R.id.textBtn9:
                 chinese+= textBtn9.getText();
                 userinput.setText(chinese);
+                textBtn9.setEnabled(false);
                 break;
             case R.id.textBtn10:
                 chinese+= textBtn10.getText();
                 userinput.setText(chinese);
+                textBtn10.setEnabled(false);
                 break;
             case R.id.textBtn11:
                 chinese+= textBtn11.getText();
                 userinput.setText(chinese);
+                textBtn11.setEnabled(false);
                 break;
             case R.id.textBtn12:
                 chinese+= textBtn12.getText();
                 userinput.setText(chinese);
+                textBtn12.setEnabled(false);
                 break;
             case R.id.textBtn13:
                 chinese+= textBtn13.getText();
                 userinput.setText(chinese);
+                textBtn13.setEnabled(false);
                 break;
             case R.id.textBtn14:
                 chinese+= textBtn14.getText();
                 userinput.setText(chinese);
+                textBtn14.setEnabled(false);
                 break;
             case R.id.submit:
+                textBtn1.setEnabled(true);
+                textBtn2.setEnabled(true);
+                textBtn3.setEnabled(true);
+                textBtn4.setEnabled(true);
+                textBtn5.setEnabled(true);
+                textBtn6.setEnabled(true);
+                textBtn7.setEnabled(true);
+                textBtn8.setEnabled(true);
+                textBtn9.setEnabled(true);
+                textBtn10.setEnabled(true);
+                textBtn11.setEnabled(true);
+                textBtn12.setEnabled(true);
+                textBtn13.setEnabled(true);
+                textBtn14.setEnabled(true);
                 if(checkpoint==1){
                     String checkpoint1Ans="左右為難";
 
@@ -233,6 +261,20 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 }
                 break;
             case R.id.clear:
+                textBtn1.setEnabled(true);
+                textBtn2.setEnabled(true);
+                textBtn3.setEnabled(true);
+                textBtn4.setEnabled(true);
+                textBtn5.setEnabled(true);
+                textBtn6.setEnabled(true);
+                textBtn7.setEnabled(true);
+                textBtn8.setEnabled(true);
+                textBtn9.setEnabled(true);
+                textBtn10.setEnabled(true);
+                textBtn11.setEnabled(true);
+                textBtn12.setEnabled(true);
+                textBtn13.setEnabled(true);
+                textBtn14.setEnabled(true);
                 chinese="";
                 userinput.setText("");
                 chinese="";
