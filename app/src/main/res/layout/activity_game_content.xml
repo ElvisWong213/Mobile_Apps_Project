@@ -53,7 +53,7 @@
                 android:textAlignment="center"
                 android:textSize="30dp"
                 android:textStyle="bold"
-                app:backgroundTint="#FF9800"
+                app:backgroundTint="#00FF9800"
                 app:elevation="0dp"
                 app:iconPadding="0dp" />
 
