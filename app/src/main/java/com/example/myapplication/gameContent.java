@@ -199,9 +199,9 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 textBtn13.setEnabled(true);
                 textBtn14.setEnabled(true);
                 if(checkpoint==1){
-                    String checkpoint1Ans="左右為難";
+                    String checkpointAns="左右為難";
 
-                    if(checkpoint1Ans.equals(chinese)){
+                    if(checkpointAns.equals(chinese)){
 
                         chinese="";
                         userinput.setText(chinese);
@@ -219,9 +219,9 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                         }
                 }
                 if(checkpoint==2){
-                    String checkpoint2Ans="打草驚蛇";
+                    String checkpointAns="打草驚蛇";
 
-                    if(checkpoint2Ans.equals(chinese)){
+                    if(checkpointAns.equals(chinese)){
 
                         chinese="";
                         userinput.setText(chinese);
@@ -236,9 +236,9 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                         userinput.setText(chinese);}
                 }
                 if(checkpoint==3){
-                    String checkpoint2Ans="心口不一";
+                    String checkpointAns="心口不一";
 
-                    if(checkpoint2Ans.equals(chinese)){
+                    if(checkpointAns.equals(chinese)){
 
                         chinese="";
                         userinput.setText(chinese);
@@ -253,9 +253,9 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                         userinput.setText(chinese);}
                 }
                 if(checkpoint==4){
-                    String checkpoint2Ans="走馬看花";
+                    String checkpointAns="走馬看花";
 
-                    if(checkpoint2Ans.equals(chinese)){
+                    if(checkpointAns.equals(chinese)){
 
                         chinese="";
                         userinput.setText(chinese);
