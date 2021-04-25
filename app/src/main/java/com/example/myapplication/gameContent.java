@@ -146,6 +146,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         if (DialogSetting.effectsoundcontrol(getApplicationContext())){
             mediaPlayer.start();
         }
+        //choose text button
         for (int i = 0; i < buttonArray.length && ansIndex < 4; i++) {
             if (v.getId() == buttonID[i]) {
                 ansButtonArray[ansIndex].setText(buttonArray[i].getText());
@@ -187,6 +188,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 break;
             }
         }
+        //answer button
         for (int i = 0; i < ansButtonArray.length; i++) {
             if (v.getId() == ansButtonID[i]) {
                 for (int j = 0; j < buttonArray.length; j++) {
@@ -201,7 +203,12 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 }
             }
         }
+        //hint button
+        if (v.getId() == R.id.btn_hint) {
+            if (Integer.valueOf(hintChance.getText().toString()) > 0) {
 
+            }
+        }
     }
 
     ////////////////////////////////////////////////////////////
