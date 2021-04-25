@@ -1,0 +1,69 @@
+{
+    "data": [
+        {
+            "question": "◀️▶️\uD83D\uDE23",
+            "answer": "左右為難",
+            "buttonText": ["左", "的", "上", "我", "為", "他", "難", "易", "右", "下"]
+        },
+        {
+            "question": "\uD83D\uDC4A\uD83C\uDF40\uD83D\uDE28\uD83D\uDC0D",
+            "answer": "打草驚蛇",
+            "buttonText": ["有", "打", "葉", "花", "驚", "拳", "蛇", "手", "草", "怕"]
+        },
+        {
+            "question": "\uD83D\uDC99\uD83D\uDC44\uD83D\uDE45\u200D\uD83D\uDC46",
+            "answer": "心口不一",
+            "buttonText": ["不", "打", "人", "藍", "一", "心", "上", "指", "口", "嘴"]
+        },
+        {
+            "question": "\uD83C\uDFC3\u200D\uD83D\uDC34\uD83D\uDC40\uD83C\uDF38",
+            "answer": "走馬看花",
+            "buttonText": ["步", "眼", "走", "物", "看", "跑", "粉", "馬", "動", "花"]
+        },
+        {
+            "question": "✋\uD83C\uDF87\uD83D\uDE4C\uD83C\uDFA8",
+            "answer": "五光十色",
+            "buttonText": ["步", "光", "色", "不", "十", "跑", "歡", "五", "提", "找"]
+        },
+        {
+            "question": "®️\uD83D\uDC99®️\uD83C\uDDEE\uD83C\uDDF9",
+            "answer": "真心真意",
+            "buttonText": ["複", "真", "色", "心", "印", "製", "真", "五", "粉", "意"]
+        },
+        {
+            "question": "\uD83C\uDF8E️➡️\uD83D\uDC80",
+            "answer": "坐以待斃",
+            "buttonText": ["以", "頭", "待", "心", "斃", "骨", "真", "坐", "人", "去"]
+        },
+        {
+            "question": "\uD83D\uDC44✅\uD83D\uDC99✈️",
+            "answer": "口是心非",
+            "buttonText": ["機", "是", "確", "心", "的", "口", "定", "坐", "唇", "非"]
+        },
+        {
+            "question": "\uD83D\uDC37\uD83D\uDC6D\uD83D\uDC36\uD83D\uDC6C",
+            "answer": "豬朋狗友",
+            "buttonText": ["狗", "是", "物", "豬", "的", "友", "定", "朋", "動", "人"]
+        },
+        {
+            "question": "\uD83D\uDC49\uD83C\uDF70\uD83C\uDF88\uD83D\uDC11",
+            "answer": "趾高氣揚",
+            "buttonText": ["手", "趾", "物", "羊", "揚", "蛋", "高", "朋", "動", "飛"]
+        },
+        {
+            "question": "\uD83D\uDEC0\uD83D\uDE2D❌\uD83D\uDCA6",
+            "answer": "欲哭無淚",
+            "buttonText": ["洗", "欲", "淚", "羊", "水", "蛋", "哭", "朋", "叉", "無"]
+        },
+        {
+            "question": "\uD83D\uDE97\uD83D\uDCA7\uD83D\uDC34\uD83D\uDC09",
+            "answer": "車水馬龍",
+            "buttonText": ["水", "欲", "淚", "馬", "水", "蛋", "哭", "車", "龍", "飛"]
+        },
+        {
+            "question": "\uD83D\uDC48\uD83D\uDC49✌️\uD83D\uDEA7",
+            "answer": "左右兩難",
+            "buttonText": ["交", "右", "手", "通", "左", "阻", "哭", "難", "指", "兩"]
+        }
+    ]
+}

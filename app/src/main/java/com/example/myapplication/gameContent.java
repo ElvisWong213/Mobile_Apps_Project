@@ -16,20 +16,33 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+
 import maes.tech.intentanim.CustomIntent;
 
 public class gameContent extends AppCompatActivity implements View.OnClickListener{
     int hintCounter = 2;
     String chinese = "";
-    String checkpointAns;
     Handler handler = new Handler();
-    TextView userinput, emoji, level, hintChance;
-    Button submit, clear, next;
-    Button textBtn1,textBtn2,textBtn3,textBtn4,textBtn5,textBtn6,textBtn7,textBtn8,textBtn9,textBtn10,textBtn11,textBtn12,textBtn13,textBtn14;
+    TextView emoji, level, hintChance;
     ImageButton btn_gamecontent_setting;
     MediaPlayer mediaPlayer,mediaPlayer3;
     ImageView rocket2;
     Button btn_hint;
+
+    ArrayList questionArrayList = new ArrayList(), answerArrayList = new ArrayList(), buttonTextArrayList = new ArrayList();
+
+    Button[] buttonArray = new Button[10];
+    int[] buttonID = {R.id.textBtn1, R.id.textBtn2, R.id.textBtn3, R.id.textBtn4, R.id.textBtn5, R.id.textBtn6, R.id.textBtn7, R.id.textBtn8, R.id.textBtn9, R.id.textBtn10};
+    Button[] ansButtonArray = new Button[4];
+    int[] ansButtonID = {R.id.userInput1, R.id.userInput2, R.id.userInput3, R.id.userInput4};
+    int ansIndex = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,429 +76,118 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
             }
         });
 
-        userinput = findViewById(R.id.userInput);
         hintChance = findViewById(R.id.hintChance);
         emoji = findViewById(R.id.emoji);
         level = findViewById(R.id.level);
-        textBtn1 = findViewById(R.id.textBtn1);
-        textBtn2 = findViewById(R.id.textBtn2);
-        textBtn3 = findViewById(R.id.textBtn3);
-        textBtn4 = findViewById(R.id.textBtn4);
-        textBtn5 = findViewById(R.id.textBtn5);
-        textBtn6 = findViewById(R.id.textBtn6);
-        textBtn7 = findViewById(R.id.textBtn7);
-        textBtn8 = findViewById(R.id.textBtn8);
-        textBtn9 = findViewById(R.id.textBtn9);
-        textBtn10 = findViewById(R.id.textBtn10);
-        textBtn11 = findViewById(R.id.textBtn11);
-        textBtn12 = findViewById(R.id.textBtn12);
-        textBtn13 = findViewById(R.id.textBtn13);
-        textBtn14 = findViewById(R.id.textBtn14);
-        textBtn1.setOnClickListener(this);
-        textBtn2.setOnClickListener(this);
-        textBtn3.setOnClickListener(this);
-        textBtn4.setOnClickListener(this);
-        textBtn5.setOnClickListener(this);
-        textBtn6.setOnClickListener(this);
-        textBtn7.setOnClickListener(this);
-        textBtn8.setOnClickListener(this);
-        textBtn9.setOnClickListener(this);
-        textBtn10.setOnClickListener(this);
-        textBtn11.setOnClickListener(this);
-        textBtn12.setOnClickListener(this);
-        textBtn13.setOnClickListener(this);
-        textBtn14.setOnClickListener(this);
-        textBtn1.setVisibility(View.INVISIBLE);
-        textBtn7.setVisibility(View.INVISIBLE);
-        textBtn8.setVisibility(View.INVISIBLE);
-        textBtn14.setVisibility(View.INVISIBLE);
-        submit=findViewById(R.id.submit);
-        submit.setOnClickListener(this);
 
-        clear=findViewById(R.id.clear);
-        clear.setOnClickListener(this);
-
-
-        switch (LoadingPage.checkpoint) {
-            case 1:
-                level.setText("關卡1");
-                emoji.setText("◀️▶️\uD83D\uDE23");
-                textBtn2.setText("左");
-                textBtn3.setText("的");
-                textBtn4.setText("上");
-                textBtn5.setText("我");
-                textBtn6.setText("為");
-                textBtn9.setText("他");
-                textBtn10.setText("難");
-                textBtn11.setText("易");
-                textBtn12.setText("右");
-                textBtn13.setText("下");
-                break;
-            case 2:
-                level.setText("關卡2");
-                emoji.setText("\uD83D\uDC4A\uD83C\uDF40\uD83D\uDE28\uD83D\uDC0D");
-                textBtn2.setText("有");
-                textBtn3.setText("打");
-                textBtn4.setText("葉");
-                textBtn5.setText("花");
-                textBtn6.setText("驚");
-                textBtn9.setText("拳");
-                textBtn10.setText("蛇");
-                textBtn11.setText("手");
-                textBtn12.setText("草");
-                textBtn13.setText("怕");
-                break;
-            case 3:
-                level.setText("關卡3");
-                emoji.setText("\uD83D\uDC99\uD83D\uDC44\uD83D\uDE45\u200D\uD83D\uDC46");
-                textBtn2.setText("不");
-                textBtn3.setText("打");
-                textBtn4.setText("人");
-                textBtn5.setText("藍");
-                textBtn6.setText("一");
-                textBtn9.setText("心");
-                textBtn10.setText("上");
-                textBtn11.setText("指");
-                textBtn12.setText("口");
-                textBtn13.setText("嘴");
-                break;
-            case 4:
-                level.setText("關卡4");
-                emoji.setText("\uD83C\uDFC3\u200D\uD83D\uDC34\uD83D\uDC40\uD83C\uDF38");
-                textBtn2.setText("步");
-                textBtn3.setText("眼");
-                textBtn4.setText("走");
-                textBtn5.setText("物");
-                textBtn6.setText("看");
-                textBtn9.setText("跑");
-                textBtn10.setText("粉");
-                textBtn11.setText("馬");
-                textBtn12.setText("動");
-                textBtn13.setText("花");
-                break;
-            case 5:
-                level.setText("關卡5");
-                emoji.setText("✋\uD83C\uDF87\uD83D\uDE4C\uD83C\uDFA8");
-                textBtn2.setText("步");
-                textBtn3.setText("光");
-                textBtn4.setText("色");
-                textBtn5.setText("不");
-                textBtn6.setText("十");
-                textBtn9.setText("跑");
-                textBtn10.setText("歡");
-                textBtn11.setText("五");
-                textBtn12.setText("提");
-                textBtn13.setText("找");
-                break;
-            case 6:
-                level.setText("關卡6");
-                emoji.setText("®️\uD83D\uDC99®️\uD83C\uDDEE\uD83C\uDDF9");
-                textBtn2.setText("複");
-                textBtn3.setText("真");
-                textBtn4.setText("色");
-                textBtn5.setText("心");
-                textBtn6.setText("印");
-                textBtn9.setText("製");
-                textBtn10.setText("真");
-                textBtn11.setText("五");
-                textBtn12.setText("粉");
-                textBtn13.setText("意");
-                break;
-            case 7:
-                level.setText("關卡7");
-                emoji.setText("\uD83C\uDF8E️➡️\uD83D\uDC80");
-                textBtn2.setText("以");
-                textBtn3.setText("頭");
-                textBtn4.setText("待");
-                textBtn5.setText("心");
-                textBtn6.setText("斃");
-                textBtn9.setText("骨");
-                textBtn10.setText("真");
-                textBtn11.setText("坐");
-                textBtn12.setText("人");
-                textBtn13.setText("去");
-                break;
-            case 8:
-                level.setText("關卡8");
-                emoji.setText("\uD83D\uDC44✅\uD83D\uDC99✈️");
-                textBtn2.setText("機");
-                textBtn3.setText("是");
-                textBtn4.setText("確");
-                textBtn5.setText("心");
-                textBtn6.setText("的");
-                textBtn9.setText("口");
-                textBtn10.setText("定");
-                textBtn11.setText("坐");
-                textBtn12.setText("唇");
-                textBtn13.setText("非");
-                break;
-            case 9:
-                level.setText("關卡9");
-                emoji.setText("\uD83D\uDC37\uD83D\uDC6D\uD83D\uDC36\uD83D\uDC6C");
-                textBtn2.setText("狗");
-                textBtn3.setText("是");
-                textBtn4.setText("物");
-                textBtn5.setText("豬");
-                textBtn6.setText("的");
-                textBtn9.setText("友");
-                textBtn10.setText("定");
-                textBtn11.setText("朋");
-                textBtn12.setText("動");
-                textBtn13.setText("人");
-                break;
-            case 10:
-                level.setText("關卡10");
-                emoji.setText("\uD83D\uDC49\uD83C\uDF70\uD83C\uDF88\uD83D\uDC11");
-                textBtn2.setText("手");
-                textBtn3.setText("趾");
-                textBtn4.setText("物");
-                textBtn5.setText("羊");
-                textBtn6.setText("揚");
-                textBtn9.setText("蛋");
-                textBtn10.setText("高");
-                textBtn11.setText("朋");
-                textBtn12.setText("氣");
-                textBtn13.setText("飛");
-                break;
-            case 11:
-                level.setText("關卡11");
-                emoji.setText("\uD83D\uDEC0\uD83D\uDE2D❌\uD83D\uDCA6");
-                textBtn2.setText("洗");
-                textBtn3.setText("欲");
-                textBtn4.setText("淚");
-                textBtn5.setText("羊");
-                textBtn6.setText("水");
-                textBtn9.setText("蛋");
-                textBtn10.setText("哭");
-                textBtn11.setText("朋");
-                textBtn12.setText("叉");
-                textBtn13.setText("無");
-                break;
-            case 12:
-                level.setText("關卡12");
-                emoji.setText("\uD83D\uDE97\uD83D\uDCA7\uD83D\uDC34\uD83D\uDC09");
-                textBtn2.setText("水");
-                textBtn3.setText("欲");
-                textBtn4.setText("淚");
-                textBtn5.setText("馬");
-                textBtn6.setText("水");
-                textBtn9.setText("蛋");
-                textBtn10.setText("哭");
-                textBtn11.setText("車");
-                textBtn12.setText("龍");
-                textBtn13.setText("飛");
-                break;
-            case 13:
-                level.setText("關卡13");
-                emoji.setText("\uD83D\uDC48\uD83D\uDC49✌️\uD83D\uDEA7");
-                textBtn2.setText("交");
-                textBtn3.setText("右");
-                textBtn4.setText("手");
-                textBtn5.setText("通");
-                textBtn6.setText("左");
-                textBtn9.setText("阻");
-                textBtn10.setText("哭");
-                textBtn11.setText("難");
-                textBtn12.setText("指");
-                textBtn13.setText("兩");
-                break;
-            case 14:
-                level.setText("關卡14");
-                emoji.setText("\uD83D\uDD34\uD83C\uDF0E\uD83D\uDCB5\uD83C\uDF50");
-                textBtn2.setText("千");
-                textBtn3.setText("錢");
-                textBtn4.setText("手");
-                textBtn5.setText("球");
-                textBtn6.setText("圓");
-                textBtn9.setText("赤");
-                textBtn10.setText("哭");
-                textBtn11.setText("果");
-                textBtn12.setText("里");
-                textBtn13.setText("地");
-                break;
-            case 15:
-                level.setText("關卡15");
-                emoji.setText("\uD83D\uDC2E\uD83D\uDD2A\uD83D\uDE02\uD83D\uDCA9");
-                textBtn2.setText("小");
-                textBtn3.setText("笑");
-                textBtn4.setText("牛");
-                textBtn5.setText("切");
-                textBtn6.setText("廢");
-                textBtn9.setText("動");
-                textBtn10.setText("刀");
-                textBtn11.setText("爆");
-                textBtn12.setText("物");
-                textBtn13.setText("試");
-                break;
+        //define ans button
+        for (int i = 0; i < ansButtonArray.length; i++) {
+            ansButtonArray[i] = findViewById(ansButtonID[i]);
+            ansButtonArray[i].setOnClickListener(this);
+        }
+        //define button
+        for (int i = 0; i < buttonArray.length; i++) {
+            buttonArray[i] = findViewById(buttonID[i]);
+            buttonArray[i].setOnClickListener(this);
         }
 
+        //get data from JSON file
+        try {
+            JSONObject object = new JSONObject(readJSON());
+            JSONArray array = object.getJSONArray("data");
+            for (int i = 0; i < array.length(); i++) {
 
+                JSONObject jsonObject = array.getJSONObject(i);
+                String question = jsonObject.getString("question");
+                String answer = jsonObject.getString("answer");
+                JSONArray buttonText = jsonObject.getJSONArray("buttonText");
 
+                questionArrayList.add(question);
+                answerArrayList.add(answer);
+                buttonTextArrayList.add(buttonText);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
+        levelText();
+
+    }
+
+    public String readJSON() {
+        String json = null;
+        try {
+            // Opening data.json file
+            InputStream inputStream = getAssets().open("data.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            // read values in the byte array
+            inputStream.read(buffer);
+            inputStream.close();
+            // convert byte to string
+            json = new String(buffer, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return json;
     }
 
     public void onClick(View v){
         if (DialogSetting.effectsoundcontrol(getApplicationContext())){
             mediaPlayer.start();
         }
-        switch (v.getId()) {
-            case R.id.textBtn1:
-                chinese+= textBtn1.getText();
-                userinput.setText(chinese);
-                textBtn1.setEnabled(false);
-                break;
-            case R.id.textBtn2:
-                chinese+= textBtn2.getText();
-                userinput.setText(chinese);
-                textBtn2.setEnabled(false);
-                break;
-            case R.id.textBtn3:
-                chinese+= textBtn3.getText();
-                userinput.setText(chinese);
-                textBtn3.setEnabled(false);
-                break;
-            case R.id.textBtn4:
-                chinese+= textBtn4.getText();
-                userinput.setText(chinese);
-                textBtn4.setEnabled(false);
-                break;
-            case R.id.textBtn5:
-                chinese+= textBtn5.getText();
-                userinput.setText(chinese);
-                textBtn5.setEnabled(false);
-                break;
-            case R.id.textBtn6:
-                chinese+= textBtn6.getText();
-                userinput.setText(chinese);
-                textBtn6.setEnabled(false);
-                break;
-            case R.id.textBtn7:
-                chinese+= textBtn7.getText();
-                userinput.setText(chinese);
-                textBtn7.setEnabled(false);
-                break;
-            case R.id.textBtn8:
-                chinese+= textBtn8.getText();
-                userinput.setText(chinese);
-                textBtn8.setEnabled(false);
-                break;
-            case R.id.textBtn9:
-                chinese+= textBtn9.getText();
-                userinput.setText(chinese);
-                textBtn9.setEnabled(false);
-                break;
-            case R.id.textBtn10:
-                chinese+= textBtn10.getText();
-                userinput.setText(chinese);
-                textBtn10.setEnabled(false);
-                break;
-            case R.id.textBtn11:
-                chinese+= textBtn11.getText();
-                userinput.setText(chinese);
-                textBtn11.setEnabled(false);
-                break;
-            case R.id.textBtn12:
-                chinese+= textBtn12.getText();
-                userinput.setText(chinese);
-                textBtn12.setEnabled(false);
-                break;
-            case R.id.textBtn13:
-                chinese+= textBtn13.getText();
-                userinput.setText(chinese);
-                textBtn13.setEnabled(false);
-                break;
-            case R.id.textBtn14:
-                chinese+= textBtn14.getText();
-                userinput.setText(chinese);
-                textBtn14.setEnabled(false);
-                break;
-            case R.id.submit:
-                textBtn1.setEnabled(true);
-                textBtn2.setEnabled(true);
-                textBtn3.setEnabled(true);
-                textBtn4.setEnabled(true);
-                textBtn5.setEnabled(true);
-                textBtn6.setEnabled(true);
-                textBtn7.setEnabled(true);
-                textBtn8.setEnabled(true);
-                textBtn9.setEnabled(true);
-                textBtn10.setEnabled(true);
-                textBtn11.setEnabled(true);
-                textBtn12.setEnabled(true);
-                textBtn13.setEnabled(true);
-                textBtn14.setEnabled(true);
-                switch(LoadingPage.checkpoint) {
-
-                    case 1: checkpointAns = "左右為難"; break;
-                    case 2: checkpointAns= "打草驚蛇"; break;
-                    case 3: checkpointAns="心口不一"; break;
-                    case 4: checkpointAns="走馬看花"; break;
-                    case 5: checkpointAns="五光十色"; break;
-                    case 6: checkpointAns="真心真意"; break;
-                    case 7: checkpointAns="坐以待斃"; break;
-                    case 8: checkpointAns="口是心非"; break;
-                    case 9: checkpointAns="豬朋狗友"; break;
-                    case 10: checkpointAns="趾高氣揚"; break;
-                    case 11: checkpointAns="欲哭無淚"; break;
-                    case 12: checkpointAns="車水馬龍"; break;
-                    case 13: checkpointAns="左右兩難"; break;
-                    case 14: checkpointAns="赤地千里"; break;
-                    case 15: checkpointAns="牛刀小試"; break;
-                    default:
-                        checkpointAns = null; break;
+        for (int i = 0; i < buttonArray.length && ansIndex < 4; i++) {
+            if (v.getId() == buttonID[i]) {
+                ansButtonArray[ansIndex].setText(buttonArray[i].getText());
+                buttonArray[i].setEnabled(false);
+                for (int j = ansIndex; j < ansButtonArray.length; j++) {
+                    if (ansButtonArray[j].getText() == "") {
+                        ansIndex = j;
+                        break;
+                    }
+                    if (j == 3) {
+                        ansIndex = 4;
+                    }
                 }
-                if(checkpointAns.equals(chinese)){
-
-                chinese="";
-                userinput.setText(chinese);
-                DialogSetting.win_DialogManager(gameContent.this);
-                LoadingPage.checkpoint++;
-                levelText(LoadingPage.checkpoint);
-
-                }
-                else{
-                shakeanimationandwrongeffect(emoji,-10,10);
-                chinese="";
-                userinput.setText(chinese);
-                }
-
-            case R.id.clear:
-                textBtn1.setEnabled(true);
-                textBtn2.setEnabled(true);
-                textBtn3.setEnabled(true);
-                textBtn4.setEnabled(true);
-                textBtn5.setEnabled(true);
-                textBtn6.setEnabled(true);
-                textBtn7.setEnabled(true);
-                textBtn8.setEnabled(true);
-                textBtn9.setEnabled(true);
-                textBtn10.setEnabled(true);
-                textBtn11.setEnabled(true);
-                textBtn12.setEnabled(true);
-                textBtn13.setEnabled(true);
-                textBtn14.setEnabled(true);
-                chinese="";
-                userinput.setText("");
-                chinese="";
-                break;
-            case R.id.btn_hint:
-                if (hintCounter == 2) {
-                    DialogSetting.hint_DialogManager(gameContent.this);
-                    DialogSetting.hint.setText(checkpointAns.charAt(0));
-                    hintCounter --;
-                    hintChance.setText(String.valueOf(hintCounter));
-                }
-                if (hintCounter == 1) {
-                    DialogSetting.hint_DialogManager(gameContent.this);
-                    DialogSetting.hint.setText(checkpointAns.charAt(1));
-                    hintCounter --;
-                    hintChance.setText(String.valueOf(hintCounter));
-                }
-                if (hintCounter == 0) {
-                    break;
+                if (ansIndex == 4) {
+                    for (int j = 0; j < ansButtonArray.length; j++) {
+                        chinese += ansButtonArray[j].getText();
+                    }
+                    if (chinese.equals(answerArrayList.get(LoadingPage.checkpoint - 1))) {
+                        DialogSetting.win_DialogManager(gameContent.this);
+                        LoadingPage.checkpoint++;
+                        levelText();
+                        chinese="";
+                        ansIndex = 0;
+                        for (int j = 0; j < ansButtonArray.length; j++) {
+                            ansButtonArray[j].setText("");
+                        }
+                        for (int j = 0; j < buttonArray.length; j++) {
+                            buttonArray[j].setEnabled(true);
+                        }
+                    }else {
+                        shakeanimationandwrongeffect(emoji, -10, 10);
+                        chinese="";
+                    }
                 }
                 break;
+            }
         }
+        for (int i = 0; i < ansButtonArray.length; i++) {
+            if (v.getId() == ansButtonID[i]) {
+                for (int j = 0; j < buttonArray.length; j++) {
+                    if (ansButtonArray[i].getText() == buttonArray[j].getText()){
+                        buttonArray[j].setEnabled(true);
+                    }
+                }
+                ansButtonArray[i].setText("");
+                if (ansIndex > i) {
+                    ansIndex = i;
+                }
+            }
+        }
+
     }
 
     ////////////////////////////////////////////////////////////
@@ -512,218 +214,25 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         DialogSetting.bgmsoundcontrol(getApplication());
     }
 
-    public void levelText(int checkpoint){
-        switch (LoadingPage.checkpoint){
-            case 1:
-                level.setText("關卡1");
-                emoji.setText("◀️▶️\uD83D\uDE23");
-                textBtn2.setText("左");
-                textBtn3.setText("的");
-                textBtn4.setText("上");
-                textBtn5.setText("我");
-                textBtn6.setText("為");
-                textBtn9.setText("他");
-                textBtn10.setText("難");
-                textBtn11.setText("易");
-                textBtn12.setText("右");
-                textBtn13.setText("下");
+    public void levelText(){
+        ArrayList buffer2 = new ArrayList();
+        for (int i = 0; i < questionArrayList.size(); i++) {
+            if (LoadingPage.checkpoint == (i + 1)) {
+                level.setText("關卡" + (i + 1));
+                emoji.setText((String) questionArrayList.get(i));
+                JSONArray buffer = (JSONArray) buttonTextArrayList.get(i);
+                for (int j = 0; j < buffer.length(); j++) {
+                    try {
+                        buffer2.add(buffer.get(j).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                for (int j = 0; j < buffer2.size(); j++) {
+                    buttonArray[j].setText((String)buffer2.get(j));
+                }
                 break;
-            case 2:
-                level.setText("關卡2");
-                emoji.setText("\uD83D\uDC4A\uD83C\uDF40\uD83D\uDE28\uD83D\uDC0D");
-                textBtn2.setText("有");
-                textBtn3.setText("打");
-                textBtn4.setText("葉");
-                textBtn5.setText("花");
-                textBtn6.setText("驚");
-                textBtn9.setText("拳");
-                textBtn10.setText("蛇");
-                textBtn11.setText("手");
-                textBtn12.setText("草");
-                textBtn13.setText("怕");
-                break;
-            case 3:
-                level.setText("關卡3");
-                emoji.setText("\uD83D\uDC99\uD83D\uDC44\uD83D\uDE45\u200D\uD83D\uDC46");
-                textBtn2.setText("不");
-                textBtn3.setText("打");
-                textBtn4.setText("人");
-                textBtn5.setText("藍");
-                textBtn6.setText("一");
-                textBtn9.setText("心");
-                textBtn10.setText("上");
-                textBtn11.setText("指");
-                textBtn12.setText("口");
-                textBtn13.setText("嘴");
-                break;
-            case 4:
-                level.setText("關卡4");
-                emoji.setText("\uD83C\uDFC3\u200D\uD83D\uDC34\uD83D\uDC40\uD83C\uDF38");
-                textBtn2.setText("步");
-                textBtn3.setText("眼");
-                textBtn4.setText("走");
-                textBtn5.setText("物");
-                textBtn6.setText("看");
-                textBtn9.setText("跑");
-                textBtn10.setText("粉");
-                textBtn11.setText("馬");
-                textBtn12.setText("動");
-                textBtn13.setText("花");
-                break;
-            case 5:
-                level.setText("關卡5");
-                emoji.setText("✋\uD83C\uDF87\uD83D\uDE4C\uD83C\uDFA8");
-                textBtn2.setText("步");
-                textBtn3.setText("光");
-                textBtn4.setText("色");
-                textBtn5.setText("不");
-                textBtn6.setText("十");
-                textBtn9.setText("跑");
-                textBtn10.setText("歡");
-                textBtn11.setText("五");
-                textBtn12.setText("提");
-                textBtn13.setText("找");
-                break;
-            case 6:
-                level.setText("關卡6");
-                emoji.setText("®️\uD83D\uDC99®️\uD83C\uDDEE\uD83C\uDDF9");
-                textBtn2.setText("複");
-                textBtn3.setText("真");
-                textBtn4.setText("色");
-                textBtn5.setText("心");
-                textBtn6.setText("印");
-                textBtn9.setText("製");
-                textBtn10.setText("真");
-                textBtn11.setText("五");
-                textBtn12.setText("粉");
-                textBtn13.setText("意");
-                break;
-            case 7:
-                level.setText("關卡7");
-                emoji.setText("\uD83C\uDF8E️➡️\uD83D\uDC80");
-                textBtn2.setText("以");
-                textBtn3.setText("頭");
-                textBtn4.setText("待");
-                textBtn5.setText("心");
-                textBtn6.setText("斃");
-                textBtn9.setText("骨");
-                textBtn10.setText("真");
-                textBtn11.setText("坐");
-                textBtn12.setText("人");
-                textBtn13.setText("去");
-                break;
-            case 8:
-                level.setText("關卡8");
-                emoji.setText("\uD83D\uDC44✅\uD83D\uDC99✈️");
-                textBtn2.setText("機");
-                textBtn3.setText("是");
-                textBtn4.setText("確");
-                textBtn5.setText("心");
-                textBtn6.setText("的");
-                textBtn9.setText("口");
-                textBtn10.setText("定");
-                textBtn11.setText("坐");
-                textBtn12.setText("唇");
-                textBtn13.setText("非");
-                break;
-            case 9:
-                level.setText("關卡9");
-                emoji.setText("\uD83D\uDC37\uD83D\uDC6D\uD83D\uDC36\uD83D\uDC6C");
-                textBtn2.setText("狗");
-                textBtn3.setText("是");
-                textBtn4.setText("物");
-                textBtn5.setText("豬");
-                textBtn6.setText("的");
-                textBtn9.setText("友");
-                textBtn10.setText("定");
-                textBtn11.setText("朋");
-                textBtn12.setText("動");
-                textBtn13.setText("人");
-                break;
-            case 10:
-                level.setText("關卡10");
-                emoji.setText("\uD83D\uDC49\uD83C\uDF70\uD83C\uDF88\uD83D\uDC11");
-                textBtn2.setText("手");
-                textBtn3.setText("趾");
-                textBtn4.setText("物");
-                textBtn5.setText("羊");
-                textBtn6.setText("揚");
-                textBtn9.setText("蛋");
-                textBtn10.setText("高");
-                textBtn11.setText("朋");
-                textBtn12.setText("氣");
-                textBtn13.setText("飛");
-                break;
-            case 11:
-                level.setText("關卡11");
-                emoji.setText("\uD83D\uDEC0\uD83D\uDE2D❌\uD83D\uDCA6");
-                textBtn2.setText("洗");
-                textBtn3.setText("欲");
-                textBtn4.setText("淚");
-                textBtn5.setText("羊");
-                textBtn6.setText("水");
-                textBtn9.setText("蛋");
-                textBtn10.setText("哭");
-                textBtn11.setText("朋");
-                textBtn12.setText("叉");
-                textBtn13.setText("無");
-                break;
-            case 12:
-                level.setText("關卡12");
-                emoji.setText("\uD83D\uDE97\uD83D\uDCA7\uD83D\uDC34\uD83D\uDC09");
-                textBtn2.setText("水");
-                textBtn3.setText("欲");
-                textBtn4.setText("淚");
-                textBtn5.setText("馬");
-                textBtn6.setText("水");
-                textBtn9.setText("蛋");
-                textBtn10.setText("哭");
-                textBtn11.setText("車");
-                textBtn12.setText("龍");
-                textBtn13.setText("飛");
-                break;
-            case 13:
-                level.setText("關卡13");
-                emoji.setText("\uD83D\uDC48\uD83D\uDC49✌️\uD83D\uDEA7");
-                textBtn2.setText("交");
-                textBtn3.setText("右");
-                textBtn4.setText("手");
-                textBtn5.setText("通");
-                textBtn6.setText("左");
-                textBtn9.setText("阻");
-                textBtn10.setText("哭");
-                textBtn11.setText("難");
-                textBtn12.setText("指");
-                textBtn13.setText("兩");
-                break;
-            case 14:
-                level.setText("關卡14");
-                emoji.setText("\uD83D\uDD34\uD83C\uDF0E\uD83D\uDCB5\uD83C\uDF50");
-                textBtn2.setText("千");
-                textBtn3.setText("錢");
-                textBtn4.setText("手");
-                textBtn5.setText("球");
-                textBtn6.setText("圓");
-                textBtn9.setText("赤");
-                textBtn10.setText("哭");
-                textBtn11.setText("果");
-                textBtn12.setText("里");
-                textBtn13.setText("地");
-                break;
-            case 15:
-                level.setText("關卡15");
-                emoji.setText("\uD83D\uDC2E\uD83D\uDD2A\uD83D\uDE02\uD83D\uDCA9");
-                textBtn2.setText("小");
-                textBtn3.setText("笑");
-                textBtn4.setText("牛");
-                textBtn5.setText("切");
-                textBtn6.setText("廢");
-                textBtn9.setText("動");
-                textBtn10.setText("刀");
-                textBtn11.setText("爆");
-                textBtn12.setText("物");
-                textBtn13.setText("試");
-                break;
+            }
         }
     }
 
