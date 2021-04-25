@@ -161,6 +161,132 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 textBtn12.setText("動");
                 textBtn13.setText("花");
                 break;
+            case 5:
+                level.setText("關卡5");
+                emoji.setText("✋\uD83C\uDF87\uD83D\uDE4C\uD83C\uDFA8");
+                textBtn2.setText("步");
+                textBtn3.setText("光");
+                textBtn4.setText("色");
+                textBtn5.setText("不");
+                textBtn6.setText("十");
+                textBtn9.setText("跑");
+                textBtn10.setText("歡");
+                textBtn11.setText("五");
+                textBtn12.setText("提");
+                textBtn13.setText("找");
+                break;
+            case 6:
+                level.setText("關卡6");
+                emoji.setText("®️\uD83D\uDC99®️\uD83C\uDDEE\uD83C\uDDF9");
+                textBtn2.setText("複");
+                textBtn3.setText("真");
+                textBtn4.setText("色");
+                textBtn5.setText("心");
+                textBtn6.setText("印");
+                textBtn9.setText("製");
+                textBtn10.setText("真");
+                textBtn11.setText("五");
+                textBtn12.setText("粉");
+                textBtn13.setText("意");
+                break;
+            case 7:
+                level.setText("關卡7");
+                emoji.setText("\uD83C\uDF8E️➡️\uD83D\uDC80");
+                textBtn2.setText("以");
+                textBtn3.setText("頭");
+                textBtn4.setText("待");
+                textBtn5.setText("心");
+                textBtn6.setText("斃");
+                textBtn9.setText("骨");
+                textBtn10.setText("真");
+                textBtn11.setText("坐");
+                textBtn12.setText("人");
+                textBtn13.setText("去");
+                break;
+            case 8:
+                level.setText("關卡8");
+                emoji.setText("\uD83D\uDC44✅\uD83D\uDC99✈️");
+                textBtn2.setText("機");
+                textBtn3.setText("是");
+                textBtn4.setText("確");
+                textBtn5.setText("心");
+                textBtn6.setText("的");
+                textBtn9.setText("口");
+                textBtn10.setText("定");
+                textBtn11.setText("坐");
+                textBtn12.setText("唇");
+                textBtn13.setText("非");
+                break;
+            case 9:
+                level.setText("關卡9");
+                emoji.setText("\uD83D\uDC37\uD83D\uDC6D\uD83D\uDC36\uD83D\uDC6C");
+                textBtn2.setText("狗");
+                textBtn3.setText("是");
+                textBtn4.setText("物");
+                textBtn5.setText("豬");
+                textBtn6.setText("的");
+                textBtn9.setText("友");
+                textBtn10.setText("定");
+                textBtn11.setText("朋");
+                textBtn12.setText("動");
+                textBtn13.setText("人");
+                break;
+            case 10:
+                level.setText("關卡10");
+                emoji.setText("\uD83D\uDC49\uD83C\uDF70\uD83C\uDF88\uD83D\uDC11");
+                textBtn2.setText("手");
+                textBtn3.setText("趾");
+                textBtn4.setText("物");
+                textBtn5.setText("羊");
+                textBtn6.setText("揚");
+                textBtn9.setText("蛋");
+                textBtn10.setText("高");
+                textBtn11.setText("朋");
+                textBtn12.setText("動");
+                textBtn13.setText("飛");
+                break;
+            case 11:
+                level.setText("關卡11");
+                emoji.setText("\uD83D\uDEC0\uD83D\uDE2D❌\uD83D\uDCA6");
+                textBtn2.setText("洗");
+                textBtn3.setText("欲");
+                textBtn4.setText("淚");
+                textBtn5.setText("羊");
+                textBtn6.setText("水");
+                textBtn9.setText("蛋");
+                textBtn10.setText("哭");
+                textBtn11.setText("朋");
+                textBtn12.setText("叉");
+                textBtn13.setText("無");
+                break;
+            case 12:
+                level.setText("關卡12");
+                emoji.setText("\uD83D\uDE97\uD83D\uDCA7\uD83D\uDC34\uD83D\uDC09");
+                textBtn2.setText("水");
+                textBtn3.setText("欲");
+                textBtn4.setText("淚");
+                textBtn5.setText("馬");
+                textBtn6.setText("水");
+                textBtn9.setText("蛋");
+                textBtn10.setText("哭");
+                textBtn11.setText("車");
+                textBtn12.setText("龍");
+                textBtn13.setText("飛");
+                break;
+            case 13:
+                level.setText("關卡13");
+                emoji.setText("\uD83D\uDC48\uD83D\uDC49✌️\uD83D\uDEA7");
+                textBtn2.setText("交");
+                textBtn3.setText("右");
+                textBtn4.setText("手");
+                textBtn5.setText("通");
+                textBtn6.setText("左");
+                textBtn9.setText("阻");
+                textBtn10.setText("哭");
+                textBtn11.setText("難");
+                textBtn12.setText("指");
+                textBtn13.setText("兩");
+                break;
         }
 
 
@@ -264,6 +390,15 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                     case 2: checkpointAns= "打草驚蛇"; break;
                     case 3: checkpointAns="心口不一"; break;
                     case 4: checkpointAns="走馬看花"; break;
+                    case 5: checkpointAns="五光十色"; break;
+                    case 6: checkpointAns="真心真意"; break;
+                    case 7: checkpointAns="坐以待斃"; break;
+                    case 8: checkpointAns="口是心非"; break;
+                    case 9: checkpointAns="豬朋狗友"; break;
+                    case 10: checkpointAns="趾高氣揚"; break;
+                    case 11: checkpointAns="欲哭無淚"; break;
+                    case 12: checkpointAns="車水馬龍"; break;
+                    case 13: checkpointAns="左右兩難"; break;
                     default:
                         checkpointAns = null; break;
                 }
@@ -392,6 +527,132 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 textBtn11.setText("馬");
                 textBtn12.setText("動");
                 textBtn13.setText("花");
+                break;
+            case 5:
+                level.setText("關卡5");
+                emoji.setText("✋\uD83C\uDF87\uD83D\uDE4C\uD83C\uDFA8");
+                textBtn2.setText("步");
+                textBtn3.setText("光");
+                textBtn4.setText("色");
+                textBtn5.setText("不");
+                textBtn6.setText("十");
+                textBtn9.setText("跑");
+                textBtn10.setText("歡");
+                textBtn11.setText("五");
+                textBtn12.setText("提");
+                textBtn13.setText("找");
+                break;
+            case 6:
+                level.setText("關卡6");
+                emoji.setText("®️\uD83D\uDC99®️\uD83C\uDDEE\uD83C\uDDF9");
+                textBtn2.setText("複");
+                textBtn3.setText("真");
+                textBtn4.setText("色");
+                textBtn5.setText("心");
+                textBtn6.setText("印");
+                textBtn9.setText("製");
+                textBtn10.setText("真");
+                textBtn11.setText("五");
+                textBtn12.setText("粉");
+                textBtn13.setText("意");
+                break;
+            case 7:
+                level.setText("關卡7");
+                emoji.setText("\uD83C\uDF8E️➡️\uD83D\uDC80");
+                textBtn2.setText("以");
+                textBtn3.setText("頭");
+                textBtn4.setText("待");
+                textBtn5.setText("心");
+                textBtn6.setText("斃");
+                textBtn9.setText("骨");
+                textBtn10.setText("真");
+                textBtn11.setText("坐");
+                textBtn12.setText("人");
+                textBtn13.setText("去");
+                break;
+            case 8:
+                level.setText("關卡8");
+                emoji.setText("\uD83D\uDC44✅\uD83D\uDC99✈️");
+                textBtn2.setText("機");
+                textBtn3.setText("是");
+                textBtn4.setText("確");
+                textBtn5.setText("心");
+                textBtn6.setText("的");
+                textBtn9.setText("口");
+                textBtn10.setText("定");
+                textBtn11.setText("坐");
+                textBtn12.setText("唇");
+                textBtn13.setText("非");
+                break;
+            case 9:
+                level.setText("關卡9");
+                emoji.setText("\uD83D\uDC37\uD83D\uDC6D\uD83D\uDC36\uD83D\uDC6C");
+                textBtn2.setText("狗");
+                textBtn3.setText("是");
+                textBtn4.setText("物");
+                textBtn5.setText("豬");
+                textBtn6.setText("的");
+                textBtn9.setText("友");
+                textBtn10.setText("定");
+                textBtn11.setText("朋");
+                textBtn12.setText("動");
+                textBtn13.setText("人");
+                break;
+            case 10:
+                level.setText("關卡10");
+                emoji.setText("\uD83D\uDC49\uD83C\uDF70\uD83C\uDF88\uD83D\uDC11");
+                textBtn2.setText("手");
+                textBtn3.setText("趾");
+                textBtn4.setText("物");
+                textBtn5.setText("羊");
+                textBtn6.setText("揚");
+                textBtn9.setText("蛋");
+                textBtn10.setText("高");
+                textBtn11.setText("朋");
+                textBtn12.setText("動");
+                textBtn13.setText("飛");
+                break;
+            case 11:
+                level.setText("關卡11");
+                emoji.setText("\uD83D\uDEC0\uD83D\uDE2D❌\uD83D\uDCA6");
+                textBtn2.setText("洗");
+                textBtn3.setText("欲");
+                textBtn4.setText("淚");
+                textBtn5.setText("羊");
+                textBtn6.setText("水");
+                textBtn9.setText("蛋");
+                textBtn10.setText("哭");
+                textBtn11.setText("朋");
+                textBtn12.setText("叉");
+                textBtn13.setText("無");
+                break;
+            case 12:
+                level.setText("關卡12");
+                emoji.setText("\uD83D\uDE97\uD83D\uDCA7\uD83D\uDC34\uD83D\uDC09");
+                textBtn2.setText("水");
+                textBtn3.setText("欲");
+                textBtn4.setText("淚");
+                textBtn5.setText("馬");
+                textBtn6.setText("水");
+                textBtn9.setText("蛋");
+                textBtn10.setText("哭");
+                textBtn11.setText("車");
+                textBtn12.setText("龍");
+                textBtn13.setText("飛");
+                break;
+            case 13:
+                level.setText("關卡13");
+                emoji.setText("\uD83D\uDC48\uD83D\uDC49✌️\uD83D\uDEA7");
+                textBtn2.setText("交");
+                textBtn3.setText("右");
+                textBtn4.setText("手");
+                textBtn5.setText("通");
+                textBtn6.setText("左");
+                textBtn9.setText("阻");
+                textBtn10.setText("哭");
+                textBtn11.setText("難");
+                textBtn12.setText("指");
+                textBtn13.setText("兩");
                 break;
         }
     }
