@@ -172,7 +172,11 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                     else{
                         shakeanimation(emoji,-10,10);
                         chinese="";
-                        userinput.setText(chinese);}
+                        userinput.setText(chinese);
+                        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.wrong);
+                        mediaPlayer.start();
+                        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.effect);
+                        }
                 }
                 if(checkpoint==2){
                     String checkpoint2Ans="打草驚蛇";
