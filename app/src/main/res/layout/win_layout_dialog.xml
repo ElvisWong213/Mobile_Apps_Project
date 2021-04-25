@@ -79,28 +79,58 @@
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal">
 
-                                    <FrameLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical">
 
-                                        <ImageView
-                                            android:id="@+id/btn_next"
-                                            android:layout_width="150dp"
-                                            android:layout_height="50dp"
-                                            android:scaleType="fitXY"
-                                            app:srcCompat="@drawable/square" />
-
-                                        <TextView
-                                            android:id="@+id/tv_win"
+                                        <FrameLayout
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:text="下一關"
-                                            android:textColor="#3BFFD1"
-                                            android:textSize="18sp"
-                                            android:textStyle="bold" />
-                                    </FrameLayout>
+                                            android:layout_gravity="center">
+
+                                            <ImageView
+                                                android:id="@+id/btn_home"
+                                                android:layout_width="150dp"
+                                                android:layout_height="50dp"
+                                                android:scaleType="fitXY"
+                                                app:srcCompat="@drawable/square" />
+
+                                            <TextView
+                                                android:id="@+id/tv_home"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:text="主頁"
+                                                android:textColor="#3BFFD1"
+                                                android:textSize="18sp"
+                                                android:textStyle="bold" />
+                                        </FrameLayout>
+
+                                        <FrameLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center">
+
+                                            <ImageView
+                                                android:id="@+id/btn_home"
+                                                android:layout_width="150dp"
+                                                android:layout_height="50dp"
+                                                android:scaleType="fitXY"
+                                                app:srcCompat="@drawable/square" />
+
+                                            <TextView
+                                                android:id="@+id/tv_home"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:text="下一關"
+                                                android:textColor="#3BFFD1"
+                                                android:textSize="18sp"
+                                                android:textStyle="bold" />
+                                        </FrameLayout>
+                                    </LinearLayout>
+
                                 </LinearLayout>
                             </LinearLayout>
 
