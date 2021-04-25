@@ -84,6 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="開始遊戲"
+            android:textStyle="bold"
             android:textSize="20sp"
             app:backgroundTint="#FF9800" />
     </LinearLayout>
