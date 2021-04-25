@@ -35,27 +35,43 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-            <Button
-                android:id="@+id/btn_hint"
+            <FrameLayout
                 android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:paddingLeft="2dp"
-                android:paddingTop="2dp"
-                android:paddingRight="2dp"
-                android:paddingBottom="2dp"
-                android:scrollbarSize="0dp"
-                android:text="💡"
-                android:textAlignment="center"
-                android:textSize="36sp"
-                android:textStyle="bold"
-                app:backgroundTint="#00FF9800"
-                app:elevation="0dp"
-                app:iconPadding="0dp" />
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/btn_hint"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingLeft="2dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="2dp"
+                    android:paddingBottom="2dp"
+                    android:scrollbarSize="0dp"
+                    android:text="💡"
+                    android:textAlignment="center"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#00FF9800"
+                    app:elevation="0dp"
+                    app:iconPadding="0dp" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="45dp"
+                    android:layout_height="50dp"
+                    android:gravity="bottom"
+                    android:text="3"
+                    android:textAlignment="textEnd"
+                    android:textColor="#FFEB3B"
+                    android:textSize="16sp" />
+            </FrameLayout>
 
             <Space
                 android:layout_width="20dp"
