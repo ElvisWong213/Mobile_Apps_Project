@@ -242,7 +242,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 textBtn9.setText("蛋");
                 textBtn10.setText("高");
                 textBtn11.setText("朋");
-                textBtn12.setText("動");
+                textBtn12.setText("氣");
                 textBtn13.setText("飛");
                 break;
             case 11:
@@ -286,6 +286,34 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 textBtn11.setText("難");
                 textBtn12.setText("指");
                 textBtn13.setText("兩");
+                break;
+            case 14:
+                level.setText("關卡14");
+                emoji.setText("\uD83D\uDD34\uD83C\uDF0E\uD83D\uDCB5\uD83C\uDF50");
+                textBtn2.setText("千");
+                textBtn3.setText("錢");
+                textBtn4.setText("手");
+                textBtn5.setText("球");
+                textBtn6.setText("圓");
+                textBtn9.setText("赤");
+                textBtn10.setText("哭");
+                textBtn11.setText("果");
+                textBtn12.setText("里");
+                textBtn13.setText("地");
+                break;
+            case 15:
+                level.setText("關卡15");
+                emoji.setText("\uD83D\uDC2E\uD83D\uDD2A\uD83D\uDE02\uD83D\uDCA9");
+                textBtn2.setText("小");
+                textBtn3.setText("笑");
+                textBtn4.setText("牛");
+                textBtn5.setText("切");
+                textBtn6.setText("廢");
+                textBtn9.setText("動");
+                textBtn10.setText("刀");
+                textBtn11.setText("爆");
+                textBtn12.setText("物");
+                textBtn13.setText("試");
                 break;
         }
 
@@ -399,6 +427,8 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                     case 11: checkpointAns="欲哭無淚"; break;
                     case 12: checkpointAns="車水馬龍"; break;
                     case 13: checkpointAns="左右兩難"; break;
+                    case 14: checkpointAns="赤地千里"; break;
+                    case 15: checkpointAns="牛刀小試"; break;
                     default:
                         checkpointAns = null; break;
                 }
@@ -609,7 +639,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 textBtn9.setText("蛋");
                 textBtn10.setText("高");
                 textBtn11.setText("朋");
-                textBtn12.setText("動");
+                textBtn12.setText("氣");
                 textBtn13.setText("飛");
                 break;
             case 11:
@@ -653,6 +683,34 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 textBtn11.setText("難");
                 textBtn12.setText("指");
                 textBtn13.setText("兩");
+                break;
+            case 14:
+                level.setText("關卡14");
+                emoji.setText("\uD83D\uDD34\uD83C\uDF0E\uD83D\uDCB5\uD83C\uDF50");
+                textBtn2.setText("千");
+                textBtn3.setText("錢");
+                textBtn4.setText("手");
+                textBtn5.setText("球");
+                textBtn6.setText("圓");
+                textBtn9.setText("赤");
+                textBtn10.setText("哭");
+                textBtn11.setText("果");
+                textBtn12.setText("里");
+                textBtn13.setText("地");
+                break;
+            case 15:
+                level.setText("關卡15");
+                emoji.setText("\uD83D\uDC2E\uD83D\uDD2A\uD83D\uDE02\uD83D\uDCA9");
+                textBtn2.setText("小");
+                textBtn3.setText("笑");
+                textBtn4.setText("牛");
+                textBtn5.setText("切");
+                textBtn6.setText("廢");
+                textBtn9.setText("動");
+                textBtn10.setText("刀");
+                textBtn11.setText("爆");
+                textBtn12.setText("物");
+                textBtn13.setText("試");
                 break;
         }
     }
