@@ -90,14 +90,14 @@
                                             android:layout_gravity="center">
 
                                             <ImageView
-                                                android:id="@+id/btn_home2"
+                                                android:id="@+id/btn_home"
                                                 android:layout_width="150dp"
                                                 android:layout_height="50dp"
                                                 android:scaleType="fitXY"
                                                 app:srcCompat="@drawable/square" />
 
                                             <TextView
-                                                android:id="@+id/tv_home2"
+                                                android:id="@+id/tv_home1"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:layout_gravity="center"
@@ -113,14 +113,14 @@
                                             android:layout_gravity="center">
 
                                             <ImageView
-                                                android:id="@+id/btn_home"
+                                                android:id="@+id/btn_next"
                                                 android:layout_width="150dp"
                                                 android:layout_height="50dp"
                                                 android:scaleType="fitXY"
                                                 app:srcCompat="@drawable/square" />
 
                                             <TextView
-                                                android:id="@+id/tv_home"
+                                                android:id="@+id/tv_win"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:layout_gravity="center"
