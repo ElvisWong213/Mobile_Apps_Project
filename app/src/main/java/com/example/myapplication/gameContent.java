@@ -19,7 +19,7 @@ import android.widget.TextView;
 import maes.tech.intentanim.CustomIntent;
 
 public class gameContent extends AppCompatActivity implements View.OnClickListener{
-    int checkpoint = 1;
+    public static int checkpoint = 1;
     String chinese = "";
     Handler handler = new Handler();
     TextView userinput, emoji, level;

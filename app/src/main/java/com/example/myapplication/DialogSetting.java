@@ -20,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import maes.tech.intentanim.CustomIntent;
 
 public class DialogSetting{
@@ -28,7 +30,7 @@ public class DialogSetting{
     public static MediaPlayer mediaPlayer,mediaPlayer2;
     public static SharedPreferences pref;
     public static int counter = 0;
-    public static Dialog dialog, win_dialog;
+    public static Dialog dialog, win_dialog,hint_dialog;
 
 
     public static void DialogManager(Context page) {
@@ -222,7 +224,7 @@ public class DialogSetting{
         img_win.startAnimation(appearAnimation);
         btn_next.startAnimation(buttonAnimation);
         tv_win.startAnimation(buttonAnimation);
-
+        btn_home.startAnimation(buttonAnimation);
         Animation disppearAnimation = new ScaleAnimation(1f, 0f,
                 1f, 0f,
                 Animation.RELATIVE_TO_SELF, 0.5f,
@@ -300,8 +302,67 @@ public class DialogSetting{
 
     }
 
+    public static void hint_DialogManager (Context page) {
+        hint_dialog = new Dialog(page);
+        hint_dialog.setContentView(R.layout.win_layout_dialog);
+        hint_dialog.getWindow().setDimAmount(0.8f);
+        hint_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        hint_dialog.setCanceledOnTouchOutside(false);
+        hint_dialog.setCancelable(false);
+        hint_dialog.show();
+        Animation appearAnimation = new ScaleAnimation(0f, 1f,
+                0f, 1f,
+                Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f);
+        appearAnimation.setDuration(300);
+        Animation buttonAnimation = new AlphaAnimation(0.0f, 1.0f);
+        buttonAnimation.setDuration(600);
+        ImageView hints_dialog = hint_dialog.findViewById(R.id.btn_dialog);
+        TextView textView5 =hints_dialog.findViewById(R.id.textView5);
+        TextView hint = hints_dialog.findViewById(R.id.hint);
+        Button btn_close = hints_dialog.findViewById(R.id.btn_close);
+        TextView tv_close = hints_dialog.findViewById(R.id.tv_close);
+        hints_dialog.startAnimation(appearAnimation);
+        textView5.startAnimation(appearAnimation);
+        hint.startAnimation(appearAnimation);
+        btn_close.startAnimation(buttonAnimation);
+        tv_close.startAnimation(buttonAnimation);
+        Animation buttonAnimation2 = new AlphaAnimation(1.0f, 0.0f);
+        buttonAnimation2.setDuration(300);
+        buttonAnimation2.setAnimationListener(new Animation.AnimationListener(){
+            @Override
+            public void onAnimationStart(Animation arg0) {
+            }
+            @Override
+            public void onAnimationRepeat(Animation arg0) {
+            }
+            @Override
+            public void onAnimationEnd(Animation arg0) {
+                win_dialog.dismiss();
+            }
+        });
+        btn_close.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    btn_close.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    btn_close.clearColorFilter();
+                }
+                return false;
+            }
+        });
+        btn_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(effectsound)
+                    mediaPlayer.start();
+                dialog.dismiss();
+            }
+        });
 
 
+    }
 
     public static Boolean effectsoundcontrol(Context page){
         pref = page.getSharedPreferences("MyPref", Context.MODE_PRIVATE);
