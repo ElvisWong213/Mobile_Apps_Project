@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -19,16 +20,18 @@ import maes.tech.intentanim.CustomIntent;
 public class gameContent extends AppCompatActivity implements View.OnClickListener{
     int checkpoint = 1;
     String chinese = "";
+    Handler handler = new Handler();
     TextView userinput, emoji, level;
     Button submit, clear,next;
     Button textBtn1,textBtn2,textBtn3,textBtn4,textBtn5,textBtn6,textBtn7,textBtn8,textBtn9,textBtn10,textBtn11,textBtn12,textBtn13,textBtn14;
     ImageButton btn_gamecontent_setting;
-    MediaPlayer mediaPlayer;
+    MediaPlayer mediaPlayer,mediaPlayer3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_content);
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.effect);
+        mediaPlayer3 = MediaPlayer.create(getApplicationContext(), R.raw.wrong);
         btn_gamecontent_setting = findViewById(R.id.btn_gamecontent_setting);
         btn_gamecontent_setting.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -170,12 +173,11 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
 
                     }
                     else{
-                        shakeanimation(emoji,-10,10);
+                        shakeanimationandwrongeffect(emoji,-10,10);
                         chinese="";
                         userinput.setText(chinese);
-                        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.wrong);
-                        mediaPlayer.start();
-                        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.effect);
+
+
                         }
                 }
                 if(checkpoint==2){
@@ -191,7 +193,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
 
                     }
                     else{
-                        shakeanimation(emoji,-10,10);
+                        shakeanimationandwrongeffect(emoji,-10,10);
                         chinese="";
                         userinput.setText(chinese);}
                 }
@@ -208,7 +210,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
 
                     }
                     else{
-                        shakeanimation(emoji,-10,10);
+                        shakeanimationandwrongeffect(emoji,-10,10);
                         chinese="";
                         userinput.setText(chinese);}
                 }
@@ -225,7 +227,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
 
                     }
                     else{
-                        shakeanimation(emoji,-10,10);
+                        shakeanimationandwrongeffect(emoji,-10,10);
                         chinese="";
                         userinput.setText(chinese);}
                 }
@@ -310,12 +312,35 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-    public void shakeanimation(TextView view ,int x1,int x2){
-        Animation a = new TranslateAnimation(x1,x2,0,0);
-        a.setDuration(10);
-        a.setRepeatMode(Animation.REVERSE);
-        a.setRepeatCount(5);
-        view.startAnimation(a);
+    public void shakeanimationandwrongeffect(TextView view ,int x1,int x2){
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(200);
+
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Animation a = new TranslateAnimation(x1,x2,0,0);
+                        a.setDuration(10);
+                        a.setRepeatMode(Animation.REVERSE);
+                        a.setRepeatCount(5);
+                        view.startAnimation(a);
+                        if (DialogSetting.effectsoundcontrol(getApplicationContext())){
+
+                        mediaPlayer3.start();
+                       ;}
+                    }
+                });
+
+            }
+        }).start();
 
     }
 }
