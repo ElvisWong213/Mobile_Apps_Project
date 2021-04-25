@@ -9,18 +9,14 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import maes.tech.intentanim.CustomIntent;
 
@@ -33,6 +29,8 @@ public class DialogSetting{
     public static Dialog dialog, win_dialog,hint_dialog;
     public static TextView hint;
     public static int hintCounter = 2;
+
+    private static boolean hintBool;
 
 
     public static void DialogManager(Context page) {
@@ -323,6 +321,7 @@ public class DialogSetting{
             public void onClick(View v) {
                 if(effectsound)
                     mediaPlayer.start();
+                set_hints_confirm(false);
                 hint_dialog.dismiss();
 
             }
@@ -344,11 +343,10 @@ public class DialogSetting{
             public void onClick(View v) {
                 if(effectsound)
                     mediaPlayer.start();
-                hints_confirm();
+                set_hints_confirm(true);
                 hint_dialog.dismiss();
             }
         });
-
 }
 
 
@@ -401,8 +399,12 @@ public class DialogSetting{
         hints_editor.commit();
     }
 
-    public static boolean hints_confirm(){
-        return true;
+    public static void set_hints_confirm(Boolean input) {
+        hintBool = input;
+    }
+
+    public static boolean get_hints_confirm(){
+        return hintBool;
     }
 
 }

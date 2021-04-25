@@ -9,6 +9,7 @@ import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.style.StyleSpan;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -25,6 +26,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Random;
 
 import maes.tech.intentanim.CustomIntent;
 
@@ -146,9 +148,12 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         if (DialogSetting.effectsoundcontrol(getApplicationContext())){
             mediaPlayer.start();
         }
-        //choose text button
+        //text button
         for (int i = 0; i < buttonArray.length && ansIndex < 4; i++) {
             if (v.getId() == buttonID[i]) {
+                if (ansButtonArray[ansIndex].getText() != "") {
+                    ansIndex++;
+                }
                 ansButtonArray[ansIndex].setText(buttonArray[i].getText());
                 ansButtonArray[ansIndex].setEnabled(true);
                 buttonArray[i].setEnabled(false);
@@ -163,32 +168,12 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 }
                 //check ans
                 if (ansIndex == ansSize) {
-                    for (int j = 0; j < ansButtonArray.length; j++) {
-                        chinese += ansButtonArray[j].getText();
-                    }
-                    if (chinese.equals(answerArrayList.get(LoadingPage.checkpoint - 1))) {
-                        DialogSetting.win_DialogManager(gameContent.this);
-                        DialogSetting.addHints(getApplicationContext());
-                        hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
-                        LoadingPage.checkpoint++;
-                        levelText();
-                        chinese="";
-                        ansIndex = 0;
-                        for (int j = 0; j < ansButtonArray.length; j++) {
-                            ansButtonArray[j].setText("");
-                        }
-                        for (int j = 0; j < buttonArray.length; j++) {
-                            buttonArray[j].setEnabled(true);
-                        }
-                    }else {
-                        shakeanimationandwrongeffect(emoji, -10, 10);
-                        chinese="";
-                    }
+                    checkAns();
                 }
                 break;
             }
         }
-        //answer button
+        //answer text button
         for (int i = 0; i < ansButtonArray.length; i++) {
             if (v.getId() == ansButtonID[i]) {
                 for (int j = 0; j < buttonArray.length; j++) {
@@ -205,7 +190,62 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         }
         //hint button
         if (v.getId() == R.id.btn_hint) {
-            DialogSetting.hint_DialogManager(gameContent.this);
+            ArrayList index = new ArrayList();
+            String dummy = (String) answerArrayList.get(LoadingPage.checkpoint - 1);
+            for (int i = 0; i < ansSize; i++) {
+                if (ansButtonArray[i].getText().toString() != "" && ansButtonArray[i].getText().toString().charAt(0) == dummy.charAt(i)) {
+                    //do nothing
+                }else{
+                    index.add(i);
+                }
+            }
+            if (index.size() > 1) {
+                DialogSetting.useHints(getApplicationContext());
+                hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
+                Random r = new Random();
+                int outputIndex = (int) index.get(r.nextInt(index.size()));
+                ansButtonArray[outputIndex].setText(String.valueOf(dummy.charAt(outputIndex)));
+                ansButtonArray[outputIndex].setEnabled(false);
+                for (int i = 0; i < buttonArray.length; i++) {
+                    if (buttonArray[i].getText().charAt(0) == dummy.charAt(outputIndex)) {
+                        buttonArray[i].setEnabled(false);
+                    }
+                }
+                int counter = 0;
+                for (int i = 0; i < ansButtonArray.length; i++) {
+                    if (ansButtonArray[i].getText() != "") {
+                        counter++;
+                    }
+                }
+
+                if (counter == ansButtonArray.length) {
+                    checkAns();
+                }
+            }
+        }
+    }
+
+    public void checkAns() {
+        for (int j = 0; j < ansButtonArray.length; j++) {
+            chinese += ansButtonArray[j].getText();
+        }
+        if (chinese.equals(answerArrayList.get(LoadingPage.checkpoint - 1))) {
+            DialogSetting.win_DialogManager(gameContent.this);
+            DialogSetting.addHints(getApplicationContext());
+            hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
+            LoadingPage.checkpoint++;
+            levelText();
+            chinese="";
+            ansIndex = 0;
+            for (int j = 0; j < ansButtonArray.length; j++) {
+                ansButtonArray[j].setText("");
+            }
+            for (int j = 0; j < buttonArray.length; j++) {
+                buttonArray[j].setEnabled(true);
+            }
+        }else {
+            shakeanimationandwrongeffect(emoji, -10, 10);
+            chinese="";
         }
     }
 
