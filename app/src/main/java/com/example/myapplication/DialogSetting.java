@@ -304,6 +304,7 @@ public class DialogSetting{
     }
 
     public static void hint_DialogManager (Context page) {
+        mediaPlayer = MediaPlayer.create(page, R.raw.effect);
         hint_dialog = new Dialog(page);
         hint_dialog.setContentView(R.layout.activity_game_hint);
         hint_dialog.getWindow().setDimAmount(0.8f);
@@ -311,7 +312,58 @@ public class DialogSetting{
         hint_dialog.setCanceledOnTouchOutside(false);
         hint_dialog.setCancelable(false);
         hint_dialog.show();
-        };
+        ImageView btn_close = hint_dialog.findViewById(R.id.btn_close);
+        ImageView hintdialog = hint_dialog.findViewById(R.id.btn_dialog);
+        TextView textView5 = hint_dialog.findViewById(R.id.textView5);
+        TextView textView8 = hint_dialog.findViewById(R.id.textView8);
+        TextView hint = hint_dialog.findViewById(R.id.hint);
+        TextView tvclose = hint_dialog.findViewById(R.id.tv_close);
+        Animation disppearAnimation = new ScaleAnimation(1f, 0f,
+                1f, 0f,
+                Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f);
+        disppearAnimation.setDuration(300);
+        Animation buttonAnimation2 = new AlphaAnimation(1.0f, 0.0f);
+        buttonAnimation2.setDuration(300);
+        buttonAnimation2.setAnimationListener(new Animation.AnimationListener(){
+            @Override
+            public void onAnimationStart(Animation arg0) {
+            }
+            @Override
+            public void onAnimationRepeat(Animation arg0) {
+            }
+            @Override
+            public void onAnimationEnd(Animation arg0) {
+                hint_dialog.dismiss();
+            }
+        });
+
+        btn_close.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    btn_close.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    btn_close.clearColorFilter();
+                }
+                return false;
+            }
+        });
+        btn_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(effectsound)
+                    mediaPlayer.start();
+                btn_close.startAnimation(buttonAnimation2);
+                hintdialog.startAnimation(disppearAnimation);
+                textView5.startAnimation(disppearAnimation);
+                textView8.startAnimation(disppearAnimation);
+                hint.startAnimation(disppearAnimation);
+                tvclose.startAnimation(buttonAnimation2);
+
+            }
+        });
+        }
 
 
     public static Boolean effectsoundcontrol(Context page){
