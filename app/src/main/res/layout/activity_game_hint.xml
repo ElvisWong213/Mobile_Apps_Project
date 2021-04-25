@@ -71,7 +71,7 @@
                                                 android:id="@+id/btn_dialog"
                                                 android:layout_width="300dp"
                                                 android:layout_height="150dp"
-                                                android:background="#D9E6E6E6"
+                                                app:backgroundTint="#00FF9800"
                                                 android:scaleType="fitXY" />
 
                                             <LinearLayout
@@ -85,8 +85,9 @@
                                                     android:layout_height="wrap_content"
                                                     android:paddingTop="10px"
                                                     android:text="💡提示"
-                                                    android:textColor="#3F51B5"
-                                                    android:textSize="28sp" />
+                                                    android:textColor="@color/cardview_light_background"
+                                                    android:textSize="28sp"
+                                                    android:textStyle="bold" />
 
                                                 <Space
                                                     android:layout_width="match_parent"
@@ -104,16 +105,18 @@
                                                         android:layout_weight="1"
                                                         android:text="第一個字是: "
                                                         android:textAlignment="viewEnd"
-                                                        android:textColor="#009688"
-                                                        android:textSize="28sp" />
+                                                        android:textColor="@color/white"
+                                                        android:textSize="28sp"
+                                                        android:textStyle="bold" />
 
                                                     <TextView
                                                         android:id="@+id/hint"
                                                         android:layout_width="100dp"
                                                         android:layout_height="wrap_content"
                                                         android:text="提"
+
                                                         android:textAlignment="viewStart"
-                                                        android:textColor="#4CAF50"
+                                                        android:textColor="@color/white"
                                                         android:textSize="28sp"
                                                         android:textStyle="bold" />
 
