@@ -35,7 +35,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     ImageButton btn_gamecontent_setting;
     MediaPlayer mediaPlayer,mediaPlayer3;
     ImageView rocket2;
-    Button btn_hint;
+    ImageView btn_hint;
     public static SharedPreferences pref_hints;
 
     ArrayList questionArrayList = new ArrayList(), answerArrayList = new ArrayList(), typeArrayList = new ArrayList(), buttonTextArrayList = new ArrayList();

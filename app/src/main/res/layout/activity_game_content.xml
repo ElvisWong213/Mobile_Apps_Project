@@ -30,52 +30,53 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <Space
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <FrameLayout
-                android:layout_width="50dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/btn_hint"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="💡"
-                    android:textSize="36sp"
-                    android:textStyle="bold"
-                    app:backgroundTint="@android:color/transparent"
-                    app:iconPadding="0dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="right"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/hintChance"
-                    android:layout_width="45dp"
-                    android:layout_height="50dp"
-                    android:background="@android:color/transparent"
-                    android:gravity="bottom"
-                    android:text="2"
-                    android:textAlignment="textEnd"
-                    android:textColor="#FFEB3B"
-                    android:textSize="16sp" />
-            </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="right">
 
-            <Space
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                        <ImageView
+                            android:id="@+id/btn_hint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/hints" />
 
-            <ImageButton
-                android:id="@+id/btn_gamecontent_setting"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="right"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/btn_setting" />
+                        <TextView
+                            android:id="@+id/hintChance"
+                            android:layout_width="45dp"
+                            android:layout_height="50dp"
+                            android:background="@android:color/transparent"
+                            android:gravity="bottom"
+                            android:text="2"
+                            android:textAlignment="textEnd"
+                            android:textColor="#FFEB3B"
+                            android:textSize="16sp" />
+                    </FrameLayout>
+
+                    <ImageButton
+                        android:id="@+id/btn_gamecontent_setting"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="right"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/btn_setting" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
