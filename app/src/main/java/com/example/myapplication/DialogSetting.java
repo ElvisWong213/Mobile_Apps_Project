@@ -286,11 +286,8 @@ public class DialogSetting{
         hint_dialog.setCancelable(false);
         hint_dialog.show();
         ImageView btn_close = hint_dialog.findViewById(R.id.btn_close);
-        ImageView hintdialog = hint_dialog.findViewById(R.id.btn_dialog);
-        TextView textView5 = hint_dialog.findViewById(R.id.textView5);
-        TextView textView8 = hint_dialog.findViewById(R.id.textView8);
-         hint = hint_dialog.findViewById(R.id.hint);
         TextView tvclose = hint_dialog.findViewById(R.id.tv_close);
+        ImageView btn_use = hint_dialog.findViewById(R.id.btn_use);
         Animation disppearAnimation = new ScaleAnimation(1f, 0f,
                 1f, 0f,
                 Animation.RELATIVE_TO_SELF, 0.5f,
@@ -307,7 +304,6 @@ public class DialogSetting{
             }
             @Override
             public void onAnimationEnd(Animation arg0) {
-                hint_dialog.dismiss();
             }
         });
 
@@ -327,16 +323,33 @@ public class DialogSetting{
             public void onClick(View v) {
                 if(effectsound)
                     mediaPlayer.start();
-                btn_close.startAnimation(buttonAnimation2);
-                hintdialog.startAnimation(disppearAnimation);
-                textView5.startAnimation(disppearAnimation);
-                textView8.startAnimation(disppearAnimation);
-                hint.startAnimation(disppearAnimation);
-                tvclose.startAnimation(buttonAnimation2);
+                hint_dialog.dismiss();
 
             }
         });
-        }
+
+        btn_use.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    btn_use.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    btn_use.clearColorFilter();
+                }
+                return false;
+            }
+        });
+        btn_use.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(effectsound)
+                    mediaPlayer.start();
+                hints_confirm();
+                hint_dialog.dismiss();
+            }
+        });
+
+}
 
 
     public static Boolean effectsoundcontrol(Context page){
@@ -386,6 +399,10 @@ public class DialogSetting{
 
         hints_editor.putInt("Myhints", temp - 1);
         hints_editor.commit();
+    }
+
+    public static boolean hints_confirm(){
+        return true;
     }
 
 }

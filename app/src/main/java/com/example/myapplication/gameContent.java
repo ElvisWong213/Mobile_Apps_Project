@@ -205,9 +205,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         }
         //hint button
         if (v.getId() == R.id.btn_hint) {
-            if (Integer.valueOf(hintChance.getText().toString()) > 0) {
-
-            }
+            DialogSetting.hint_DialogManager(gameContent.this);
         }
     }
 
