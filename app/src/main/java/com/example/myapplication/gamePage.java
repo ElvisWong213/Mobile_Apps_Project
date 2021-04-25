@@ -24,8 +24,6 @@ public class gamePage extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_page);
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.effect);
-        btn_win = findViewById(R.id.btn_win);
-        btn_win.setOnClickListener(this);
         btn_gamestart = findViewById(R.id.gamestart);
         btn_gamestart.setOnClickListener(this);
         btn_game_setting = findViewById(R.id.btn_game_setting);
@@ -44,17 +42,29 @@ public class gamePage extends AppCompatActivity implements View.OnClickListener 
                 return false;
             }
         });
+
+        btn_gamestart.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    if (DialogSetting.effectsoundcontrol(getApplicationContext())) {
+                        mediaPlayer.start();
+                    }
+                    btn_game_setting.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    btn_game_setting.clearColorFilter();
+                }
+                return false;
+            }
+        });
     }
 
         public void onClick(View v){
-            switch (v.getId()) {
-                case R.id.btn_win:
-                    DialogSetting.win_DialogManager(gamePage.this);
-                    break;
-                case R.id.gamestart:
+
+
                     Intent i = new Intent(gamePage.this,gameContent.class);
                     startActivity(i);
-            }
+
         }
 
 

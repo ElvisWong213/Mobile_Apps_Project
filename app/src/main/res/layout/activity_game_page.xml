@@ -63,6 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="目前最高等級: "
+                android:textStyle="bold"
                 android:textColor="#FFFFFF"
                 android:textSize="28sp" />
 
@@ -71,6 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
+                android:textStyle="bold"
                 android:textAlignment="viewEnd"
                 android:textColor="#FFFFFF"
                 android:textSize="28sp" />
