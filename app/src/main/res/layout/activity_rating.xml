@@ -72,4 +72,19 @@
 
     </FrameLayout>
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <Button
+        android:id="@+id/btnback"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="返回主頁"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:backgroundTint="#FF9800" />
+
 </LinearLayout>
