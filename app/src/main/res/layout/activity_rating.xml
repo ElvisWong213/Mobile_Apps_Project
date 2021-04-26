@@ -9,12 +9,42 @@
     android:orientation="vertical"
     tools:context=".rating">
 
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="給我們評分"
+        android:textAlignment="center"
+        android:textColor="#FFEB3B"
+        android:textSize="28sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <EditText
+        android:id="@+id/editTextTextMultiLine"
+        android:layout_width="250dp"
+        android:layout_height="90dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
     <RatingBar
         android:id="@+id/rating_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numStars="5"
         android:stepSize="0.5" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -35,7 +65,7 @@
             android:layout_gravity="bottom|center_horizontal"
             android:layout_marginBottom="15dp"
             android:text="評分"
-            android:textColor="#3BFFD1"
+            android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold" />
 
