@@ -28,13 +28,14 @@ public class DialogSetting{
     public static Boolean effectsound;
     public static Boolean bgmsound;
     public static MediaPlayer mediaPlayer,mediaPlayer2;
-    public static SharedPreferences pref, hints_pref, level_pref;
+    public static SharedPreferences pref, hints_pref, level_pref,temp_pref;
     public static int counter = 0;
     public static Dialog dialog, win_dialog,hint_dialog;
     public static TextView hint;
     public static int hintCounter = 2;
-
     private static boolean hintBool;
+    public static ImageView hintsline;
+    public static TextView tv_get;
 
 
     public static void DialogManager(Context page) {
@@ -174,6 +175,7 @@ public class DialogSetting{
                             Intent intent = new Intent();
                             resetHints(page.getApplicationContext());
                             resetLevel(page.getApplicationContext());
+                            resettempHints(page.getApplicationContext());
                             intent.setClass(page,LoadingPage.class);
                             page.startActivity(intent);
                             dialog.dismiss();
@@ -305,12 +307,16 @@ public class DialogSetting{
         Animation buttonAnimation = new AlphaAnimation(0.0f, 1.0f);
         buttonAnimation.setDuration(600);
 
+        tv_get = win_dialog.findViewById(R.id.tv_get);
+        tv_get.setVisibility(View.GONE);
+        hintsline = win_dialog.findViewById(R.id.hintsline);
+        gettempHints(page);
         ImageView img_win = win_dialog.findViewById(R.id.img_win);
-        ImageView btn_next = win_dialog.findViewById(R.id.btn_next);
+        ImageView btn_next  = win_dialog.findViewById(R.id.btn_next);
         TextView tv_win = win_dialog.findViewById(R.id.tv_win);
+        hintsline.startAnimation(appearAnimation);
         img_win.startAnimation(appearAnimation);
         btn_next.startAnimation(buttonAnimation);
-        tv_win.startAnimation(buttonAnimation);
         Animation disppearAnimation = new ScaleAnimation(1f, 0f,
                 1f, 0f,
                 Animation.RELATIVE_TO_SELF, 0.5f,
@@ -353,6 +359,8 @@ public class DialogSetting{
                 img_win.startAnimation(disppearAnimation);
                 btn_next.startAnimation(buttonAnimation2);
                 tv_win.startAnimation(buttonAnimation2);
+                hintsline.startAnimation(disppearAnimation);
+                tv_get.startAnimation(disppearAnimation);
             }
         });
 
@@ -477,6 +485,48 @@ public class DialogSetting{
         hints_editor.commit();
     }
 
+    public static void tempHints(Context page){
+        temp_pref = page.getSharedPreferences("temphints", Context.MODE_PRIVATE);
+        SharedPreferences.Editor temp_editor = temp_pref.edit();
+        if(temp_pref.getInt("temphints",0)!=3) {
+            temp_editor.putInt("temphints", temp_pref.getInt("temphints", 0) + 1);
+            temp_editor.commit();
+        }
+        if(temp_pref.getInt("temphints",0)==3){
+            addHints(page);
+            temp_editor.putInt("temphints", temp_pref.getInt("temphints", 0) - 3);
+            temp_editor.commit();
+
+        }
+    }
+
+    public static void gettempHints(Context page){
+        Animation appearAnimation = new ScaleAnimation(0f, 1f,
+                0f, 1f,
+                Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f);
+        appearAnimation.setDuration(300);
+        Animation buttonAnimation = new AlphaAnimation(0.0f, 1.0f);
+        buttonAnimation.setDuration(600);
+
+
+        temp_pref = page.getSharedPreferences("temphints", Context.MODE_PRIVATE);
+        switch (temp_pref.getInt("temphints",0)){
+            case 0:
+                hintsline.setImageResource(R.drawable.line);
+                break;
+            case 1:
+                hintsline.setImageResource(R.drawable.line2);
+                break;
+            case 2:
+                hintsline.setImageResource(R.drawable.line3);
+                tv_get.setVisibility(View.VISIBLE);
+                tv_get.startAnimation(appearAnimation);
+                break;
+        }
+
+    }
+
     public static void useHints(Context page){
         int temp = hints_pref.getInt("Myhints",2);
         hints_pref = page.getSharedPreferences("Myhints", Context.MODE_PRIVATE);
@@ -492,6 +542,14 @@ public class DialogSetting{
 
         hints_editor.putInt("Myhints", 2);
         hints_editor.commit();
+    }
+
+    public static void resettempHints(Context page){
+        temp_pref = page.getSharedPreferences("temphints", Context.MODE_PRIVATE);
+        SharedPreferences.Editor temp_editor = temp_pref.edit();
+
+        temp_editor.putInt("temphints", 0);
+        temp_editor.commit();
     }
 
     public static void set_hints_confirm(Boolean input) {
