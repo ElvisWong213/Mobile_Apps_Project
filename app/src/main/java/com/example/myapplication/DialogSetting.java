@@ -17,6 +17,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import maes.tech.intentanim.CustomIntent;
 
@@ -51,6 +52,7 @@ public class DialogSetting{
         ImageView closebutton = dialog.findViewById(R.id.closebutton);
         ImageView rateswitch = dialog.findViewById(R.id.rateswitch);
         ImageView rateswitchimage = dialog.findViewById(R.id.rateswitchimage);
+        ImageView resetButton = dialog.findViewById(R.id.restartswitch);
 
         rateswitch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -223,6 +225,17 @@ public class DialogSetting{
                 if(effectsound)
                     mediaPlayer.start();
                 dialog.dismiss();
+            }
+        });
+
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                resetHints(page.getApplicationContext());
+                resetLevel(page.getApplicationContext());
+                dialog.dismiss();
+                Toast.makeText(page, "關卡, 提示已經重設", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -430,6 +443,14 @@ public class DialogSetting{
         hints_editor.commit();
     }
 
+    public static void resetHints(Context page){
+        hints_pref = page.getSharedPreferences("Myhints", Context.MODE_PRIVATE);
+        SharedPreferences.Editor hints_editor = hints_pref.edit();
+
+        hints_editor.putInt("Myhints", 2);
+        hints_editor.commit();
+    }
+
     public static void set_hints_confirm(Boolean input) {
         hintBool = input;
     }
@@ -456,7 +477,6 @@ public class DialogSetting{
     }
 
     public static void resetLevel(Context page){
-        int temp = level_pref.getInt("Mylevel",1);
         level_pref = page.getSharedPreferences("Mylevel", Context.MODE_PRIVATE);
         SharedPreferences.Editor hints_editor = level_pref.edit();
 
