@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -18,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import maes.tech.intentanim.CustomIntent;
 
@@ -157,13 +160,34 @@ public class DialogSetting{
         restartswitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                resetHints(page.getApplicationContext());
-                resetLevel(page.getApplicationContext());
-                intent.setClass(page,LoadingPage.class);
-                page.startActivity(intent);
-                Toast.makeText(page, "關卡, 提示已經重設", Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
+
+                    AlertDialog.Builder builder;
+                    builder = new AlertDialog.Builder(page);
+                    builder.setMessage("放棄目前進度，回到第一關重新玩?\n(不會保留燃料數量)");
+                    builder.setCancelable(false);
+
+                    builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(page, "關卡和燃料數量已經重設", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent();
+                            resetHints(page.getApplicationContext());
+                            resetLevel(page.getApplicationContext());
+                            intent.setClass(page,LoadingPage.class);
+                            page.startActivity(intent);
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.setNegativeButton("否", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    AlertDialog alert = builder.create();
+                    alert.setTitle("重新開始遊戲");
+                    alert.show();
             }
         });
 
