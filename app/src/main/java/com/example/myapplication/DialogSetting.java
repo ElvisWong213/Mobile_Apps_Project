@@ -55,7 +55,30 @@ public class DialogSetting{
         rateswitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent i = new Intent(DialogSetting.this, )
+                Intent it = new Intent();
+                if(pref.getBoolean("effectsound",true) == true)
+                    mediaPlayer.start();
+                if(page.getClass()!=MainActivity.class || (page.getClass()==MainActivity.class)) {
+                    it.setClass(page, rating.class);
+                    page.startActivity(it);
+                    CustomIntent.customType(page, "bottom-to-up");
+                    ((Activity) page).finish();
+                }
+                dialog.dismiss();
+            }
+        });
+
+        rateswitch.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    rateswitch.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                    rateswitchimage.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    rateswitch.clearColorFilter();
+                    rateswitchimage.clearColorFilter();
+                }
+                return false;
             }
         });
 
