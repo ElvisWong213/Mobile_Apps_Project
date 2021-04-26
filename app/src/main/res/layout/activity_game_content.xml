@@ -7,6 +7,15 @@
     android:background="@drawable/mainpage"
     tools:context=".gameContent">
 
+    <TextView
+        android:id="@+id/currentLevel2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
     <ImageView
         android:id="@+id/ufo2"
         android:layout_width="142dp"
@@ -102,16 +111,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/level"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="關卡1"
-            android:textStyle="bold"
-            android:textAlignment="viewEnd"
-            android:textColor="#FFFFFF"
-            android:textSize="28sp" />
 
         <TextView
             android:id="@+id/Question"
