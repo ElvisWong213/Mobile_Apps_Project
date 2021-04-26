@@ -90,6 +90,18 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
             }
         });
 
+        btn_hint.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    btn_hint.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    btn_hint.clearColorFilter();
+                }
+                return false;
+            }
+        });
+
         hintChance = findViewById(R.id.hintChance);
         hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
 
