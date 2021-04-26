@@ -205,7 +205,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
 
     public void hints() {
         ArrayList index = new ArrayList();
-        String dummy = (String) answerArrayList.get(LoadingPage.checkpoint - 1);
+        String dummy = (String) answerArrayList.get(DialogSetting.getLevel(getApplicationContext()) - 1);
         for (int i = 0; i < ansSize; i++) {
             if (ansButtonArray[i].getText().toString() != "" && ansButtonArray[i].getText().toString().charAt(0) == dummy.charAt(i)) {
                 //do nothing
@@ -247,11 +247,11 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         for (int j = 0; j < ansButtonArray.length; j++) {
             chinese += ansButtonArray[j].getText();
         }
-        if (chinese.equals(answerArrayList.get(LoadingPage.checkpoint - 1))) {  //answer is correct
+        if (chinese.equals(answerArrayList.get(DialogSetting.getLevel(getApplicationContext()) - 1))) {  //answer is correct
             DialogSetting.win_DialogManager(gameContent.this);
             DialogSetting.addHints(getApplicationContext());
             hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
-            LoadingPage.checkpoint++;
+            DialogSetting.addLevel(getApplicationContext());
             levelText();
             chinese="";
             ansIndex = 0;
@@ -295,7 +295,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     public void levelText(){
         ArrayList buffer2 = new ArrayList();
         for (int i = 0; i < questionArrayList.size(); i++) {
-            if (LoadingPage.checkpoint == (i + 1)) {
+            if (DialogSetting.getLevel(getApplicationContext()) == (i + 1)) {
                 ansSize = ((String) answerArrayList.get(i)).length();
                 switch (ansSize){
                     case 2:
@@ -305,7 +305,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                     default:
                         break;
                 }
-                level.setText("關卡" + (i + 1));
+                level.setText("關卡" + DialogSetting.getLevel(getApplicationContext()));
                 emoji.setText((String) questionArrayList.get(i));
                 type.setText((String) typeArrayList.get(i));
                 JSONArray buffer = (JSONArray) buttonTextArrayList.get(i);

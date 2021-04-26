@@ -24,7 +24,7 @@ public class DialogSetting{
     public static Boolean effectsound;
     public static Boolean bgmsound;
     public static MediaPlayer mediaPlayer,mediaPlayer2;
-    public static SharedPreferences pref, hints_pref;
+    public static SharedPreferences pref, hints_pref, level_pref;
     public static int counter = 0;
     public static Dialog dialog, win_dialog,hint_dialog;
     public static TextView hint;
@@ -415,6 +415,31 @@ public class DialogSetting{
         return hintBool;
     }
 
+
+
+
+    public static int getLevel(Context page){
+        level_pref = page.getSharedPreferences("Mylevel", Context.MODE_PRIVATE);
+        return level_pref.getInt("Mylevel",1);
+    }
+
+    public static void addLevel(Context page){
+        int temp = level_pref.getInt("Mylevel",1);
+        level_pref = page.getSharedPreferences("Mylevel", Context.MODE_PRIVATE);
+        SharedPreferences.Editor hints_editor = level_pref.edit();
+
+        hints_editor.putInt("Mylevel", temp + 1);
+        hints_editor.commit();
+    }
+
+    public static void resetLevel(Context page){
+        int temp = level_pref.getInt("Mylevel",1);
+        level_pref = page.getSharedPreferences("Mylevel", Context.MODE_PRIVATE);
+        SharedPreferences.Editor hints_editor = level_pref.edit();
+
+        hints_editor.putInt("Mylevel", 1);
+        hints_editor.commit();
+    }
 
 
 }
