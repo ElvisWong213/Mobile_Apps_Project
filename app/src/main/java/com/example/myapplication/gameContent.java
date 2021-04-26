@@ -61,13 +61,13 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
 
         Animation a = new TranslateAnimation(1000, Animation.ABSOLUTE - 2000,
                 950, Animation.ABSOLUTE - 300);
-        a.setDuration(10000);
+        a.setDuration(11000);
         a.setRepeatCount(Animation.INFINITE);
         a.setRepeatMode(Animation.RESTART);
         rocket2.startAnimation(a);
         Animation b = new TranslateAnimation(-2000, 1100,
                 90,  90);
-        b.setDuration(10000);
+        b.setDuration(12000);
         b.setRepeatCount(Animation.INFINITE);
         b.setRepeatMode(Animation.RESTART);
         ufo2.startAnimation(b);
