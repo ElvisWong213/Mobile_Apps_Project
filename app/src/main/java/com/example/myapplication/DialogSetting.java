@@ -177,6 +177,7 @@ public class DialogSetting{
                             intent.setClass(page,LoadingPage.class);
                             page.startActivity(intent);
                             dialog.dismiss();
+                            System.exit(0);
                         }
                     });
                     builder.setNegativeButton("否", new DialogInterface.OnClickListener() {
