@@ -20,6 +20,7 @@ public class rating extends AppCompatActivity {
     RatingBar ratingBar;
     ImageView btSubmit;
     Dialog dialog;
+    Button btnback;
     public static Class currentPage;
     public static MediaPlayer mediaPlayer;
 
@@ -67,6 +68,19 @@ public class rating extends AppCompatActivity {
             public void onClick(View v) {
                 dialog.show();
             }
+        });
+
+        btnback = findViewById(R.id.btnback);
+        btnback.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.btnback:
+                        Intent i = new Intent(rating.this, gamePage.class);
+                        startActivity(i);
+                        break;
+                }
+            }
+
         });
     }
     ////////////////////////////////////////////////////////////
