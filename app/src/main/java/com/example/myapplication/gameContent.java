@@ -225,8 +225,9 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 index.add(i);
             }
         }
-        if (DialogSetting.getHints(getApplicationContext()) == 0) {
+        if (DialogSetting.getHints(getApplicationContext()) <= 1) {
             btn_hint.setEnabled(false);
+            btn_hint.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
         }
         if (index.size() > 0 && DialogSetting.getHints(getApplicationContext()) > 0) {
             DialogSetting.useHints(getApplicationContext());
@@ -246,13 +247,13 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 }
             }
             int counter = 0;
-            for (int i = 0; i < ansButtonArray.length; i++) {
+            for (int i = 0; i < ansSize; i++) {
                 if (ansButtonArray[i].getText() != "") {
                     counter++;
                 }
             }
 
-            if (counter == ansButtonArray.length) {
+            if (counter == ansSize) {
                 checkAns();
             }
         }
@@ -315,13 +316,25 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 switch (ansSize){
                     case 2:
                         ansButtonArray[2].setVisibility(View.GONE);
-                    case 3:
                         ansButtonArray[3].setVisibility(View.GONE);
+                        break;
+                    case 3:
+                        ansButtonArray[2].setVisibility(View.VISIBLE);
+                        ansButtonArray[3].setVisibility(View.GONE);
+                        break;
                     default:
+                        ansButtonArray[2].setVisibility(View.VISIBLE);
+                        ansButtonArray[3].setVisibility(View.VISIBLE);
                         break;
                 }
                 level.setText("關卡" + DialogSetting.getLevel(getApplicationContext()));
-                btn_hint.setEnabled(true);
+                if (DialogSetting.getHints(getApplicationContext()) > 0) {
+                    btn_hint.setEnabled(true);
+                    btn_hint.clearColorFilter();
+                }else{
+                    btn_hint.setEnabled(false);
+                    btn_hint.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                }
                 emoji.setText((String) questionArrayList.get(i));
                 type.setText((String) typeArrayList.get(i));
                 JSONArray buffer = (JSONArray) buttonTextArrayList.get(i);
