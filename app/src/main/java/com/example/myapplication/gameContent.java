@@ -190,37 +190,46 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         }
         //hint button
         if (v.getId() == R.id.btn_hint) {
-            ArrayList index = new ArrayList();
-            String dummy = (String) answerArrayList.get(LoadingPage.checkpoint - 1);
-            for (int i = 0; i < ansSize; i++) {
-                if (ansButtonArray[i].getText().toString() != "" && ansButtonArray[i].getText().toString().charAt(0) == dummy.charAt(i)) {
-                    //do nothing
-                }else{
-                    index.add(i);
+            hints();
+        }
+    }
+
+    public void hints() {
+        ArrayList index = new ArrayList();
+        String dummy = (String) answerArrayList.get(LoadingPage.checkpoint - 1);
+        for (int i = 0; i < ansSize; i++) {
+            if (ansButtonArray[i].getText().toString() != "" && ansButtonArray[i].getText().toString().charAt(0) == dummy.charAt(i)) {
+                //do nothing
+            }else{
+                index.add(i);
+            }
+        }
+        if (index.size() > 0 && DialogSetting.getHints(getApplicationContext()) > 0) {
+            DialogSetting.useHints(getApplicationContext());
+            hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
+            Random r = new Random();
+            int outputIndex = (int) index.get(r.nextInt(index.size()));
+            for (int i = 0; i < buttonArray.length; i++) {
+                if (buttonArray[i].getText() == ansButtonArray[outputIndex].getText()) {
+                    buttonArray[i].setEnabled(true);
                 }
             }
-            if (index.size() > 1) {
-                DialogSetting.useHints(getApplicationContext());
-                hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
-                Random r = new Random();
-                int outputIndex = (int) index.get(r.nextInt(index.size()));
-                ansButtonArray[outputIndex].setText(String.valueOf(dummy.charAt(outputIndex)));
-                ansButtonArray[outputIndex].setEnabled(false);
-                for (int i = 0; i < buttonArray.length; i++) {
-                    if (buttonArray[i].getText().charAt(0) == dummy.charAt(outputIndex)) {
-                        buttonArray[i].setEnabled(false);
-                    }
+            ansButtonArray[outputIndex].setText(String.valueOf(dummy.charAt(outputIndex)));
+            ansButtonArray[outputIndex].setEnabled(false);
+            for (int i = 0; i < buttonArray.length; i++) {
+                if (buttonArray[i].getText().charAt(0) == dummy.charAt(outputIndex)) {
+                    buttonArray[i].setEnabled(false);
                 }
-                int counter = 0;
-                for (int i = 0; i < ansButtonArray.length; i++) {
-                    if (ansButtonArray[i].getText() != "") {
-                        counter++;
-                    }
+            }
+            int counter = 0;
+            for (int i = 0; i < ansButtonArray.length; i++) {
+                if (ansButtonArray[i].getText() != "") {
+                    counter++;
                 }
+            }
 
-                if (counter == ansButtonArray.length) {
-                    checkAns();
-                }
+            if (counter == ansButtonArray.length) {
+                checkAns();
             }
         }
     }
@@ -229,7 +238,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         for (int j = 0; j < ansButtonArray.length; j++) {
             chinese += ansButtonArray[j].getText();
         }
-        if (chinese.equals(answerArrayList.get(LoadingPage.checkpoint - 1))) {
+        if (chinese.equals(answerArrayList.get(LoadingPage.checkpoint - 1))) {  //answer is correct
             DialogSetting.win_DialogManager(gameContent.this);
             DialogSetting.addHints(getApplicationContext());
             hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
@@ -239,11 +248,12 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
             ansIndex = 0;
             for (int j = 0; j < ansButtonArray.length; j++) {
                 ansButtonArray[j].setText("");
+                ansButtonArray[j].setEnabled(false);
             }
             for (int j = 0; j < buttonArray.length; j++) {
                 buttonArray[j].setEnabled(true);
             }
-        }else {
+        }else { //answer is incorrect
             shakeanimationandwrongeffect(emoji, -10, 10);
             chinese="";
         }
@@ -280,9 +290,9 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 ansSize = ((String) answerArrayList.get(i)).length();
                 switch (ansSize){
                     case 2:
-                        ansButtonArray[2].setVisibility(View.INVISIBLE);
+                        ansButtonArray[2].setVisibility(View.GONE);
                     case 3:
-                        ansButtonArray[3].setVisibility(View.INVISIBLE);
+                        ansButtonArray[3].setVisibility(View.GONE);
                     default:
                         break;
                 }
