@@ -26,7 +26,7 @@ import android.widget.TextView;
 
 import maes.tech.intentanim.CustomIntent;
 
-public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements  View.OnClickListener {
     AlertDialog.Builder builder;
     Dialog dialog;
     MediaPlayer mediaPlayer;
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         rocketMove();
 
         rl = findViewById(R.id.rl);
-        rl.setOnTouchListener(this);
+        //rl.setOnTouchListener(this);
 
         logo1 = findViewById(R.id.logo1);
         logo2 = findViewById(R.id.logo2);
@@ -251,25 +251,25 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
 
-    public boolean onTouch(View v, MotionEvent e){
-        int eventAction = e.getAction();
+    //public boolean onTouch(View v, MotionEvent e){
+        //int eventAction = e.getAction();
 
-        x = (int) e.getX();
-        y = (int) e.getY();
+        //x = (int) e.getX();
+        //y = (int) e.getY();
 
-        switch (eventAction){
-            case MotionEvent.ACTION_DOWN:
-                textView.setText("Action_down: x=" + x + ", y = "  + y);
-                break;
-            case MotionEvent.ACTION_UP:
-                textView.setText("Action_up: x=" + x + ", y = "  + y);
-                break;
-            case MotionEvent.ACTION_MOVE:
-                textView.setText("Action_move: x=" + x + ", y = "  + y);
-                break;
-        }
-        return true;
-    }
+        //switch (eventAction){
+            //case MotionEvent.ACTION_DOWN:
+                //textView.setText("Action_down: x=" + x + ", y = "  + y);
+                //break;
+            //case MotionEvent.ACTION_UP:
+                //textView.setText("Action_up: x=" + x + ", y = "  + y);
+                //break;
+            //case MotionEvent.ACTION_MOVE:
+                //textView.setText("Action_move: x=" + x + ", y = "  + y);
+                //break;
+        //}
+        //return true;
+    //}
 
     public void rocketMove() {
         Animation a = new TranslateAnimation(1000, Animation.ABSOLUTE - 2000,
