@@ -100,7 +100,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="bottom|center_horizontal"
                                         android:layout_marginBottom="20dp"
-                                        android:text="重新開始卡關"
+                                        android:text="重新開始關卡"
                                         android:textColor="#3BFFD1"
                                         android:textSize="18sp"
                                         android:textStyle="bold" /> />
