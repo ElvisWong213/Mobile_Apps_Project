@@ -65,7 +65,6 @@ public class DialogSetting{
                 if(pref.getBoolean("effectsound",true) == true)
                     mediaPlayer.start();
                 if(page.getClass()!=MainActivity.class || (page.getClass()==MainActivity.class)) {
-                    rating.currentPage = page.getClass();
                     it.setClass(page, rating.class);
                     page.startActivity(it);
                     CustomIntent.customType(page, "bottom-to-up");
