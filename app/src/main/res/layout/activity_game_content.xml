@@ -113,16 +113,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/level"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="關卡1"
-            android:textStyle="bold"
-            android:textAlignment="viewEnd"
-            android:textColor="#FFFFFF"
-            android:textSize="28sp" />
-
-        <TextView
             android:id="@+id/Question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
