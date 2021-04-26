@@ -8,6 +8,12 @@
     tools:context=".gameContent">
 
     <ImageView
+        android:id="@+id/ufo2"
+        android:layout_width="142dp"
+        android:layout_height="123dp"
+        app:srcCompat="@drawable/ufo" />
+
+    <ImageView
         android:id="@+id/rocket2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

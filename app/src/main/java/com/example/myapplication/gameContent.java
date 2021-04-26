@@ -38,6 +38,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     MediaPlayer mediaPlayer,mediaPlayer3;
     ImageView rocket2;
     ImageView btn_hint;
+    ImageView ufo2;
     public static SharedPreferences pref_hints;
 
     ArrayList questionArrayList = new ArrayList(), answerArrayList = new ArrayList(), typeArrayList = new ArrayList(), buttonTextArrayList = new ArrayList();
@@ -56,12 +57,20 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         btn_hint = findViewById(R.id.btn_hint);
         btn_hint.setOnClickListener(this);
         rocket2.setRotation(310);
+        ufo2 = findViewById(R.id.ufo2);
+
         Animation a = new TranslateAnimation(1000, Animation.ABSOLUTE - 2000,
                 950, Animation.ABSOLUTE - 300);
-        a.setDuration(10000);
+        a.setDuration(11000);
         a.setRepeatCount(Animation.INFINITE);
         a.setRepeatMode(Animation.RESTART);
         rocket2.startAnimation(a);
+        Animation b = new TranslateAnimation(-2000, 1100,
+                90,  90);
+        b.setDuration(12000);
+        b.setRepeatCount(Animation.INFINITE);
+        b.setRepeatMode(Animation.RESTART);
+        ufo2.startAnimation(b);
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.effect);
         mediaPlayer3 = MediaPlayer.create(getApplicationContext(), R.raw.wrong);
         btn_gamecontent_setting = findViewById(R.id.btn_gamecontent_setting);

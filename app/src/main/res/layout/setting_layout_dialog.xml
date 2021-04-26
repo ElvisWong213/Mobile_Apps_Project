@@ -161,8 +161,6 @@
                                         android:id="@+id/bgmswitch"
                                         android:layout_width="140dp"
                                         android:layout_height="140dp"
-                                        android:layout_marginStart="5dp"
-                                        android:layout_marginLeft="5dp"
                                         app:srcCompat="@drawable/square" />
 
                                     <ImageView
