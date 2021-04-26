@@ -225,6 +225,9 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 index.add(i);
             }
         }
+        if (DialogSetting.getHints(getApplicationContext()) == 0) {
+            btn_hint.setEnabled(false);
+        }
         if (index.size() > 0 && DialogSetting.getHints(getApplicationContext()) > 0) {
             DialogSetting.useHints(getApplicationContext());
             hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
@@ -318,6 +321,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                         break;
                 }
                 level.setText("關卡" + DialogSetting.getLevel(getApplicationContext()));
+                btn_hint.setEnabled(true);
                 emoji.setText((String) questionArrayList.get(i));
                 type.setText((String) typeArrayList.get(i));
                 JSONArray buffer = (JSONArray) buttonTextArrayList.get(i);
