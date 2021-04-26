@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,7 +26,10 @@ public class rating extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String s = String.valueOf(ratingBar.getRating());
-                Toast.makeText(getApplicationContext(), s+"Star", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "已送出評分", Toast.LENGTH_SHORT).show();
+                Intent it = new Intent();
+                it.setClass(rating.this,gamePage.class);
+                startActivity(it);
             }
         });
     }
