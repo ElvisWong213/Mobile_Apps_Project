@@ -178,25 +178,26 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 for (int j = 0; j < ansSize; j++) {
                     if (ansButtonArray[j].getText() == "") {
                         ansIndex = j;
+                        ansButtonArray[ansIndex].setText(buttonArray[i].getText());
+                        ansButtonArray[ansIndex].setEnabled(true);
+                        buttonArray[i].setEnabled(false);
+                        for (int k = ansIndex; k < ansButtonArray.length; k++) {
+                            if (ansButtonArray[k].getText() == "") {
+                                ansIndex = k;
+                                break;
+                            }
+                            if (k == ansSize - 1) {
+                                ansIndex = ansSize;
+                            }
+                        }
                         break;
-                    }
-                }
-                ansButtonArray[ansIndex].setText(buttonArray[i].getText());
-                ansButtonArray[ansIndex].setEnabled(true);
-                buttonArray[i].setEnabled(false);
-                for (int j = ansIndex; j < ansButtonArray.length; j++) {
-                    if (ansButtonArray[j].getText() == "") {
-                        ansIndex = j;
-                        break;
-                    }
-                    if (j == ansSize - 1) {
-                        ansIndex = ansSize;
                     }
                 }
                 //check ans
                 if (ansIndex == ansSize) {
                     checkAns();
                 }
+                ansIndex = 0;
                 break;
             }
         }
@@ -243,6 +244,13 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
             for (int i = 0; i < buttonArray.length; i++) {
                 if (buttonArray[i].getText() == ansButtonArray[outputIndex].getText()) {
                     buttonArray[i].setEnabled(true);
+                }
+            }
+            for (int i = 0; i < ansSize; i++) {
+                if (ansButtonArray[i].getText() != "") {
+                    if (ansButtonArray[i].getText().charAt(0) == dummy.charAt(outputIndex)) {
+                        ansButtonArray[i].setText("");
+                    }
                 }
             }
             ansButtonArray[outputIndex].setText(String.valueOf(dummy.charAt(outputIndex)));
