@@ -30,7 +30,7 @@ public class gamePage extends AppCompatActivity implements View.OnClickListener 
         btn_gamestart = findViewById(R.id.gamestart);
         btn_gamestart.setOnClickListener(this);
         btn_game_setting = findViewById(R.id.btn_game_setting);
-        highestLevel.setText(String.valueOf(LoadingPage.checkpoint));
+        highestLevel.setText(String.valueOf(DialogSetting.getLevel(getApplicationContext())));
         btn_game_setting.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
