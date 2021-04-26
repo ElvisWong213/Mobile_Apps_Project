@@ -29,6 +29,7 @@
         android:background="#FFFFFF"
         android:ems="10"
         android:gravity="start|top"
+        android:hint="建議有什麼可以改進的空間"
         android:inputType="textMultiLine" />
 
     <Space
