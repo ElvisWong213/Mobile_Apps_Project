@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
@@ -33,7 +34,7 @@ import maes.tech.intentanim.CustomIntent;
 public class gameContent extends AppCompatActivity implements View.OnClickListener{
     String chinese = "";
     Handler handler = new Handler();
-    TextView emoji, level, hintChance, type;
+    TextView emoji,hintChance, type, currentLevel2;
     ImageButton btn_gamecontent_setting;
     MediaPlayer mediaPlayer,mediaPlayer3;
     ImageView rocket2;
@@ -44,7 +45,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     ArrayList questionArrayList = new ArrayList(), answerArrayList = new ArrayList(), typeArrayList = new ArrayList(), buttonTextArrayList = new ArrayList();
 
     Button[] buttonArray = new Button[10];
-    int[] buttonID = {R.id.textBtn1, R.id.textBtn2, R.id.textBtn3, R.id.textBtn4, R.id.textBtn5, R.id.textBtn6, R.id.textBtn7, R.id.textBtn8, R.id.textBtn9, R.id.textBtn10};
+    int[] buttonID = {R.id.textBtn1, R.id.textBtn2, R.id.textBtn3, R.id.textBtn4, R.id.textBtn5, R.id.textBtn6, R.id.textBtn7, R.id.textBtn8, R.id.textBtn9, R.id.textBtn10, R.id.textBtn11, R.id.textBtn12, R.id.textBtn13, R.id.textBtn14, R.id.textBtn15};
     Button[] ansButtonArray = new Button[4];
     int[] ansButtonID = {R.id.userInput1, R.id.userInput2, R.id.userInput3, R.id.userInput4};
     int ansIndex = 0;
@@ -58,7 +59,10 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         btn_hint.setOnClickListener(this);
         rocket2.setRotation(310);
         ufo2 = findViewById(R.id.ufo2);
-
+        currentLevel2 = findViewById(R.id.currentLevel2);
+        currentLevel2.setX(680);
+        currentLevel2.setY(25);
+        currentLevel2.setText("第 " + Integer.toString(DialogSetting.getLevel(getApplicationContext())) + " 關");
         Animation a = new TranslateAnimation(1000, Animation.ABSOLUTE - 2000,
                 950, Animation.ABSOLUTE - 300);
         a.setDuration(11000);
@@ -106,7 +110,6 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
 
         emoji = findViewById(R.id.emoji);
-        level = findViewById(R.id.level);
         type = findViewById(R.id.type);
 
         //define ans button
@@ -170,10 +173,13 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
             mediaPlayer.start();
         }
         //text button
-        for (int i = 0; i < buttonArray.length && ansIndex < 4; i++) {
+        for (int i = 0; i < buttonArray.length && ansIndex < ansSize; i++) {
             if (v.getId() == buttonID[i]) {
-                if (ansButtonArray[ansIndex].getText() != "") {
-                    ansIndex++;
+                for (int j = 0; j < ansSize; j++) {
+                    if (ansButtonArray[j].getText() == "") {
+                        ansIndex = j;
+                        break;
+                    }
                 }
                 ansButtonArray[ansIndex].setText(buttonArray[i].getText());
                 ansButtonArray[ansIndex].setEnabled(true);
@@ -265,19 +271,24 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         }
         if (chinese.equals(answerArrayList.get(DialogSetting.getLevel(getApplicationContext()) - 1))) {  //answer is correct
             DialogSetting.win_DialogManager(gameContent.this);
-            DialogSetting.addHints(getApplicationContext());
-            hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
-            DialogSetting.addLevel(getApplicationContext());
-            levelText();
-            chinese="";
-            ansIndex = 0;
-            for (int j = 0; j < ansButtonArray.length; j++) {
-                ansButtonArray[j].setText("");
-                ansButtonArray[j].setEnabled(false);
-            }
-            for (int j = 0; j < buttonArray.length; j++) {
-                buttonArray[j].setEnabled(true);
-            }
+            DialogSetting.win_dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    DialogSetting.addHints(getApplicationContext());
+                    hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
+                    DialogSetting.addLevel(getApplicationContext());
+                    levelText();
+                    chinese="";
+                    ansIndex = 0;
+                    for (int j = 0; j < ansButtonArray.length; j++) {
+                        ansButtonArray[j].setText("");
+                        ansButtonArray[j].setEnabled(false);
+                    }
+                    for (int j = 0; j < buttonArray.length; j++) {
+                        buttonArray[j].setEnabled(true);
+                    }
+                }
+            });
         }else { //answer is incorrect
             shakeanimationandwrongeffect(emoji, -10, 10);
             chinese="";
@@ -327,8 +338,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                         ansButtonArray[3].setVisibility(View.VISIBLE);
                         break;
                 }
-                level.setText("關卡" + DialogSetting.getLevel(getApplicationContext()));
-                if (DialogSetting.getHints(getApplicationContext()) > 0) {
+                currentLevel2.setText("第 " + Integer.toString(DialogSetting.getLevel(getApplicationContext())) + " 關");                if (DialogSetting.getHints(getApplicationContext()) > 0) {
                     btn_hint.setEnabled(true);
                     btn_hint.clearColorFilter();
                 }else{
