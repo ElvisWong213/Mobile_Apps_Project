@@ -45,7 +45,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     ArrayList questionArrayList = new ArrayList(), answerArrayList = new ArrayList(), typeArrayList = new ArrayList(), buttonTextArrayList = new ArrayList();
 
     Button[] buttonArray = new Button[10];
-    int[] buttonID = {R.id.textBtn1, R.id.textBtn2, R.id.textBtn3, R.id.textBtn4, R.id.textBtn5, R.id.textBtn6, R.id.textBtn7, R.id.textBtn8, R.id.textBtn9, R.id.textBtn10};
+    int[] buttonID = {R.id.textBtn1, R.id.textBtn2, R.id.textBtn3, R.id.textBtn4, R.id.textBtn5, R.id.textBtn6, R.id.textBtn7, R.id.textBtn8, R.id.textBtn9, R.id.textBtn10, R.id.textBtn11, R.id.textBtn12, R.id.textBtn13, R.id.textBtn14, R.id.textBtn15};
     Button[] ansButtonArray = new Button[4];
     int[] ansButtonID = {R.id.userInput1, R.id.userInput2, R.id.userInput3, R.id.userInput4};
     int ansIndex = 0;
@@ -173,10 +173,13 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
             mediaPlayer.start();
         }
         //text button
-        for (int i = 0; i < buttonArray.length && ansIndex < 4; i++) {
+        for (int i = 0; i < buttonArray.length && ansIndex < ansSize; i++) {
             if (v.getId() == buttonID[i]) {
-                if (ansButtonArray[ansIndex].getText() != "") {
-                    ansIndex++;
+                for (int j = 0; j < ansSize; j++) {
+                    if (ansButtonArray[j].getText() == "") {
+                        ansIndex = j;
+                        break;
+                    }
                 }
                 ansButtonArray[ansIndex].setText(buttonArray[i].getText());
                 ansButtonArray[ansIndex].setEnabled(true);
