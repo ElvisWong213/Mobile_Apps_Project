@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+        <activity android:name=".rating"></activity>
         <activity android:name=".gameContent" />
         <activity android:name=".gamePage" />
         <activity android:name=".MainActivity" />

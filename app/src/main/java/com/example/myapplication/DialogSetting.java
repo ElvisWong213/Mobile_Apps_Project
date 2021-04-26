@@ -49,6 +49,15 @@ public class DialogSetting{
         ImageView homeswitchimage = dialog.findViewById(R.id.homeswitchimage);
         ImageView homeswitch = dialog.findViewById(R.id.homeswitch);
         ImageView closebutton = dialog.findViewById(R.id.closebutton);
+        ImageView rateswitch = dialog.findViewById(R.id.rateswitch);
+        ImageView rateswitchimage = dialog.findViewById(R.id.rateswitchimage);
+
+        rateswitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent i = new Intent(DialogSetting.this, )
+            }
+        });
 
         LinearLayout CardLayout = dialog.findViewById(R.id.CardLayout);
         dialog.show();
@@ -344,6 +353,8 @@ public class DialogSetting{
                 hint_dialog.dismiss();
             }
         });
+
+
 }
 
 
@@ -403,6 +414,8 @@ public class DialogSetting{
     public static boolean get_hints_confirm(){
         return hintBool;
     }
+
+
 
 }
 
