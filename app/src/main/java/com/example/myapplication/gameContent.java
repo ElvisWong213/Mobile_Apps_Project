@@ -3,7 +3,6 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
@@ -34,7 +33,7 @@ import maes.tech.intentanim.CustomIntent;
 public class gameContent extends AppCompatActivity implements View.OnClickListener{
     String chinese = "";
     Handler handler = new Handler();
-    TextView emoji,hintChance, type, currentLevel2;
+    TextView emoji, level, hintChance, type;
     ImageButton btn_gamecontent_setting;
     MediaPlayer mediaPlayer,mediaPlayer3;
     ImageView rocket2;
@@ -59,10 +58,6 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         btn_hint.setOnClickListener(this);
         rocket2.setRotation(310);
         ufo2 = findViewById(R.id.ufo2);
-        currentLevel2 = findViewById(R.id.currentLevel2);
-        currentLevel2.setX(680);
-        currentLevel2.setY(25);
-        currentLevel2.setText("第 " + Integer.toString(DialogSetting.getLevel(getApplicationContext())) + " 關");
 
         Animation a = new TranslateAnimation(1000, Animation.ABSOLUTE - 2000,
                 950, Animation.ABSOLUTE - 300);
@@ -111,6 +106,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
 
         emoji = findViewById(R.id.emoji);
+        level = findViewById(R.id.level);
         type = findViewById(R.id.type);
 
         //define ans button
@@ -269,24 +265,19 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         }
         if (chinese.equals(answerArrayList.get(DialogSetting.getLevel(getApplicationContext()) - 1))) {  //answer is correct
             DialogSetting.win_DialogManager(gameContent.this);
-            DialogSetting.win_dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                @Override
-                public void onDismiss(DialogInterface dialog) {
-                    DialogSetting.addHints(getApplicationContext());
-                    hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
-                    DialogSetting.addLevel(getApplicationContext());
-                    levelText();
-                    chinese="";
-                    ansIndex = 0;
-                    for (int j = 0; j < ansButtonArray.length; j++) {
-                        ansButtonArray[j].setText("");
-                        ansButtonArray[j].setEnabled(false);
-                    }
-                    for (int j = 0; j < buttonArray.length; j++) {
-                        buttonArray[j].setEnabled(true);
-                    }
-                }
-            });
+            DialogSetting.addHints(getApplicationContext());
+            hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
+            DialogSetting.addLevel(getApplicationContext());
+            levelText();
+            chinese="";
+            ansIndex = 0;
+            for (int j = 0; j < ansButtonArray.length; j++) {
+                ansButtonArray[j].setText("");
+                ansButtonArray[j].setEnabled(false);
+            }
+            for (int j = 0; j < buttonArray.length; j++) {
+                buttonArray[j].setEnabled(true);
+            }
         }else { //answer is incorrect
             shakeanimationandwrongeffect(emoji, -10, 10);
             chinese="";
@@ -336,7 +327,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                         ansButtonArray[3].setVisibility(View.VISIBLE);
                         break;
                 }
-                currentLevel2.setText("第 " + Integer.toString(DialogSetting.getLevel(getApplicationContext())) + " 關");
+                level.setText("關卡" + DialogSetting.getLevel(getApplicationContext()));
                 if (DialogSetting.getHints(getApplicationContext()) > 0) {
                     btn_hint.setEnabled(true);
                     btn_hint.clearColorFilter();

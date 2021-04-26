@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     Dialog dialog;
     MediaPlayer mediaPlayer;
     public static Intent svc;
-    private TextView textView, currentLevel;
+    private TextView textView;
     private int x, y; // The touch coordinates
     private ViewGroup mainLayout;
     private RelativeLayout rl;
@@ -45,10 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        currentLevel = findViewById(R.id.currentLevel);
-        currentLevel.setX(680);
-        currentLevel.setY(25);
-        currentLevel.setText("第 " + Integer.toString(DialogSetting.getLevel(getApplicationContext())) + " 關");
+        textView = findViewById(R.id.textView);
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.effect);
         main_title = findViewById(R.id.main_title);
         main_play = findViewById(R.id.main_play);
@@ -115,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         setlocation(logo1, 250, 675);
         setlocation(logo2, 905, 400);
         setlocation(logo3, 349, 149);
-        setlocation(logo4, 720, 150);
+        setlocation(logo4, 720, 65);
         setlocation(logo5, 80, 1175);
         setlocation(logo6, 896, 921);
         setlocation(logo7, 928, 1470);
@@ -241,7 +238,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         Intent it = new Intent();
         switch (v.getId()) {
             case R.id.main_play:
-                it.setClass(MainActivity.this,gameContent.class);
+                it.setClass(MainActivity.this,gamePage.class);
                 startActivity(it);
                 CustomIntent.customType(MainActivity.this, "up-to-bottom");
                 DialogSetting.counter++;
