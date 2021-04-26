@@ -82,6 +82,8 @@
 
                                     <ImageView
                                         android:id="@+id/ggplayswitch"
+                                        android:layout_marginStart="5dp"
+                                        android:layout_marginLeft="5dp"
                                         android:layout_width="140dp"
                                         android:layout_height="140dp"
                                         app:srcCompat="@drawable/square" />
