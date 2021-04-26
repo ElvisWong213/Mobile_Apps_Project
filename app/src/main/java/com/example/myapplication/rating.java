@@ -45,9 +45,9 @@ public class rating extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "已送出評分", Toast.LENGTH_SHORT).show();
-                Intent it = new Intent();
-                it.setClass(rating.this,currentPage);
-                startActivity(it);
+                Intent i = new Intent(rating.this, currentPage);
+                startActivity(i);
+                CustomIntent.customType(rating.this, "up-to-bottom");
                 dialog.dismiss();
             }
         });
