@@ -73,7 +73,39 @@
                                         android:textColor="#3BFFD1"
                                         android:textSize="18sp"
                                         android:textStyle="bold" />
+
                                 </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:id="@+id/ggplayswitch"
+                                        android:layout_width="140dp"
+                                        android:layout_height="140dp"
+                                        app:srcCompat="@drawable/square" />
+
+                                    <ImageView
+                                        android:id="@+id/imageView3"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_marginTop="20dp"
+                                        app:srcCompat="@drawable/star_ggplay" />
+
+                                    <TextView
+                                        android:id="@+id/textView8"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="評分"
+                                        android:layout_gravity="bottom|center_horizontal"
+                                        android:layout_marginBottom="20dp"
+                                        android:textColor="#3BFFD1"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold"/>
+                                </FrameLayout>
+
                             </LinearLayout>
 
                         </LinearLayout>
