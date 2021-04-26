@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -13,15 +14,20 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import maes.tech.intentanim.CustomIntent;
+
 public class rating extends AppCompatActivity {
     RatingBar ratingBar;
     ImageView btSubmit;
     Dialog dialog;
+    public static Class currentPage;
+    public static MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating);
+        mediaPlayer = MediaPlayer.create(rating.this, R.raw.effect);
 
         dialog = new Dialog(rating.this);
         dialog.setContentView(R.layout.activity_feedback_dialog_box);
@@ -40,7 +46,7 @@ public class rating extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "已送出評分", Toast.LENGTH_SHORT).show();
                 Intent it = new Intent();
-                it.setClass(rating.this,gamePage.class);
+                it.setClass(rating.this,currentPage);
                 startActivity(it);
                 dialog.dismiss();
             }
@@ -62,5 +68,28 @@ public class rating extends AppCompatActivity {
                 dialog.show();
             }
         });
+    }
+    ////////////////////////////////////////////////////////////
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(rating.this, currentPage);
+        startActivity(i);
+        CustomIntent.customType(rating.this, "up-to-bottom");
+        DialogSetting.counter++;
+        finish();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        DialogSetting.checkpause();
+        DialogSetting.counter--;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        DialogSetting.counter=0;
+        DialogSetting.bgmsoundcontrol(getApplication());
     }
 }
