@@ -213,7 +213,7 @@
                 android:paddingBottom="0dp"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                app:backgroundTint="#FF9800"
+                app:backgroundTint="#B8FF9800"
                 app:iconPadding="0dp" />
 
             <Button
@@ -237,7 +237,7 @@
                 android:paddingBottom="0dp"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                app:backgroundTint="#FF9800"
+                app:backgroundTint="#BFFF9800"
                 app:iconPadding="0dp" />
 
             <Button
@@ -261,7 +261,7 @@
                 android:paddingBottom="0dp"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                app:backgroundTint="#FF9800"
+                app:backgroundTint="#BFFF9800"
                 app:iconPadding="0dp" />
 
             <Button
@@ -285,7 +285,7 @@
                 android:paddingBottom="0dp"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                app:backgroundTint="#FF9800"
+                app:backgroundTint="#BFFF9800"
                 app:iconPadding="0dp" />
 
         </LinearLayout>
