@@ -212,6 +212,8 @@ public class DialogSetting{
                 resetHints(page.getApplicationContext());
                 resetLevel(page.getApplicationContext());
                 dialog.dismiss();
+                intent.setClass(page,LoadingPage.class);
+                page.startActivity(intent);
                 Toast.makeText(page, "關卡, 提示已經重設", Toast.LENGTH_SHORT).show();
             }
         });
