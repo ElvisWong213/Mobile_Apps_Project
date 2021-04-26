@@ -52,7 +52,8 @@ public class DialogSetting{
         ImageView closebutton = dialog.findViewById(R.id.closebutton);
         ImageView rateswitch = dialog.findViewById(R.id.rateswitch);
         ImageView rateswitchimage = dialog.findViewById(R.id.rateswitchimage);
-        ImageView resetButton = dialog.findViewById(R.id.restartswitch);
+        ImageView restartswitch = dialog.findViewById(R.id.restartswitch);
+        ImageView restartimage = dialog.findViewById(R.id.restartswitchimage);
 
         rateswitch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,6 +140,32 @@ public class DialogSetting{
             }
         });
 
+        restartswitch.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    restartswitch.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                    restartimage.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    restartswitch.clearColorFilter();
+                    restartimage.clearColorFilter();
+                }
+                return false;
+            }
+        });
+
+        restartswitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                resetHints(page.getApplicationContext());
+                resetLevel(page.getApplicationContext());
+                intent.setClass(page,LoadingPage.class);
+                page.startActivity(intent);
+                Toast.makeText(page, "關卡, 提示已經重設", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
 
         homeswitch.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -228,18 +255,6 @@ public class DialogSetting{
             }
         });
 
-        resetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                resetHints(page.getApplicationContext());
-                resetLevel(page.getApplicationContext());
-                dialog.dismiss();
-                intent.setClass(page,LoadingPage.class);
-                page.startActivity(intent);
-                Toast.makeText(page, "關卡, 提示已經重設", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
 
