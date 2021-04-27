@@ -269,10 +269,10 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
             if (ansButtonArray[i].getText().toString() != "" && ansButtonArray[i].getText().toString().charAt(0) == dummy.charAt(i)) {
                 //do nothing
             }else{
-                index.add(i);
+                index.add(i);   //ansButton text is not null and it's not match with the ans, than get index
             }
         }
-        if (DialogSetting.getHints(getApplicationContext()) <= 1) {
+        if (DialogSetting.getHints(getApplicationContext()) <= 1) { //player hints = 0, the button will disable
             btn_hint.setEnabled(false);
             btn_hint.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
         }
@@ -298,20 +298,22 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
             }
             ansButtonArray[outputIndex].setText(String.valueOf(dummy.charAt(outputIndex)));
             ansButtonArray[outputIndex].setEnabled(false);
+            //disable a button when one ans is given
             for (int i = 0; i < buttonArray.length; i++) {
                 if (buttonArray[i].getText().charAt(0) == dummy.charAt(outputIndex)) {
                     buttonArray[i].setEnabled(false);
                     break;
                 }
             }
-            hintsIndex[outputIndex] = true;
+            hintsIndex[outputIndex] = true; //mark the hints ans location
+            //check the number of ansbuttons are fill
             int counter = 0;
             for (int i = 0; i < ansSize; i++) {
                 if (ansButtonArray[i].getText() != "") {
                     counter++;
                 }
             }
-
+            //check answer
             if (counter == ansSize) {
                 checkAns();
             }
@@ -319,6 +321,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     }
 
     public void checkAns() {
+        //get all text from ansButton
         for (int j = 0; j < ansButtonArray.length; j++) {
             chinese += ansButtonArray[j].getText();
         }
@@ -330,6 +333,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                     DialogSetting.tempHints(getApplicationContext());
                     hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
                     DialogSetting.addLevel(getApplicationContext());
+                    //clear data of previous level
                     allTextArrayList.clear();
                     levelText();
                     chinese="";
@@ -377,10 +381,10 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     }
 
     public void levelText(){
-        if (DialogSetting.getLevel(getApplicationContext()) <= questionArrayList.size()) {
+        if (DialogSetting.getLevel(getApplicationContext()) <= questionArrayList.size()) { //game not finish
             ArrayList buffer2 = new ArrayList();
             for (int i = 0; i < questionArrayList.size(); i++) {
-                if (DialogSetting.getLevel(getApplicationContext()) == (i + 1)) {
+                if (DialogSetting.getLevel(getApplicationContext()) == (i + 1)) {   //match the level and question
                     //answer button number
                     ansSize = ((String) answerArrayList.get(i)).length();
                     switch (ansSize) {
@@ -397,6 +401,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                             ansButtonArray[3].setVisibility(View.VISIBLE);
                             break;
                     }
+                    //show level
                     currentLevel2.setText("第 " + Integer.toString(DialogSetting.getLevel(getApplicationContext())) + " 關");
                     //hints button setting
                     if (DialogSetting.getHints(getApplicationContext()) > 0) {
@@ -409,7 +414,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                     emoji.setText((String) questionArrayList.get(i));
                     type.setText((String) typeArrayList.get(i));
                     //json data to button text
-                    randomAllText();
+                    randomAllText();    //make the text random
                     for (int j = 0; j < allTextArrayList.size(); j++) {
                         buttonArray[j].setText((String) allTextArrayList.get(j));
                     }
@@ -433,7 +438,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                     break;
                 }
             }
-        }else{
+        }else{  //game finish
             Intent i = new Intent();
             i.setClass(gameContent.this, FinishPage.class);
             startActivity(i);
