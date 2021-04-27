@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="給我們評分"
+        android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="#FFEB3B"
         android:textSize="28sp" />
@@ -29,6 +30,7 @@
         android:background="#19FFFFFF"
         android:ems="10"
         android:gravity="start|top"
+        android:textStyle="bold"
         android:hint="建議有什麼可以改進的空間"
         android:inputType="textMultiLine"
         android:textColor="@color/white"
