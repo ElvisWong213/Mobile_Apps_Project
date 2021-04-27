@@ -68,8 +68,8 @@
 
     <Button
         android:id="@+id/btn_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="204dp"
+        android:layout_height="47dp"
         android:background="@android:color/transparent"
         android:text="確定"
         android:textColor="@color/white"
@@ -77,12 +77,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/divider2"
-        app:layout_constraintTop_toTopOf="@id/divider2" />
+        app:layout_constraintTop_toTopOf="@id/divider2"
+        app:rippleColor="@color/white" />
 
     <Button
         android:id="@+id/btn_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="207dp"
+        android:layout_height="48dp"
         android:background="@android:color/transparent"
         android:text="取消"
         android:textColor="@color/white"
@@ -90,7 +91,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toStartOf="@id/divider2"
-        app:layout_constraintTop_toTopOf="@id/divider2" />
+        app:layout_constraintTop_toTopOf="@id/divider2"
+        app:rippleColor="@color/white" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

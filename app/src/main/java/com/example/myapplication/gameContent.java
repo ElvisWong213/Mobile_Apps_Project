@@ -285,7 +285,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
             DialogSetting.win_dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                 @Override
                 public void onDismiss(DialogInterface dialog) {
-                    DialogSetting.addHints(getApplicationContext());
+                    DialogSetting.tempHints(getApplicationContext());
                     hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
                     DialogSetting.addLevel(getApplicationContext());
                     levelText();

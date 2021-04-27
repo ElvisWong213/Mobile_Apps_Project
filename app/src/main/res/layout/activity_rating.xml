@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="給我們評分"
+        android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="#FFEB3B"
         android:textSize="28sp" />
@@ -26,11 +27,14 @@
         android:id="@+id/editTextTextMultiLine"
         android:layout_width="250dp"
         android:layout_height="90dp"
-        android:background="#FFFFFF"
+        android:background="#19FFFFFF"
         android:ems="10"
         android:gravity="start|top"
         android:hint="建議有什麼可以改進的空間"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        android:textColor="@color/white"
+        android:textColorHint="@android:color/darker_gray"
+        android:textStyle="bold" />
 
     <Space
         android:layout_width="match_parent"
@@ -76,15 +80,28 @@
         android:layout_width="match_parent"
         android:layout_height="20dp" />
 
-    <Button
-        android:id="@+id/btnback"
-        android:layout_width="140dp"
-        android:layout_height="40dp"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:text="返回主頁"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:backgroundTint="#FF9800" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
+        <ImageView
+            android:id="@+id/ratebtnback"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/square" />
+
+        <TextView
+            android:id="@+id/ratebacktext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="15dp"
+            android:text="返回主頁"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </FrameLayout>
 </LinearLayout>

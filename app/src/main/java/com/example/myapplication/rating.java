@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -20,6 +22,7 @@ public class rating extends AppCompatActivity {
     RatingBar ratingBar;
     ImageView btSubmit;
     Dialog dialog;
+    ImageView btnback;
     public static Class currentPage;
     public static MediaPlayer mediaPlayer;
 
@@ -45,9 +48,9 @@ public class rating extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "已送出評分", Toast.LENGTH_SHORT).show();
-                Intent it = new Intent();
-                it.setClass(rating.this,currentPage);
-                startActivity(it);
+                Intent i = new Intent(rating.this, currentPage);
+                startActivity(i);
+                CustomIntent.customType(rating.this, "up-to-bottom");
                 dialog.dismiss();
             }
         });
@@ -61,6 +64,20 @@ public class rating extends AppCompatActivity {
 
         ratingBar = findViewById(R.id.rating_bar);
         btSubmit = findViewById(R.id.ratebtnswitch);
+        btSubmit.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    if (DialogSetting.effectsoundcontrol(getApplicationContext())){
+                        mediaPlayer.start();
+                    }
+                    btSubmit.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    btSubmit.clearColorFilter();
+                }
+                return false;
+            }
+        });
 
         btSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +85,33 @@ public class rating extends AppCompatActivity {
                 dialog.show();
             }
         });
+
+        btnback = findViewById(R.id.ratebtnback);
+        btnback.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    if (DialogSetting.effectsoundcontrol(getApplicationContext())){
+                        mediaPlayer.start();
+                    }
+                    btnback.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    btnback.clearColorFilter();
+
+                }
+                return false;
+            }
+        });
+
+        btnback.setOnClickListener(new View.OnClickListener(){
+        @Override
+        public void onClick(View v){
+            Intent i = new Intent(rating.this, gamePage.class);
+            startActivity(i);
+        }
+        }
+        );
+
     }
     ////////////////////////////////////////////////////////////
     @Override
