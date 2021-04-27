@@ -360,6 +360,20 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     ////////////////////////////////////////////////////////////
     @Override
     public void onBackPressed() {
+        allTextArrayList.clear();
+        chinese="";
+        ansIndex = 0;
+        for (int j = 0; j < ansButtonArray.length; j++) {
+            ansButtonArray[j].setText("");
+            ansButtonArray[j].setEnabled(false);
+        }
+        for (int j = 0; j < buttonArray.length; j++) {
+            buttonArray[j].setEnabled(true);
+        }
+        for (int j = 0; j < hintsIndex.length; j++) {
+            hintsIndex[j] = true;
+        }
+
         Intent i = new Intent(gameContent.this, MainActivity.class);
         startActivity(i);
         CustomIntent.customType(gameContent.this, "bottom-to-up");
