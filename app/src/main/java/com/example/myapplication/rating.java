@@ -22,7 +22,7 @@ public class rating extends AppCompatActivity {
     RatingBar ratingBar;
     ImageView btSubmit;
     Dialog dialog;
-    Button btnback;
+    ImageView btnback;
     public static Class currentPage;
     public static MediaPlayer mediaPlayer;
 
@@ -86,18 +86,32 @@ public class rating extends AppCompatActivity {
             }
         });
 
-        btnback = findViewById(R.id.btnback);
-        btnback.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.btnback:
-                        Intent i = new Intent(rating.this, gamePage.class);
-                        startActivity(i);
-                        break;
-                }
-            }
+        btnback = findViewById(R.id.ratebtnback);
+        btnback.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    if (DialogSetting.effectsoundcontrol(getApplicationContext())){
+                        mediaPlayer.start();
+                    }
+                    btnback.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    btnback.clearColorFilter();
 
+                }
+                return false;
+            }
         });
+
+        btnback.setOnClickListener(new View.OnClickListener(){
+        @Override
+        public void onClick(View v){
+            Intent i = new Intent(rating.this, gamePage.class);
+            startActivity(i);
+        }
+        }
+        );
+
     }
     ////////////////////////////////////////////////////////////
     @Override
