@@ -377,68 +377,67 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     }
 
     public void levelText(){
-        ArrayList buffer2 = new ArrayList();
-        for (int i = 0; i < questionArrayList.size(); i++) {
-            if (DialogSetting.getLevel(getApplicationContext()) == (i + 1)) {
-                //answer button number
-                ansSize = ((String) answerArrayList.get(i)).length();
-                switch (ansSize){
-                    case 2:
-                        ansButtonArray[2].setVisibility(View.GONE);
-                        ansButtonArray[3].setVisibility(View.GONE);
-                        break;
-                    case 3:
-                        ansButtonArray[2].setVisibility(View.VISIBLE);
-                        ansButtonArray[3].setVisibility(View.GONE);
-                        break;
-                    default:
-                        ansButtonArray[2].setVisibility(View.VISIBLE);
-                        ansButtonArray[3].setVisibility(View.VISIBLE);
-                        break;
-                }
-                currentLevel2.setText("第 " + Integer.toString(DialogSetting.getLevel(getApplicationContext())) + " 關");
-                //hints button setting
-                if (DialogSetting.getHints(getApplicationContext()) > 0) {
-                    btn_hint.setEnabled(true);
-                    btn_hint.clearColorFilter();
-                }else{
-                    btn_hint.setEnabled(false);
-                    btn_hint.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
-                }
-                emoji.setText((String) questionArrayList.get(i));
-                type.setText((String) typeArrayList.get(i));
-                //json data to button text
-//                JSONArray buffer = (JSONArray) buttonTextArrayList.get(i);
-//                for (int j = 0; j < buffer.length(); j++) {
-//                    try {
-//                        buffer2.add(buffer.get(j).toString());
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-                randomAllText();
-                for (int j = 0; j < allTextArrayList.size(); j++) {
-                    buttonArray[j].setText((String)allTextArrayList.get(j));
-                }
-                //set difficulty
-                if (DialogSetting.getLevel(getApplicationContext()) >= 10 && DialogSetting.getLevel(getApplicationContext()) <= 20 ) {
-                    for (int j = 10; j < 15; j++) {
-                        buttonArray[j].setVisibility(View.VISIBLE);
+        if (DialogSetting.getLevel(getApplicationContext()) <= questionArrayList.size()) {
+            ArrayList buffer2 = new ArrayList();
+            for (int i = 0; i < questionArrayList.size(); i++) {
+                if (DialogSetting.getLevel(getApplicationContext()) == (i + 1)) {
+                    //answer button number
+                    ansSize = ((String) answerArrayList.get(i)).length();
+                    switch (ansSize) {
+                        case 2:
+                            ansButtonArray[2].setVisibility(View.GONE);
+                            ansButtonArray[3].setVisibility(View.GONE);
+                            break;
+                        case 3:
+                            ansButtonArray[2].setVisibility(View.VISIBLE);
+                            ansButtonArray[3].setVisibility(View.GONE);
+                            break;
+                        default:
+                            ansButtonArray[2].setVisibility(View.VISIBLE);
+                            ansButtonArray[3].setVisibility(View.VISIBLE);
+                            break;
                     }
-                    for (int j = 15; j < 20; j++) {
-                        buttonArray[j].setVisibility(View.GONE);
+                    currentLevel2.setText("第 " + Integer.toString(DialogSetting.getLevel(getApplicationContext())) + " 關");
+                    //hints button setting
+                    if (DialogSetting.getHints(getApplicationContext()) > 0) {
+                        btn_hint.setEnabled(true);
+                        btn_hint.clearColorFilter();
+                    } else {
+                        btn_hint.setEnabled(false);
+                        btn_hint.setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
                     }
-                }else if (DialogSetting.getLevel(getApplicationContext()) >= 20 && DialogSetting.getLevel(getApplicationContext()) <= 30){
-                    for (int j = 11; j < 20; j++) {
-                        buttonArray[j].setVisibility(View.VISIBLE);
+                    emoji.setText((String) questionArrayList.get(i));
+                    type.setText((String) typeArrayList.get(i));
+                    //json data to button text
+                    randomAllText();
+                    for (int j = 0; j < allTextArrayList.size(); j++) {
+                        buttonArray[j].setText((String) allTextArrayList.get(j));
                     }
-                }else{
-                    for (int j = 10; j < 20; j++) {
-                        buttonArray[j].setVisibility(View.GONE);
+                    //set difficulty
+                    if (DialogSetting.getLevel(getApplicationContext()) >= 10 && DialogSetting.getLevel(getApplicationContext()) <= 20) {
+                        for (int j = 10; j < 15; j++) {
+                            buttonArray[j].setVisibility(View.VISIBLE);
+                        }
+                        for (int j = 15; j < 20; j++) {
+                            buttonArray[j].setVisibility(View.GONE);
+                        }
+                    } else if (DialogSetting.getLevel(getApplicationContext()) >= 20 && DialogSetting.getLevel(getApplicationContext()) <= 30) {
+                        for (int j = 11; j < 20; j++) {
+                            buttonArray[j].setVisibility(View.VISIBLE);
+                        }
+                    } else {
+                        for (int j = 10; j < 20; j++) {
+                            buttonArray[j].setVisibility(View.GONE);
+                        }
                     }
+                    break;
                 }
-                break;
             }
+        }else{
+            Intent i = new Intent();
+            i.setClass(gameContent.this, FinishPage.class);
+            startActivity(i);
+            finish();
         }
     }
 
