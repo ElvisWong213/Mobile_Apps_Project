@@ -44,8 +44,8 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
 
     ArrayList questionArrayList = new ArrayList(), answerArrayList = new ArrayList(), typeArrayList = new ArrayList(), buttonTextArrayList = new ArrayList();
 
-    Button[] buttonArray = new Button[10];
-    int[] buttonID = {R.id.textBtn1, R.id.textBtn2, R.id.textBtn3, R.id.textBtn4, R.id.textBtn5, R.id.textBtn6, R.id.textBtn7, R.id.textBtn8, R.id.textBtn9, R.id.textBtn10, R.id.textBtn11, R.id.textBtn12, R.id.textBtn13, R.id.textBtn14, R.id.textBtn15};
+    Button[] buttonArray = new Button[20];
+    int[] buttonID = {R.id.textBtn1, R.id.textBtn2, R.id.textBtn3, R.id.textBtn4, R.id.textBtn5, R.id.textBtn6, R.id.textBtn7, R.id.textBtn8, R.id.textBtn9, R.id.textBtn10, R.id.textBtn11, R.id.textBtn12, R.id.textBtn13, R.id.textBtn14, R.id.textBtn15, R.id.textBtn16, R.id.textBtn17, R.id.textBtn18, R.id.textBtn19, R.id.textBtn20};
     Button[] ansButtonArray = new Button[4];
     int[] ansButtonID = {R.id.userInput1, R.id.userInput2, R.id.userInput3, R.id.userInput4};
     int ansIndex = 0;
@@ -241,15 +241,18 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
             hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
             Random r = new Random();
             int outputIndex = (int) index.get(r.nextInt(index.size()));
+            //find used text
             for (int i = 0; i < buttonArray.length; i++) {
                 if (buttonArray[i].getText() == ansButtonArray[outputIndex].getText()) {
                     buttonArray[i].setEnabled(true);
                 }
             }
+            //find repeat text
             for (int i = 0; i < ansSize; i++) {
                 if (ansButtonArray[i].getText() != "") {
                     if (ansButtonArray[i].getText().charAt(0) == dummy.charAt(outputIndex)) {
                         ansButtonArray[i].setText("");
+                        break;
                     }
                 }
             }
@@ -277,7 +280,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         for (int j = 0; j < ansButtonArray.length; j++) {
             chinese += ansButtonArray[j].getText();
         }
-        if (chinese.equals(answerArrayList.get(DialogSetting.getLevel(getApplicationContext()) - 1))) {  //answer is correct
+        if (chinese.equals(answerArrayList.get(DialogSetting.getLevel(getApplicationContext()) - 1))) {  //when answer is correct
             DialogSetting.win_DialogManager(gameContent.this);
             DialogSetting.win_dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                 @Override
@@ -297,7 +300,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                     }
                 }
             });
-        }else { //answer is incorrect
+        }else { //when answer is incorrect
             shakeanimationandwrongeffect(emoji, -10, 10);
             chinese="";
         }
@@ -331,6 +334,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         ArrayList buffer2 = new ArrayList();
         for (int i = 0; i < questionArrayList.size(); i++) {
             if (DialogSetting.getLevel(getApplicationContext()) == (i + 1)) {
+                //answer button number
                 ansSize = ((String) answerArrayList.get(i)).length();
                 switch (ansSize){
                     case 2:
@@ -346,7 +350,9 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                         ansButtonArray[3].setVisibility(View.VISIBLE);
                         break;
                 }
-                currentLevel2.setText("第 " + Integer.toString(DialogSetting.getLevel(getApplicationContext())) + " 關");                if (DialogSetting.getHints(getApplicationContext()) > 0) {
+                currentLevel2.setText("第 " + Integer.toString(DialogSetting.getLevel(getApplicationContext())) + " 關");
+                //hints button setting
+                if (DialogSetting.getHints(getApplicationContext()) > 0) {
                     btn_hint.setEnabled(true);
                     btn_hint.clearColorFilter();
                 }else{
@@ -355,6 +361,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 }
                 emoji.setText((String) questionArrayList.get(i));
                 type.setText((String) typeArrayList.get(i));
+                //json data to button text
                 JSONArray buffer = (JSONArray) buttonTextArrayList.get(i);
                 for (int j = 0; j < buffer.length(); j++) {
                     try {
@@ -365,6 +372,22 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 }
                 for (int j = 0; j < buffer2.size(); j++) {
                     buttonArray[j].setText((String)buffer2.get(j));
+                }
+                //set difficulty
+                if (DialogSetting.getLevel(getApplicationContext()) >= 10 && DialogSetting.getLevel(getApplicationContext()) <= 20 ) {
+                    for (int j = 10; j < 15; j++) {
+                        buttonArray[j].setVisibility(View.VISIBLE);
+                        buttonArray[j].setText("");
+                    }
+                }else if (DialogSetting.getLevel(getApplicationContext()) >= 20 && DialogSetting.getLevel(getApplicationContext()) <= 30){
+                    for (int j = 11; j < 20; j++) {
+                        buttonArray[j].setVisibility(View.VISIBLE);
+                        buttonArray[j].setText("");
+                    }
+                }else{
+                    for (int j = 10; j < 20; j++) {
+                        buttonArray[j].setVisibility(View.GONE);
+                    }
                 }
                 break;
             }
