@@ -30,17 +30,17 @@
         },
         {
             "id": 5,
-            "question": "☂️\uD83C\uDF50",
-            "answer": "啫喱",
+            "question": "\uD83C\uDF73\uD83C\uDF65",
+            "answer": "蛋卷",
             "type": "食物",
-            "buttonText": ["雨", "啫", "利", "子", "意", "粉", "喱", "厘", "車", "果"]
+            "buttonText": ["卷", "煎", "麵", "子", "蛋", "圓", "拉", "眼", "車", "咀"]
         },
         {
             "id": 6,
-            "question": "\uD83D\uDC99\uD83C\uDF1E⭕",
-            "answer": "心太軟",
+            "question": "\uD83C\uDF54\uD83D\uDC1F\uD83D\uDC14\uD83C\uDF72",
+            "answer": "鮑魚雞粥",
             "type": "食物",
-            "buttonText": ["軟", "陽", "利", "圈", "太", "圓", "藍", "愛", "心", "魚"]
+            "buttonText": ["雞", "包", "粥", "母", "炒", "飯", "鮑", "愛", "心", "魚"]
         },
         {
             "id": 7,
@@ -100,17 +100,17 @@
         },
         {
             "id": 15,
-            "question": "☂️\uD83C\uDF50",
-            "answer": "啫喱",
+            "question": "➕\uD83E\uDD8A\uD83D\uDC1F\uD83C\uDF73",
+            "answer": "咖喱魚蛋",
             "type": "食物",
-            "buttonText": ["雨", "啫", "利", "子", "意", "粉", "喱", "厘", "車", "果"]
+            "buttonText": ["蛋", "咖", "煎", "加", "狸", "粉", "喱", "厘", "狐", "魚"]
         },
         {
             "id": 16,
-            "question": "\uD83D\uDC99\uD83C\uDF1E⭕",
-            "answer": "心太軟",
+            "question": "\uD83C\uDF3E\uD83D\uDE2C\uD83C\uDF6D",
+            "answer": "麥芽糖",
             "type": "食物",
-            "buttonText": ["軟", "陽", "利", "圈", "太", "圓", "藍", "愛", "心", "魚"]
+            "buttonText": ["芽", "笑", "糖", "板", "尷", "草", "波板", "麥", "稻", "尷"]
         },
         {
             "id": 17,
@@ -128,17 +128,17 @@
         },
         {
             "id": 19,
-            "question": "\uD83C\uDF8E️➡️\uD83D\uDC80",
-            "answer": "坐以待斃",
+            "question": "\uD83D\uDC48\uD83D\uDC49✌️\uD83D\uDEA7",
+            "answer": "左右兩難",
             "type": "成語",
-            "buttonText": ["以", "頭", "待", "心", "斃", "骨", "真", "坐", "人", "去"]
+            "buttonText": ["以", "左", "待", "心", "兩", "骨", "右", "坐", "人", "難"]
         },
         {
             "id": 20,
-            "question": "\uD83D\uDC44✅\uD83D\uDC99✈️",
-            "answer": "口是心非",
+            "question": "\uD83D\uDC4B\uD83C\uDF31➡️\uD83C\uDF32",
+            "answer": "拔苗助長",
             "type": "成語",
-            "buttonText": ["機", "是", "確", "心", "的", "口", "定", "坐", "唇", "非"]
+            "buttonText": ["樹", "助", "確", "揮", "拔", "手", "定", "長", "搖", "苗"]
         },
         {
             "id": 21,
