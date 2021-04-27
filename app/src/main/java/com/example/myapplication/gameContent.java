@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -10,7 +9,6 @@ import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.style.StyleSpan;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -171,16 +169,42 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         return json;
     }
 
-    public void getAllText() {
+    public void randomAllText() {
+        ArrayList dummyList = new ArrayList();
+        ArrayList dummyList2 = new ArrayList();
         for (int i = 0; i < buttonTextArrayList.size(); i++) {
             JSONArray buffer = (JSONArray) buttonTextArrayList.get(i);
             for (int j = 0; j < buffer.length(); j++) {
                 try {
-                    allTextArrayList.add(buffer.get(j).toString());
+                    dummyList.add(buffer.get(j).toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
+        }
+        JSONArray buffer = (JSONArray) buttonTextArrayList.get(DialogSetting.getLevel(getApplicationContext()) - 1);
+        for (int j = 0; j < buffer.length(); j++) {
+            try {
+                dummyList2.add(buffer.get(j).toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        Random r = new Random();
+        int size = 0;
+        if (DialogSetting.getLevel(getApplicationContext()) >= 10 && DialogSetting.getLevel(getApplicationContext()) < 20) {
+            size = 5;
+        }else if (DialogSetting.getLevel(getApplicationContext()) >= 20) {
+            size = 10;
+        }
+        for (int i = 0; i < size; i++) {
+            dummyList2.add(dummyList.get(r.nextInt(dummyList.size())));
+        }
+        int totalSize = dummyList2.size();
+        for (int i = 0; i < totalSize; i++) {
+            int index = r.nextInt(dummyList2.size());
+            allTextArrayList.add(dummyList2.get(index));
+            dummyList2.remove(index);
         }
     }
 
@@ -306,6 +330,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                     DialogSetting.tempHints(getApplicationContext());
                     hintChance.setText(String.valueOf(DialogSetting.getHints(getApplicationContext())));
                     DialogSetting.addLevel(getApplicationContext());
+                    allTextArrayList.clear();
                     levelText();
                     chinese="";
                     ansIndex = 0;
@@ -383,25 +408,22 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 emoji.setText((String) questionArrayList.get(i));
                 type.setText((String) typeArrayList.get(i));
                 //json data to button text
-                JSONArray buffer = (JSONArray) buttonTextArrayList.get(i);
-                for (int j = 0; j < buffer.length(); j++) {
-                    try {
-                        buffer2.add(buffer.get(j).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-                for (int j = 0; j < buffer2.size(); j++) {
-                    buttonArray[j].setText((String)buffer2.get(j));
+//                JSONArray buffer = (JSONArray) buttonTextArrayList.get(i);
+//                for (int j = 0; j < buffer.length(); j++) {
+//                    try {
+//                        buffer2.add(buffer.get(j).toString());
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+                randomAllText();
+                for (int j = 0; j < allTextArrayList.size(); j++) {
+                    buttonArray[j].setText((String)allTextArrayList.get(j));
                 }
                 //set difficulty
-                getAllText();
-                Random r = new Random();
                 if (DialogSetting.getLevel(getApplicationContext()) >= 10 && DialogSetting.getLevel(getApplicationContext()) <= 20 ) {
                     for (int j = 10; j < 15; j++) {
                         buttonArray[j].setVisibility(View.VISIBLE);
-                        String outputText = (String) allTextArrayList.get(r.nextInt(allTextArrayList.size()));
-                        buttonArray[j].setText(outputText);
                     }
                     for (int j = 15; j < 20; j++) {
                         buttonArray[j].setVisibility(View.GONE);
@@ -409,8 +431,6 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 }else if (DialogSetting.getLevel(getApplicationContext()) >= 20 && DialogSetting.getLevel(getApplicationContext()) <= 30){
                     for (int j = 11; j < 20; j++) {
                         buttonArray[j].setVisibility(View.VISIBLE);
-                        String outputText = (String) allTextArrayList.get(r.nextInt(allTextArrayList.size()));
-                        buttonArray[j].setText(outputText);
                     }
                 }else{
                     for (int j = 10; j < 20; j++) {
