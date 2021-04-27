@@ -245,7 +245,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         for (int i = 0; i < ansButtonArray.length; i++) {
             if (v.getId() == ansButtonID[i]) {
                 for (int j = 0; j < buttonArray.length; j++) {
-                    if (ansButtonArray[i].getText() == buttonArray[j].getText() && ansButtonArray[i].isEnabled()){
+                    if (ansButtonArray[i].getText() == buttonArray[j].getText()){
                         buttonArray[j].setEnabled(true);
                         ansButtonArray[i].setEnabled(false);
                     }
