@@ -16,129 +16,200 @@
         },
         {
             "id": 3,
-            "question": "\uD83D\uDC99\uD83D\uDC44\uD83D\uDE45\u200D\uD83D\uDC46",
-            "answer": "心口不一",
-            "type": "成語",
-            "buttonText": ["不", "打", "人", "藍", "一", "心", "上", "指", "口", "嘴"]
-        },
-        {
-            "id": 4,
-            "question": "\uD83C\uDFC3\u200D\uD83D\uDC34\uD83D\uDC40\uD83C\uDF38",
-            "answer": "走馬看花",
-            "type": "成語",
-            "buttonText": ["步", "眼", "走", "物", "看", "跑", "粉", "馬", "動", "花"]
-        },
-        {
-            "id": 5,
-            "question": "✋\uD83C\uDF87\uD83D\uDE4C\uD83C\uDFA8",
-            "answer": "五光十色",
-            "type": "成語",
-            "buttonText": ["步", "光", "色", "不", "十", "跑", "歡", "五", "提", "找"]
-        },
-        {
-            "id": 6,
-            "question": "®️\uD83D\uDC99®️\uD83C\uDDEE\uD83C\uDDF9",
-            "answer": "真心真意",
-            "type": "成語",
-            "buttonText": ["複", "真", "色", "心", "印", "製", "真", "五", "粉", "意"]
-        },
-        {
-            "id": 7,
-            "question": "\uD83C\uDF8E️➡️\uD83D\uDC80",
-            "answer": "坐以待斃",
-            "type": "成語",
-            "buttonText": ["以", "頭", "待", "心", "斃", "骨", "真", "坐", "人", "去"]
-        },
-        {
-            "id": 8,
-            "question": "\uD83D\uDC44✅\uD83D\uDC99✈️",
-            "answer": "口是心非",
-            "type": "成語",
-            "buttonText": ["機", "是", "確", "心", "的", "口", "定", "坐", "唇", "非"]
-        },
-        {
-            "id": 9,
-            "question": "\uD83D\uDC37\uD83D\uDC6D\uD83D\uDC36\uD83D\uDC6C",
-            "answer": "豬朋狗友",
-            "type": "成語",
-            "buttonText": ["狗", "是", "物", "豬", "的", "友", "定", "朋", "動", "人"]
-        },
-        {
-            "id": 10,
-            "question": "\uD83D\uDC49\uD83C\uDF70\uD83C\uDF88\uD83D\uDC11",
-            "answer": "趾高氣揚",
-            "type": "成語",
-            "buttonText": ["手", "趾", "物", "羊", "揚", "蛋", "高", "朋", "氣", "飛"]
-        },
-        {
-            "id": 11,
-            "question": "\uD83D\uDEC0\uD83D\uDE2D❌\uD83D\uDCA6",
-            "answer": "欲哭無淚",
-            "type": "成語",
-            "buttonText": ["洗", "欲", "淚", "羊", "水", "蛋", "哭", "朋", "叉", "無"]
-        },
-        {
-            "id": 12,
-            "question": "\uD83D\uDE97\uD83D\uDCA7\uD83D\uDC34\uD83D\uDC09",
-            "answer": "車水馬龍",
-            "type": "成語",
-            "buttonText": ["水", "欲", "淚", "馬", "水", "蛋", "哭", "車", "龍", "飛"]
-        },
-        {
-            "id": 13,
-            "question": "\uD83D\uDC48\uD83D\uDC49✌️\uD83D\uDEA7",
-            "answer": "左右兩難",
-            "type": "成語",
-            "buttonText": ["交", "右", "手", "通", "左", "阻", "哭", "難", "指", "兩"]
-        },
-        {
-            "id": 14,
-            "question": "\uD83C\uDF57\uD83C\uDF73\uD83C\uDF5C",
-            "answer": "腿蛋麵",
-            "type": "食物",
-            "buttonText": ["腿", "火", "士", "通", "蛋", "粉", "雞", "腸", "仔", "麵"]
-        },
-        {
-            "id": 15,
-            "question": "\uD83D\uDC46\uD83D\uDCA6",
-            "answer": "上水",
-            "type": "地方",
-            "buttonText": ["雨", "手", "欲", "通", "上", "粉", "涙", "水", "手", "麵"]
-        },
-        {
-            "id": 16,
-            "question": "\uD83C\uDF5D\uD83D\uDDFB",
-            "answer": "粉嶺",
-            "type": "地方",
-            "buttonText": ["嶺", "手", "利", "大", "意", "粉", "涙", "水", "山", "麵"]
-        },
-        {
-            "id": 17,
-            "question": "☂️\uD83C\uDF50",
-            "answer": "啫喱",
-            "type": "食物",
-            "buttonText": ["雨", "啫", "利", "子", "意", "粉", "喱", "厘", "車", "果"]
-        },
-        {
-            "id": 18,
-            "question": "\uD83D\uDC99\uD83C\uDF1E⭕",
-            "answer": "心太軟",
-            "type": "食物",
-            "buttonText": ["軟", "陽", "利", "圈", "太", "圓", "藍", "愛", "心", "魚"]
-        },
-        {
-            "id": 19,
             "question": "\uD83E\uDD8A\uD83D\uDC1F\uD83E\uDD45",
             "answer": "鯉魚門",
             "type": "地方",
             "buttonText": ["雨", "鯉", "利", "狐", "意", "游", "門", "龍", "水", "魚"]
         },
         {
-            "id": 20,
+            "id": 4,
             "question": "⬅️\uD83D\uDC36\uD83D\uDC09",
             "answer": "西九龍",
             "type": "地方",
             "buttonText": ["九", "汪", "左", "西", "狗", "游", "門", "龍", "咀", "箭"]
+        },
+        {
+            "id": 5,
+            "question": "☂️\uD83C\uDF50",
+            "answer": "啫喱",
+            "type": "食物",
+            "buttonText": ["雨", "啫", "利", "子", "意", "粉", "喱", "厘", "車", "果"]
+        },
+        {
+            "id": 6,
+            "question": "\uD83D\uDC99\uD83C\uDF1E⭕",
+            "answer": "心太軟",
+            "type": "食物",
+            "buttonText": ["軟", "陽", "利", "圈", "太", "圓", "藍", "愛", "心", "魚"]
+        },
+        {
+            "id": 7,
+            "question": "\uD83D\uDC99\uD83D\uDC44\uD83D\uDE45\u200D\uD83D\uDC46",
+            "answer": "心口不一",
+            "type": "成語",
+            "buttonText": ["不", "打", "人", "藍", "一", "心", "上", "指", "口", "嘴"]
+        },
+        {
+            "id": 8,
+            "question": "\uD83C\uDFC3\u200D\uD83D\uDC34\uD83D\uDC40\uD83C\uDF38",
+            "answer": "走馬看花",
+            "type": "成語",
+            "buttonText": ["步", "眼", "走", "物", "看", "跑", "粉", "馬", "動", "花"]
+        },
+        {
+            "id": 9,
+            "question": "☂️\uD83C\uDF50",
+            "answer": "啫喱",
+            "type": "食物",
+            "buttonText": ["雨", "啫", "利", "子", "意", "粉", "喱", "厘", "車", "果"]
+        },
+        {
+            "id": 10,
+            "question": "\uD83D\uDC99\uD83C\uDF1E⭕",
+            "answer": "心太軟",
+            "type": "食物",
+            "buttonText": ["軟", "陽", "利", "圈", "太", "圓", "藍", "愛", "心", "魚"]
+        },
+        {
+            "id": 11,
+            "question": "\uD83D\uDC46\uD83D\uDCA6",
+            "answer": "上水",
+            "type": "地方",
+            "buttonText": ["雨", "手", "欲", "通", "上", "粉", "涙", "水", "手", "麵"]
+        },
+        {
+            "id": 12,
+            "question": "\uD83C\uDF5D\uD83D\uDDFB",
+            "answer": "粉嶺",
+            "type": "地方",
+            "buttonText": ["嶺", "手", "利", "大", "意", "粉", "涙", "水", "山", "麵"]
+        },
+        {
+            "id": 13,
+            "question": "✋\uD83C\uDF87\uD83D\uDE4C\uD83C\uDFA8",
+            "answer": "五光十色",
+            "type": "成語",
+            "buttonText": ["步", "光", "色", "不", "十", "跑", "歡", "五", "提", "找"]
+        },
+        {
+            "id": 14,
+            "question": "®️\uD83D\uDC99®️\uD83C\uDDEE\uD83C\uDDF9",
+            "answer": "真心真意",
+            "type": "成語",
+            "buttonText": ["複", "真", "色", "心", "印", "製", "真", "五", "粉", "意"]
+        },
+        {
+            "id": 15,
+            "question": "☂️\uD83C\uDF50",
+            "answer": "啫喱",
+            "type": "食物",
+            "buttonText": ["雨", "啫", "利", "子", "意", "粉", "喱", "厘", "車", "果"]
+        },
+        {
+            "id": 16,
+            "question": "\uD83D\uDC99\uD83C\uDF1E⭕",
+            "answer": "心太軟",
+            "type": "食物",
+            "buttonText": ["軟", "陽", "利", "圈", "太", "圓", "藍", "愛", "心", "魚"]
+        },
+        {
+            "id": 17,
+            "question": "\uD83C\uDF49⛺️\uD83D\uDD18",
+            "answer": "西營盤",
+            "type": "地方",
+            "buttonText": ["西", "瓜", "盤", "圓", "左", "黑", "哭", "白", "營", "兩"]
+        },
+        {
+            "id": 18,
+            "question": "\uD83C\uDF75\uD83E\uDD51\uD83D\uDDFB",
+            "answer": "茶果嶺",
+            "type": "地方",
+            "buttonText": ["綠", "油", "杯", "嶺", "左", "雪", "果", "牛", "山", "茶"]
+        },
+        {
+            "id": 19,
+            "question": "\uD83C\uDF8E️➡️\uD83D\uDC80",
+            "answer": "坐以待斃",
+            "type": "成語",
+            "buttonText": ["以", "頭", "待", "心", "斃", "骨", "真", "坐", "人", "去"]
+        },
+        {
+            "id": 20,
+            "question": "\uD83D\uDC44✅\uD83D\uDC99✈️",
+            "answer": "口是心非",
+            "type": "成語",
+            "buttonText": ["機", "是", "確", "心", "的", "口", "定", "坐", "唇", "非"]
+        },
+        {
+            "id": 21,
+            "question": "\uD83C\uDF57\uD83C\uDF73\uD83C\uDF5C",
+            "answer": "腿蛋麵",
+            "type": "食物",
+            "buttonText": ["腿", "火", "士", "通", "蛋", "粉", "雞", "腸", "仔", "麵"]
+        },
+        {
+            "id": 22,
+            "question": "❌\uD83C\uDF38\uD83C\uDF4E",
+            "answer": "無花果",
+            "type": "食物",
+            "buttonText": ["花", "火", "叉", "粉", "果", "交", "雞", "梅", "紅", "無"]
+        },
+        {
+            "id": 23,
+            "question": "\uD83D\uDD59⭕",
+            "answer": "中環",
+            "type": "地方",
+            "buttonText": ["鐘", "十", "環", "圓", "點", "交", "金", "鬧", "紅", "中"]
+        },
+        {
+            "id": 24,
+            "question": "\uD83D\uDC36\uD83D\uDC09✖️",
+            "answer": "九龍城",
+            "type": "地方",
+            "buttonText": ["頭", "紅", "龍", "飛", "交", "九", "狗", "城", "黑", "叉"]
+        },
+        {
+            "id": 25,
+            "question": "\uD83C\uDF8E️➡️\uD83D\uDC80",
+            "answer": "坐以待斃",
+            "type": "成語",
+            "buttonText": ["以", "頭", "待", "心", "斃", "骨", "真", "坐", "人", "去"]
+        },
+        {
+            "id": 26,
+            "question": "\uD83D\uDC44✅\uD83D\uDC99✈️",
+            "answer": "口是心非",
+            "type": "成語",
+            "buttonText": ["機", "是", "確", "心", "的", "口", "定", "坐", "唇", "非"]
+        },
+        {
+            "id": 27,
+            "question": "\uD83D\uDC37\uD83D\uDC6D\uD83D\uDC36\uD83D\uDC6C",
+            "answer": "豬朋狗友",
+            "type": "成語",
+            "buttonText": ["狗", "是", "物", "豬", "的", "友", "定", "朋", "動", "人"]
+        },
+        {
+            "id": 28,
+            "question": "\uD83D\uDC49\uD83C\uDF70\uD83C\uDF88\uD83D\uDC11",
+            "answer": "趾高氣揚",
+            "type": "成語",
+            "buttonText": ["手", "趾", "物", "羊", "揚", "蛋", "高", "朋", "氣", "飛"]
+        },
+        {
+            "id": 29,
+            "question": "\uD83D\uDEC0\uD83D\uDE2D❌\uD83D\uDCA6",
+            "answer": "欲哭無淚",
+            "type": "成語",
+            "buttonText": ["洗", "欲", "淚", "羊", "水", "蛋", "哭", "朋", "叉", "無"]
+        },
+        {
+            "id": 30,
+            "question": "\uD83D\uDE97\uD83D\uDCA7\uD83D\uDC34\uD83D\uDC09",
+            "answer": "車水馬龍",
+            "type": "成語",
+            "buttonText": ["水", "欲", "淚", "馬", "水", "蛋", "哭", "車", "龍", "飛"]
         }
+
     ]
 }
