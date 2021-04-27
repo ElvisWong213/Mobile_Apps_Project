@@ -248,7 +248,6 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                     if (ansButtonArray[i].getText() == buttonArray[j].getText()){
                         buttonArray[j].setEnabled(true);
                         ansButtonArray[i].setEnabled(false);
-                        break;
                     }
                 }
                 ansButtonArray[i].setText("");
