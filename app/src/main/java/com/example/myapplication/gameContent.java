@@ -377,12 +377,15 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 if (DialogSetting.getLevel(getApplicationContext()) >= 10 && DialogSetting.getLevel(getApplicationContext()) <= 20 ) {
                     for (int j = 10; j < 15; j++) {
                         buttonArray[j].setVisibility(View.VISIBLE);
-                        buttonArray[j].setText("");
+                        buttonArray[j].setText("a");
+                    }
+                    for (int j = 15; j < 20; j++) {
+                        buttonArray[j].setVisibility(View.GONE);
                     }
                 }else if (DialogSetting.getLevel(getApplicationContext()) >= 20 && DialogSetting.getLevel(getApplicationContext()) <= 30){
                     for (int j = 11; j < 20; j++) {
                         buttonArray[j].setVisibility(View.VISIBLE);
-                        buttonArray[j].setText("");
+                        buttonArray[j].setText("b");
                     }
                 }else{
                     for (int j = 10; j < 20; j++) {
