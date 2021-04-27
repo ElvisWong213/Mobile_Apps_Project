@@ -106,8 +106,9 @@ public class rating extends AppCompatActivity {
         btnback.setOnClickListener(new View.OnClickListener(){
         @Override
         public void onClick(View v){
-            Intent i = new Intent(rating.this, gamePage.class);
+            Intent i = new Intent(rating.this, MainActivity.class);
             startActivity(i);
+            CustomIntent.customType(rating.this, "up-to-bottom");
         }
         }
         );
