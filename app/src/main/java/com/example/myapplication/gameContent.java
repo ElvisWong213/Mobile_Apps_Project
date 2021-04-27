@@ -43,6 +43,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     public static SharedPreferences pref_hints;
 
     ArrayList questionArrayList = new ArrayList(), answerArrayList = new ArrayList(), typeArrayList = new ArrayList(), buttonTextArrayList = new ArrayList();
+    ArrayList allTextArrayList = new ArrayList();
 
     Button[] buttonArray = new Button[20];
     int[] buttonID = {R.id.textBtn1, R.id.textBtn2, R.id.textBtn3, R.id.textBtn4, R.id.textBtn5, R.id.textBtn6, R.id.textBtn7, R.id.textBtn8, R.id.textBtn9, R.id.textBtn10, R.id.textBtn11, R.id.textBtn12, R.id.textBtn13, R.id.textBtn14, R.id.textBtn15, R.id.textBtn16, R.id.textBtn17, R.id.textBtn18, R.id.textBtn19, R.id.textBtn20};
@@ -50,6 +51,8 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
     int[] ansButtonID = {R.id.userInput1, R.id.userInput2, R.id.userInput3, R.id.userInput4};
     int ansIndex = 0;
     int ansSize;
+    Boolean[] hintsIndex = {false, false, false, false};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -168,6 +171,19 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         return json;
     }
 
+    public void getAllText() {
+        for (int i = 0; i < buttonTextArrayList.size(); i++) {
+            JSONArray buffer = (JSONArray) buttonTextArrayList.get(i);
+            for (int j = 0; j < buffer.length(); j++) {
+                try {
+                    allTextArrayList.add(buffer.get(j).toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     public void onClick(View v){
         if (DialogSetting.effectsoundcontrol(getApplicationContext())){
             mediaPlayer.start();
@@ -250,7 +266,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
             //find repeat text
             for (int i = 0; i < ansSize; i++) {
                 if (ansButtonArray[i].getText() != "") {
-                    if (ansButtonArray[i].getText().charAt(0) == dummy.charAt(outputIndex)) {
+                    if (ansButtonArray[i].getText().charAt(0) == dummy.charAt(outputIndex) && !hintsIndex[i]) {
                         ansButtonArray[i].setText("");
                         break;
                     }
@@ -261,8 +277,10 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
             for (int i = 0; i < buttonArray.length; i++) {
                 if (buttonArray[i].getText().charAt(0) == dummy.charAt(outputIndex)) {
                     buttonArray[i].setEnabled(false);
+                    break;
                 }
             }
+            hintsIndex[outputIndex] = true;
             int counter = 0;
             for (int i = 0; i < ansSize; i++) {
                 if (ansButtonArray[i].getText() != "") {
@@ -297,6 +315,9 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                     }
                     for (int j = 0; j < buttonArray.length; j++) {
                         buttonArray[j].setEnabled(true);
+                    }
+                    for (int j = 0; j < hintsIndex.length; j++) {
+                        hintsIndex[j] = true;
                     }
                 }
             });
@@ -374,10 +395,13 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                     buttonArray[j].setText((String)buffer2.get(j));
                 }
                 //set difficulty
+                getAllText();
+                Random r = new Random();
                 if (DialogSetting.getLevel(getApplicationContext()) >= 10 && DialogSetting.getLevel(getApplicationContext()) <= 20 ) {
                     for (int j = 10; j < 15; j++) {
                         buttonArray[j].setVisibility(View.VISIBLE);
-                        buttonArray[j].setText("a");
+                        String outputText = (String) allTextArrayList.get(r.nextInt(allTextArrayList.size()));
+                        buttonArray[j].setText(outputText);
                     }
                     for (int j = 15; j < 20; j++) {
                         buttonArray[j].setVisibility(View.GONE);
@@ -385,7 +409,8 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                 }else if (DialogSetting.getLevel(getApplicationContext()) >= 20 && DialogSetting.getLevel(getApplicationContext()) <= 30){
                     for (int j = 11; j < 20; j++) {
                         buttonArray[j].setVisibility(View.VISIBLE);
-                        buttonArray[j].setText("b");
+                        String outputText = (String) allTextArrayList.get(r.nextInt(allTextArrayList.size()));
+                        buttonArray[j].setText(outputText);
                     }
                 }else{
                     for (int j = 10; j < 20; j++) {
