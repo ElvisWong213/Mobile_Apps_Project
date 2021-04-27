@@ -420,7 +420,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                         buttonArray[j].setText((String) allTextArrayList.get(j));
                     }
                     //set difficulty
-                    if (DialogSetting.getLevel(getApplicationContext()) >= 10 && DialogSetting.getLevel(getApplicationContext()) <= 20) {
+                    if (DialogSetting.getLevel(getApplicationContext()) >= 10 && DialogSetting.getLevel(getApplicationContext()) < 20) {
                         for (int j = 10; j < 15; j++) {
                             buttonArray[j].setVisibility(View.VISIBLE);
                         }
