@@ -245,16 +245,13 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
         for (int i = 0; i < ansButtonArray.length; i++) {
             if (v.getId() == ansButtonID[i]) {
                 for (int j = 0; j < buttonArray.length; j++) {
-                    if (ansButtonArray[i].getText() == buttonArray[j].getText() && !buttonArray[j].isEnabled()){
+                    if (ansButtonArray[i].getText().equals(buttonArray[j].getText()) && !(buttonArray[j].isEnabled())){
                         buttonArray[j].setEnabled(true);
                         ansButtonArray[i].setEnabled(false);
                         break;
                     }
                 }
                 ansButtonArray[i].setText("");
-                if (ansIndex > i) {
-                    ansIndex = i;
-                }
             }
         }
         //hint button
@@ -347,7 +344,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
                         buttonArray[j].setEnabled(true);
                     }
                     for (int j = 0; j < hintsIndex.length; j++) {
-                        hintsIndex[j] = true;
+                        hintsIndex[j] = false;
                     }
                 }
             });
@@ -371,7 +368,7 @@ public class gameContent extends AppCompatActivity implements View.OnClickListen
             buttonArray[j].setEnabled(true);
         }
         for (int j = 0; j < hintsIndex.length; j++) {
-            hintsIndex[j] = true;
+            hintsIndex[j] = false;
         }
 
         Intent i = new Intent(gameContent.this, MainActivity.class);
