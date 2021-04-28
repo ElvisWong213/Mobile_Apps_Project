@@ -51,7 +51,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="返回主頁" />
+                android:text="返回主頁"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:backgroundTint="#4682B4" />
 
             <Space
                 android:layout_width="25dp"
@@ -62,7 +65,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="重新開始" />
+                android:text="重新開始"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:backgroundTint="#4682B4" />
         </LinearLayout>
     </LinearLayout>
 
